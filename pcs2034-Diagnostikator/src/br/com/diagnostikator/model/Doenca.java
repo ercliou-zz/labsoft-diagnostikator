@@ -22,7 +22,6 @@ public class Doenca {
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	private List<Sintoma> sintomas;
 
-	
 	public long getId() {
 		return id;
 	}
@@ -55,7 +54,6 @@ public class Doenca {
 	public void setSintomas(List<Sintoma> sintomas) {
 		this.sintomas = sintomas;
 	}
-
 	
 	
 
