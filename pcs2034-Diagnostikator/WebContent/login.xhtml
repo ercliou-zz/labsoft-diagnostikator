@@ -13,16 +13,14 @@
 
 		<h:panelGrid columns="2">
 
-			<h:outputLabel value="CPF" for="cpf" />
-			<h:inputText id="cpf" label="cpf" value="#{loginBean.cpf}" size="11"
-				required="true" requiredMessage="digite o cpf"
-				validatorMessage="Digite o cpf sem pontua��o" >
-				<f:validateLength minimum="11" maximum="11" />
+			<h:outputLabel value="Login:" for="login" />
+			<h:inputText id="login" label="login" value="#{loginBean.login}" size="40"
+				required="true" requiredMessage="Digite o login" >
 			</h:inputText>
 
-			<h:outputLabel value="Senha" for="password" />
-			<h:inputSecret id="password" label="Senha" redisplay="true" maxLength="11" 
-				value="#{loginBean.password}" size="70" required="true"
+			<h:outputLabel value="Senha" for="senha" />
+			<h:inputSecret id="senha" label="Senha" redisplay="true" 
+				value="#{loginBean.senha}" size="40" required="true"
 				requiredMessage="Digite a senha">
 			</h:inputSecret>
 

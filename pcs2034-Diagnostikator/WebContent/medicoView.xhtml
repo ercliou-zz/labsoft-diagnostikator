@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Consulta de Medico</title>
+</h:head>
+
+<h:body>
+	<h1>Consulta de Medico</h1>
+
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID:" for="medico_id" />
+		<h:outputText id="medico_id" value="#{medicoBean.medico.id}" />
+
+		<h:outputLabel value="Nome:" for="medico_nome" />
+		<h:outputText id="medico_nome" value="#{medicoBean.medico.nome}" />
+
+		<h:outputLabel value="CPF:" for="cpf" />
+		<h:outputText id="cpf"
+			value="#{medicoBean.medico.cpf}" />
+			
+		<h:outputLabel value="RG:" for="rg" />
+		<h:outputText id="rg"
+			value="#{medicoBean.medico.rg}" />
+			
+		<h:outputLabel value="Endereço:" for="endereco" />
+		<h:outputText id="endereco"
+			value="#{medicoBean.medico.endereco}" />
+			
+		<h:outputLabel value="Data de Admissão:" for="dataAdmissao" />
+		<h:outputText id="dataAdmissao"
+			value="#{medicoBean.medico.dataAdmissao}" />
+			
+		<h:outputLabel value="CRM:" for="crm" />
+		<h:outputText id="crm"
+			value="#{medicoBean.medico.crm}" />
+			
+		<h:outputLabel value="Especialidade:" for="especialidade" />
+		<h:outputText id="especialidade"
+			value="#{medicoBean.medico.especialidade}" />
+			
+		<h:outputLabel value="Status:" for="status" />
+		<h:outputText id="status"
+			value="#{medicoBean.medico.status}" />
+			
+		<h:outputLabel value="Tipo:" for="tipo" />
+		<h:outputText id="tipo"
+			value="#{medicoBean.medico.tipo}" />
+			
+		<h:outputLabel value="Senha:" for="senha" />
+		<h:outputText id="senha"
+			value="#{medicoBean.medico.senha}" />
+
+	</h:panelGrid>
+
+	<h:form>
+		<h:commandButton action="#{medicoBean.list}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>

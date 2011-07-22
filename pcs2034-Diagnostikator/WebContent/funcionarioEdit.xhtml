@@ -4,46 +4,87 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Cadastro de Usuario</title>
+	<title>Cadastro de Funcionario</title>
 </h:head>
 
 <h:body>
-	<h1>Cadastro de Usuario</h1>
-	<h:form id="usuarioEditForm">
+	<h1>Cadastro de Funcionario</h1>
+	<h:form id="funcionarioEditForm">
 
 		<h:messages />
 
-		<h:inputHidden value="#{funcionarioBean.funcionario.codigo}" />
-
-
+		<h:inputHidden value="#{funcionarioBean.funcionario.id}" />
+		
 		<h:panelGrid columns="2">
 
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="funcionario_nome" label="Nome"
+				value="#{funcionarioBean.funcionario.nome}">
+				<f:validateLength minimum="2" maximum="45" />
+			</h:inputText>
+			
+			<h:outputLabel value="Cpf:" for="cpf" />
+			<h:inputText id="funcionario_cpf" label="Cpf"
+				value="#{funcionarioBean.funcionario.cpf}" size="11" required="true"
+				requiredMessage="digite o cpf" validatorMessage="Cpf invalido">
+				<f:validateLength minimum="11" maximum="11" />
+			</h:inputText>
+			
 			<h:outputLabel value="RG:" for="rg" />
-			<h:inputText id="rg" label="RG"
-				value="#{funcionarioBean.funcionario.rg}" size="45" required="true"
-				requiredMessage="digite o rg">
+			<h:inputText id="funcionario_rg" label="RG"
+				value="#{funcionarioBean.funcionario.rg}" size="15" required="true"
+				requiredMessage="digite o rg" >
 			</h:inputText>
-
-			<h:outputLabel value="CPF:" for="cpf" />
-			<h:inputText id="cpf" label="CPF"
-				value="#{funcionarioBean.funcionario.cpf}" size="70" required="true"
-				requiredMessage="digite o cpf">
+			
+			
+			<h:outputLabel value="Endereço:" for="endereco" />
+			<h:inputText id="funcionario_endereco" label="Endereço"
+				value="#{funcionarioBean.funcionario.endereco}" size="40" required="true"
+				requiredMessage="digite o endereço" >
 			</h:inputText>
-
-			<h:outputLabel value="Senha:" for="password" />
-			<h:inputSecret id="password" label="Senha"
-				value="#{funcionarioBean.funcionario.password}" size="15" maxLength="15"
-				required="true" redisplay="true" />
-
-			<h:outputLabel value="Confirmar Senha:" for="confirmPassword" />
-			<h:inputSecret id="confirmPassword" label="Confirmar Senha"
-				value="#{funcionarioBean.confirmPassword}" size="15" maxLength="15"
-				required="true" redisplay="true" />
+			
+			<h:outputLabel value="Data de Admissão:" for="dataAdmissao" />
+			<h:inputText id="dataAdmissao" label="Data de Admissão"
+				value="#{funcionarioBean.funcionario.dataAdmissao}" size="40"  >
+				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
+			</h:inputText>
+			
+			<h:outputLabel value="Login:" for="login" />
+			<h:inputText id="login" label="Login"
+				value="#{funcionarioBean.funcionario.login}" size="40">
+			</h:inputText>
+			
+			<h:outputLabel value="Senha:" for="senha" />
+			<h:inputSecret id="senha" label="Senha"
+				value="#{funcionarioBean.funcionario.senha}" size="40" redisplay="true">
+			</h:inputSecret>
+			
+			<h:outputLabel value="Confirmar Senha:" for="confirmarSenha" />
+			<h:inputSecret id="confirmarSenha" label="Confirmar Senha"
+				value="#{funcionarioBean.confirmSenha}" size="40" redisplay="true">
+			</h:inputSecret>
+			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Tipo:" />
+			<h:selectOneRadio layout="pageDirection" id="funcionario_tipo" value="#{funcionarioBean.funcionario.tipo}" >
+				<f:selectItem id="recepcionista" itemLabel="Recepcionista" itemValue="RECEPCIONISTA" />
+				<f:selectItem id="administrador" itemLabel="Administrador" itemValue="ADMINISTRADOR" />
+			</h:selectOneRadio>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Status:" />
+			<h:selectOneRadio layout="pageDirection" id="funcionario_status" value="#{funcionarioBean.funcionario.status}" >
+				<f:selectItem id="inativo" itemLabel="Inativo" itemValue="INATIVO" />
+				<f:selectItem id="ativo" itemLabel="Ativo" itemValue="ATIVO" />
+				<f:selectItem id="afastado" itemLabel="Afastado" itemValue="AFASTADO" />
+			</h:selectOneRadio>
+			</h:panelGrid>
 
 		</h:panelGrid>
 
-		<h:commandButton action="#{funcionarioBean.save}" value="Salvar">
-		</h:commandButton>
+		<h:commandButton action="#{funcionarioBean.save}" value="Salvar" />
+		<h:commandButton action="#{funcionarioBean.list}" value="Voltar"/>
 
 	</h:form>
 </h:body>

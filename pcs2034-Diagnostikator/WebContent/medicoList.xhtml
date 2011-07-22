@@ -9,43 +9,43 @@
 
 <h:body>
 	<h:form>
-		<h:commandButton action="#{funcionarioBean.create}" value="Novo"></h:commandButton>
+		<h:commandButton action="#{medicoBean.create}" value="Novo"></h:commandButton>
 	</h:form>
 
 	<h:form>
 		<h:messages />
-		<h:dataTable value="#{funcionarioBean.list}" var="funcionario" rules="rows">
+		<h:dataTable value="#{medicoBean.list}" var="medico" rules="rows">
 			<f:facet name="caption">
 				<!-- 							conteudo aqui  -->
 			</f:facet>
 
-			<f:facet name="header">Lista de Funcionarios</f:facet>
+			<f:facet name="header">Lista de Medicos</f:facet>
 
 			<f:facet name="footer">fim</f:facet>
 
 			<h:column>
-				<f:facet name="header">CPF</f:facet>
-							#{funcionario.cpf}
+				<f:facet name="header">CRM</f:facet>
+							#{medico.crm}
 						</h:column>
 
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
-							#{funcionario.nome}
+							#{medico.nome}
 						</h:column>
 
 			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
-				<h:commandLink action="#{funcionarioBean.view}">view
-								<f:setPropertyActionListener target="#{funcionarioBean.funcionario}"
-						value="#{funcionario}" />
+				<h:commandLink action="#{medicoBean.view}">view
+								<f:setPropertyActionListener target="#{medicoBean.medico}"
+						value="#{medico}" />
 				</h:commandLink>
 			</h:column>
 
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:commandLink action="#{funcionarioBean.edit}">edit
-								<f:setPropertyActionListener target="#{funcionarioBean.funcionario}"
-						value="#{funcionario}" />
+				<h:commandLink action="#{medicoBean.edit}">edit
+								<f:setPropertyActionListener target="#{medicoBean.medico}"
+						value="#{medico}" />
 				</h:commandLink>
 			</h:column>
 

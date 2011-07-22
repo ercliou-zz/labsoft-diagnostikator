@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Consulta de Funcionario</title>
+</h:head>
+
+<h:body>
+	<h1>Consulta de Funcionario</h1>
+
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID:" for="funcionario_id" />
+		<h:outputText id="funcionario_id" value="#{funcionarioBean.funcionario.id}" />
+
+		<h:outputLabel value="Nome:" for="funcionario_nome" />
+		<h:outputText id="funcionario_nome" value="#{funcionarioBean.funcionario.nome}" />
+
+		<h:outputLabel value="CPF:" for="cpf" />
+		<h:outputText id="cpf"
+			value="#{funcionarioBean.funcionario.cpf}" />
+			
+		<h:outputLabel value="RG:" for="rg" />
+		<h:outputText id="rg"
+			value="#{funcionarioBean.funcionario.rg}" />
+			
+		<h:outputLabel value="Endereço:" for="endereco" />
+		<h:outputText id="endereco"
+			value="#{funcionarioBean.funcionario.endereco}" />
+			
+		<h:outputLabel value="Data de Admissão:" for="dataAdmissao" />
+		<h:outputText id="dataAdmissao"
+			value="#{funcionarioBean.funcionario.dataAdmissao}" />
+			
+		<h:outputLabel value="Status:" for="status" />
+		<h:outputText id="status"
+			value="#{funcionarioBean.funcionario.status}" />
+			
+		<h:outputLabel value="Tipo:" for="tipo" />
+		<h:outputText id="tipo"
+			value="#{funcionarioBean.funcionario.tipo}" />
+			
+		<h:outputLabel value="Senha:" for="senha" />
+		<h:outputText id="senha"
+			value="#{funcionarioBean.funcionario.senha}" />
+
+	</h:panelGrid>
+
+	<h:form>
+		<h:commandButton action="#{funcionarioBean.list}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>
