@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Cadastro de Consulta</title>
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Consulta</h1>
+	<h:form id="consultaAgendadaEditForm">
+
+		<h:messages />
+
+		<h:inputHidden value="#{consultaAgendadaBean.consultaAgendada.id}" />
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="DataConsulta:" for="dataConsulta" />
+			<h:inputText id="consultaAgendada_dataConsulta" label="DataConsulta"
+				value="#{consultaAgendadaBean.consultaAgendada.dataConsulta}" size="45" required="true"
+				requiredMessage="Digite a data e o horario" >
+			</h:inputText>
+			
+			<h:outputLabel value="Nome do Medico:" for="nomeMedico" />
+			<h:inputTextarea id="consultaAgendada_nomeMedico" label="Nome do Medico"
+				value="#{consultaAgendadaBean.consultaAgendada.nomeMedico}" size="45" required="true"
+				requiredMessage="digite o nome do medico" >
+			</h:inputTextarea >
+			
+			<h:outputLabel value="Nome do Paciente:" for="nomePaciente" />
+			<h:inputTextarea id="consultaAgendada_nomePaciente" label="Nome do Paciente"
+				value="#{consultaAgendadaBean.consultaAgendada.nomePaciente}" size="45" required="true"
+				requiredMessage="digite o nome do paciente" >
+			</h:inputTextarea >
+			
+		</h:panelGrid>
+
+		<h:commandButton action="#{consultaAgendadaBean.save}" value="Salvar"/>
+		
+		<h:commandButton action="#{consultaAgendadaBean.list}" value="Voltar"/>
+
+	</h:form>
+</h:body>
+
+</html>

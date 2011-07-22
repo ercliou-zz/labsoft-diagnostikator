@@ -41,8 +41,7 @@ public class DoencaDAOHibernate implements DoencaDAO {
 
 	@Override
 	public Doenca getByName(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Doenca) session.createQuery("FROM Doenca d WHERE d.nome='" + nome + "' ").uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")

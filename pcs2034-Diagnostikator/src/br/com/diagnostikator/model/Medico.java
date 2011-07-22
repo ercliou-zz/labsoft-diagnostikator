@@ -1,15 +1,19 @@
 package br.com.diagnostikator.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @DiscriminatorValue("medico")
 public class Medico extends Usuario {
 	
 	private String nome;
+	@org.hibernate.annotations.NaturalId
 	private String rg;
 	@org.hibernate.annotations.NaturalId
 	private String cpf;
@@ -18,6 +22,10 @@ public class Medico extends Usuario {
 	private String especialidade;
 	@org.hibernate.annotations.NaturalId
 	private String crm;
+	
+	@OneToMany(mappedBy="medico", cascade = CascadeType.PERSIST)
+	private List<Prontuario> prontuarios;	
+	
 	public String getNome() {
 		return nome;
 	}
@@ -60,6 +68,13 @@ public class Medico extends Usuario {
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
+	public List<Prontuario> getProntuarios() {
+		return prontuarios;
+	}
+	public void setProntuarios(List<Prontuario> prontuarios) {
+		this.prontuarios = prontuarios;
+	}
+	
 	
 	
 }

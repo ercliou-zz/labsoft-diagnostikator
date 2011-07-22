@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>lista</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandButton action="#{prontuarioBean.create}" value="Novo"></h:commandButton>
+	</h:form>
+
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{prontuarioBean.list}" var="prontuario" rules="rows">
+			<f:facet name="caption">
+				<!-- 							conteudo aqui  -->
+			</f:facet>
+
+			<f:facet name="header">Lista de Prontuarios</f:facet>
+
+			<f:facet name="footer">fim</f:facet>
+
+			<h:column>
+				<f:facet name="header">Num</f:facet>
+							#{prontuario.id}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Nome do Paciente</f:facet>
+							#{prontuario.pacientePai}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Nome do Medico</f:facet>
+							#{prontuario.medicoPai}
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Visualizar</f:facet>
+				<h:commandLink action="#{prontuarioBean.view}">view
+								<f:setPropertyActionListener target="#{prontuarioBean.prontuario}"
+						value="#{prontuario}" />
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+
+
+</h:body>
+
+</html>
+

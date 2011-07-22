@@ -1,36 +1,52 @@
 package br.com.diagnostikator.model;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="consulta_agendada")
 public class ConsultaAgendada {
-	private String nomePaciente;
-	private String nomeMedico;
+	
+	@Id
+	@GeneratedValue
+	private long id;
+	private String nomePaciente;	
+	private String nomeMedico;	
 	private Date dataConsulta;
 	
-	public ConsultaAgendada(String nomePaciente, String nomeMedico, Date dataConsulta) {
-		this.nomePaciente = nomePaciente;
-		this.nomeMedico = nomeMedico;
-		this.dataConsulta = dataConsulta;
+	public long getId() {
+		return id;
 	}
-
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getNomePaciente() {
 		return nomePaciente;
+	}
+	
+	public void setNomePaciente(String nomePaciente) {
+		this.nomePaciente = nomePaciente;
 	}
 
 	public String getNomeMedico() {
 		return nomeMedico;
 	}
 
+	public void setNomeMedico(String nomeMedico) {
+		this.nomeMedico = nomeMedico;
+	}
+
 	public Date getDataConsulta() {
 		return dataConsulta;
 	}
-	
-	public List<ConsultaAgendada> getConsultaAgendadaByPaciente(String nomePaciente) {
-		return null;
-	}
-	
-	public List<ConsultaAgendada> getConsultaAgendadaByMedico(String nomeMedico) {
-		return null;
+
+	public void setDataConsulta(Date dataConsulta) {
+		this.dataConsulta = dataConsulta;
 	}
 }

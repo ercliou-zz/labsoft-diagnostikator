@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 public class Funcionario extends Usuario{	
 	
 	private String nome;
+	@org.hibernate.annotations.NaturalId
 	private String rg;
 	@org.hibernate.annotations.NaturalId
 	private String cpf;

@@ -1,10 +1,13 @@
 package br.com.diagnostikator.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,7 @@ public class Paciente {
 	
 	private String nome;
 	
+	@org.hibernate.annotations.NaturalId
 	private String rg;
 	
 	private String endereco;
@@ -30,6 +34,8 @@ public class Paciente {
 	
 	private String sexo;
 	
+	@OneToMany(mappedBy="paciente", cascade = CascadeType.PERSIST)
+	private List<Prontuario> prontuarios;
 	
 	public long getId() {
 		return id;
@@ -79,6 +85,10 @@ public class Paciente {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
-	
+	public List<Prontuario> getProntuarios() {
+		return prontuarios;
+	}
+	public void setProntuarios(List<Prontuario> prontuarios) {
+		this.prontuarios = prontuarios;
+	}	
 }

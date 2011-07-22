@@ -29,11 +29,12 @@
         <mapping class="br.com.diagnostikator.model.Medico"/>
         
         <mapping class="br.com.diagnostikator.model.Paciente"/>
-        
+        <mapping class="br.com.diagnostikator.model.ConsultaAgendada"/>
         <mapping class="br.com.diagnostikator.model.ConsultaConfirmada"/>
         <mapping class="br.com.diagnostikator.model.Diagnostico"/>
         <mapping class="br.com.diagnostikator.model.Doenca"/>
         <mapping class="br.com.diagnostikator.model.Sintoma"/>
+        <mapping class="br.com.diagnostikator.model.Prontuario"/>
         
         
     </session-factory>

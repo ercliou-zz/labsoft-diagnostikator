@@ -1,21 +1,8 @@
 package br.com.diagnostikator.util;
 
-import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
-import br.com.diagnostikator.dao.DiagnosticoDAO;
-import br.com.diagnostikator.dao.DoencaDAO;
-import br.com.diagnostikator.dao.FuncionarioDAO;
-import br.com.diagnostikator.dao.MedicoDAO;
-import br.com.diagnostikator.dao.PacienteDAO;
-import br.com.diagnostikator.dao.SintomaDAO;
-import br.com.diagnostikator.dao.UsuarioDAO;
-import br.com.diagnostikator.dao.implementation.hibernate.ConsultaConfirmadaDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.DiagnosticoDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.DoencaDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.FuncionarioDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.MedicoDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.PacienteDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.SintomaDAOHibernate;
-import br.com.diagnostikator.dao.implementation.hibernate.UsuarioDAOHibernate;
+import br.com.diagnostikator.dao.*;
+import br.com.diagnostikator.dao.implementation.hibernate.*;
+
 
 public class DAOFactory {
 	public static UsuarioDAO createUsuarioDAO(){
@@ -60,9 +47,21 @@ public class DAOFactory {
 		return diagnosticoDAO;
 	}
 	
+	public static ConsultaAgendadaDAO createConsultaAgendadaDAO(){
+		ConsultaAgendadaDAOHibernate consultaAgendadaDAO = new ConsultaAgendadaDAOHibernate();
+		consultaAgendadaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return consultaAgendadaDAO;
+	}
+	
 	public static ConsultaConfirmadaDAO createConsultaConfirmadaDAO(){
 		ConsultaConfirmadaDAOHibernate consultaConfirmadaDAO = new ConsultaConfirmadaDAOHibernate();
 		consultaConfirmadaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return consultaConfirmadaDAO;
+	}
+	
+	public static ProntuarioDAO createProntuarioDAO(){
+		ProntuarioDAOHibernate prontuarioDAO = new ProntuarioDAOHibernate();
+		prontuarioDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return prontuarioDAO;
 	}
 }

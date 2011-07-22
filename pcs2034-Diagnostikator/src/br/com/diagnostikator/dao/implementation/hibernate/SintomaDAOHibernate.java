@@ -41,8 +41,7 @@ public class SintomaDAOHibernate implements SintomaDAO {
 
 	@Override
 	public Sintoma getByName(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Sintoma) session.createQuery("FROM Sintoma s WHERE s.nome='" + nome + "' ").uniqueResult();		
 	}
 
 	@SuppressWarnings("unchecked")

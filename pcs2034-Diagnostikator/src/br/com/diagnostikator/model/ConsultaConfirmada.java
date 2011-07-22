@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="consultaConfirmada")
+@Table(name="consulta_confirmada")
 public class ConsultaConfirmada {
 	
 	@Id
@@ -30,6 +30,9 @@ public class ConsultaConfirmada {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="diagnostico_fk")
 	private Diagnostico diagnostico;
+	
+	@OneToOne(mappedBy = "consulta_confirmada")
+	private Prontuario prontuario;
 
 	public long getId() {
 		return id;
@@ -77,6 +80,14 @@ public class ConsultaConfirmada {
 
 	public void setData(Date data) {
 		this.data = data;
+	}	
+
+	public Prontuario getProntuario() {
+		return prontuario;
+	}
+
+	public void setProntuario(Prontuario prontuario) {
+		this.prontuario = prontuario;
 	}
 
 	@Override
@@ -89,6 +100,8 @@ public class ConsultaConfirmada {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result
 				+ ((informacao == null) ? 0 : informacao.hashCode());
+		result = prime * result
+				+ ((prontuario == null) ? 0 : prontuario.hashCode());
 		result = prime * result + ((receita == null) ? 0 : receita.hashCode());
 		result = prime * result
 				+ ((sintomas == null) ? 0 : sintomas.hashCode());
@@ -121,6 +134,11 @@ public class ConsultaConfirmada {
 				return false;
 		} else if (!informacao.equals(other.informacao))
 			return false;
+		if (prontuario == null) {
+			if (other.prontuario != null)
+				return false;
+		} else if (!prontuario.equals(other.prontuario))
+			return false;
 		if (receita == null) {
 			if (other.receita != null)
 				return false;
@@ -132,7 +150,5 @@ public class ConsultaConfirmada {
 		} else if (!sintomas.equals(other.sintomas))
 			return false;
 		return true;
-	}
-
-	
+	}	
 }

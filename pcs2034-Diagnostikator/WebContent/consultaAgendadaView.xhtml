@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Consulta Agendada</title>
+</h:head>
+
+<h:body>
+	<h1>Consulta Agendada</h1>
+
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID:" for="consultaAgendada_id" />
+		<h:outputText id="consultaAgendada_id" value="#{consultaAgendadaBean.consultaAgendada.id}" />
+		
+		<h:outputLabel value="Data:" for="consultaAgendada_dataConsulta" />
+		<h:outputText id="consultaAgendada_data"
+			value="#{consultaAgendadaBean.consultaAgendada.dataConsulta}" />			
+
+		<h:outputLabel value="Nome do Medico:" for="consultaAgendada_nomeMedico" />
+		<h:outputText id="consultaAgendada_nomeMedico" value="#{consultaAgendadaBean.consultaAgendada.nomeMedico}"
+			value="#{consultaAgendadaBean.consultaAgendada.nomeMedico}" />
+			
+		<h:outputLabel value="Nome do Paciente:" for="consultaAgendada_nomePaciente" />
+		<h:outputText id="consultaAgendada_nomePaciente"
+			value="#{consultaAgendadaBean.consultaAgendada.nomePaciente}" />
+
+	</h:panelGrid>
+
+	<h:form>
+		<h:commandButton action="#{consultaAgendadaBean.list}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>
