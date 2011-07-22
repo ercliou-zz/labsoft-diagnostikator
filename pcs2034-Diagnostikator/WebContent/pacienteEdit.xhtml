@@ -14,15 +14,13 @@
 		<h:messages />
 
 		<h:inputHidden value="#{pacienteBean.paciente.id}" />
-		<h:inputHidden value="#{pacienteBean.target}" />
-		
 		
 		<h:panelGrid columns="2">
 
 			<h:outputLabel value="Nome:" for="nome" />
 			<h:inputText id="paciente_nome" label="Nome"
 				value="#{pacienteBean.paciente.nome}" size="45" required="true"
-				requiredMessage="digite o nome" validatorMessage="Nome deve conter 7~45 chars">
+				requiredMessage="Digite o nome" validatorMessage="Nome deve conter 2~45 chars">
 				<f:validateLength minimum="2" maximum="45" />
 			</h:inputText>
 			
@@ -38,17 +36,20 @@
 				value="#{pacienteBean.paciente.rg}" size="15" required="true"
 				requiredMessage="digite o rg" >
 			</h:inputText>
-
+			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Sexo:" for="paciente_sexo" />
+			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" >
+				<f:selectItem id="masc" itemLabel="Masculino" itemValue="MASCULINO" />
+				<f:selectItem id="fem" itemLabel="Feminino" itemValue="FEMININO" />
+			</h:selectOneRadio>
+			</h:panelGrid>
+			
+			
 			<h:outputLabel value="Endereço:" for="endereco" />
 			<h:inputText id="paciente_endereco" label="Endereço"
 				value="#{pacienteBean.paciente.endereco}" size="40" required="true"
 				requiredMessage="digite o endereço" >
-			</h:inputText>
-			
-			<h:outputLabel value="Sexo:" for="sexo" />
-			<h:inputText id="paciente_sexo" label="Sexo"
-				value="#{pacienteBean.paciente.sexo}" size="10" required="true"
-				requiredMessage="digite o sexo" >
 			</h:inputText>
 			
 			<h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
@@ -69,8 +70,8 @@
 
 		</h:panelGrid>
 
-		<h:commandButton action="#{pacienteBean.save}" value="Salvar">
-		</h:commandButton>
+		<h:commandButton action="#{pacienteBean.save}" value="Salvar" />
+		<h:commandButton action="#{pacienteBean.list}" value="Voltar"/>
 
 	</h:form>
 </h:body>

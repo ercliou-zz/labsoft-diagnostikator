@@ -12,7 +12,6 @@ public class PacienteBean {
 
 	private Paciente paciente = new Paciente();
 	private List<Paciente> list;
-	private String target;
 
 	public Paciente getPaciente() {
 		return this.paciente;
@@ -23,13 +22,20 @@ public class PacienteBean {
 	}
 
 	public String create() {
-		this.target = "pacienteSaved";
 		this.paciente = new Paciente();
 		return "pacienteEdit";
 	}
 
 	public String edit() {
 		return "pacienteEdit";
+	}
+	
+	public String view() {
+		return "pacienteView";
+	}
+	
+	public String list() {
+		return "pacienteList";
 	}
 
 	public String delete() {
@@ -46,7 +52,7 @@ public class PacienteBean {
 		PacienteBR pacienteBR = new PacienteBR();
 		pacienteBR.save(this.paciente);
 
-		return this.target;
+		return "pacienteSaved";
 	}
 
 	public List<Paciente> getList() {
@@ -59,14 +65,6 @@ public class PacienteBean {
 
 	public void setList(List<Paciente> list) {
 		this.list = list;
-	}
-
-	public String getTarget() {
-		return this.target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
 	}
 
 }

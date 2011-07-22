@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Consulta de Paciente</title>
+</h:head>
+
+<h:body>
+	<h1>Consulta de Paciente</h1>
+
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID:" for="paciente_id" />
+		<h:outputText id="paciente_id" value="#{pacienteBean.paciente.id}" />
+
+		<h:outputLabel value="Nome:" for="paciente_nome" />
+		<h:outputText id="paciente_nome" value="#{pacienteBean.paciente.nome}" />
+
+		<h:outputLabel value="CPF:" for="cpf" />
+		<h:outputText id="cpf"
+			value="#{pacienteBean.paciente.cpf}" />
+			
+		<h:outputLabel value="Endereço:" for="endereco" />
+		<h:outputText id="endereco"
+			value="#{pacienteBean.paciente.endereco}" />
+			
+		<h:outputLabel value="Data de Cadastro:" for="dataCadastro" />
+		<h:outputText id="dataCadastro"
+			value="#{pacienteBean.paciente.dataCadastro}" />
+			
+		<h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
+		<h:outputText id="dataNascimento"
+			value="#{pacienteBean.paciente.dataNascimento}" />
+			
+		<h:outputLabel value="Sexo:" for="sexo" />
+		<h:outputText id="sexo"
+			value="#{pacienteBean.paciente.sexo}" />
+
+	</h:panelGrid>
+
+	<h:form>
+		<h:commandButton action="#{pacienteBean.list}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>

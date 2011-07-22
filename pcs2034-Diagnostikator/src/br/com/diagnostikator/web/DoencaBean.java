@@ -36,6 +36,12 @@ public class DoencaBean {
 	}
 
 	public String edit() {
+		
+		this.sintomasSelecionados = new ArrayList<String>();
+		for (Sintoma var : doenca.getSintomas() ) {
+			this.sintomasSelecionados.add(Long.toString(var.getId()));
+		}
+		
 		return "doencaEdit";
 	}
 	

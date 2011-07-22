@@ -20,7 +20,6 @@ public class Paciente {
 	
 	private String nome;
 	
-	@org.hibernate.annotations.NaturalId
 	private String rg;
 	
 	private String endereco;
