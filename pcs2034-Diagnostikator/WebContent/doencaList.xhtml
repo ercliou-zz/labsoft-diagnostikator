@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>lista</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandButton action="#{doencaBean.create}" value="Novo"></h:commandButton>
+	</h:form>
+
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{doencaBean.list}" var="doenca" rules="rows">
+			<f:facet name="caption">
+				<!-- 							conteudo aqui  -->
+			</f:facet>
+
+			<f:facet name="header">Lista de Doencas</f:facet>
+
+			<f:facet name="footer">fim</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{doenca.id}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">nome</f:facet>
+							#{doenca.nome}
+						</h:column>
+
+			<h:column>
+				<f:facet name="header">Descricao</f:facet>
+							#{doenca.descricao}
+						</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Visualizar</f:facet>
+				<h:commandLink action="#{doencaBean.view}">view
+								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+						value="#{doenca}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink action="#{doencaBean.edit}">edit
+								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+						value="#{doenca}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Deletar</f:facet>
+				<h:commandLink action="#{doencaBean.delete}">delete
+								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+						value="#{doenca}" />
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+
+
+</h:body>
+
+</html>
+

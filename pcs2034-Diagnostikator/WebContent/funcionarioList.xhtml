@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>lista</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandButton action="#{usuarioBean.create}" value="Novo"></h:commandButton>
+	</h:form>
+
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{usuarioBean.list}" var="usuario" rules="rows">
+			<f:facet name="caption">
+				<!-- 							conteudo aqui  -->
+			</f:facet>
+
+			<f:facet name="header">Lista de Usuarios</f:facet>
+
+			<f:facet name="footer">fim</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{usuario.id}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Ativo</f:facet>
+				<h:commandLink action="#{usuarioBean.active}">
+					<h:graphicImage library="img" name="active_#{usuario.active}.png"
+						style="border:0" />
+					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+						value="#{usuario}" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+							#{usuario.email}
+						</h:column>
+
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+							#{usuario.name}
+						</h:column>
+
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink action="#{usuarioBean.edit}">edit
+								<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+						value="#{usuario}" />
+					<f:setPropertyActionListener target="#{usuarioBean.target}"
+						value="list" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Deletar</f:facet>
+				<h:commandLink action="#{usuarioBean.delete}">delete
+								<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+						value="#{usuario}" />
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+
+
+</h:body>
+
+</html>
+

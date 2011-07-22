@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Consulta de Doenca</title>
+</h:head>
+
+<h:body>
+	<h1>Consulta de Doenca</h1>
+
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID:" for="doenca_id" />
+		<h:outputText id="doenca_id" value="#{doencaBean.doenca.id}" />
+
+		<h:outputLabel value="Nome:" for="doenca_nome" />
+		<h:outputText id="doenca_nome" value="#{doencaBean.doenca.nome}" />
+
+		<h:outputLabel value="Descricao:" for="doenca_descricao" />
+		<h:outputText id="doenca_descricao"
+			value="#{doencaBean.doenca.descricao}" />
+
+		<h:outputLabel value="Sintomas:" for="doenca_sintomas" />
+		<c:forEach var="sintoma" items="#{doencaBean.doenca.sintomas}">
+			<h:outputText value="- #{sintoma.nome}" />
+			<br />
+		</c:forEach>
+
+	</h:panelGrid>
+
+	<h:form>
+		<h:commandButton action="#{doencaBean.list}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>

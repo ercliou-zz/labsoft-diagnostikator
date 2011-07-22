@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>LOGIN</title>
+</head>
+<body>
+
+	<h:form id="loginForm">
+
+		<h:messages />
+
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="CPF" for="cpf" />
+			<h:inputText id="cpf" label="cpf" value="#{loginBean.cpf}" size="11"
+				required="true" requiredMessage="digite o cpf"
+				validatorMessage="Digite o cpf sem pontua��o" >
+				<f:validateLength minimum="11" maximum="11" />
+			</h:inputText>
+
+			<h:outputLabel value="Senha" for="password" />
+			<h:inputSecret id="password" label="Senha" redisplay="true" maxLength="11" 
+				value="#{loginBean.password}" size="70" required="true"
+				requiredMessage="Digite a senha">
+			</h:inputSecret>
+
+		</h:panelGrid>
+
+		<h:commandButton action="#{loginBean.login}" value="Login">
+		</h:commandButton>
+
+
+	</h:form>
+
+</body>
+</html>

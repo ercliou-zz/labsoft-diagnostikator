@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Cadastro de Usuario</title>
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Paciente</h1>
+	<h:form id="pacienteEditForm">
+
+		<h:messages />
+
+		<h:inputHidden value="#{pacienteBean.paciente.id}" />
+		<h:inputHidden value="#{pacienteBean.target}" />
+		
+		
+		<h:panelGrid columns="2">
+
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="paciente_nome" label="Nome"
+				value="#{pacienteBean.paciente.nome}" size="45" required="true"
+				requiredMessage="digite o nome" validatorMessage="Nome deve conter 7~45 chars">
+				<f:validateLength minimum="2" maximum="45" />
+			</h:inputText>
+			
+			<h:outputLabel value="Cpf:" for="cpf" />
+			<h:inputText id="paciente_cpf" label="Cpf"
+				value="#{pacienteBean.paciente.cpf}" size="11" required="true"
+				requiredMessage="digite o cpf" validatorMessage="Cpf invalido">
+				<f:validateLength minimum="11" maximum="11" />
+			</h:inputText>
+			
+			<h:outputLabel value="RG:" for="rg" />
+			<h:inputText id="paciente_rg" label="RG"
+				value="#{pacienteBean.paciente.rg}" size="15" required="true"
+				requiredMessage="digite o rg" >
+			</h:inputText>
+
+			<h:outputLabel value="Endereço:" for="endereco" />
+			<h:inputText id="paciente_endereco" label="Endereço"
+				value="#{pacienteBean.paciente.endereco}" size="40" required="true"
+				requiredMessage="digite o endereço" >
+			</h:inputText>
+			
+			<h:outputLabel value="Sexo:" for="sexo" />
+			<h:inputText id="paciente_sexo" label="Sexo"
+				value="#{pacienteBean.paciente.sexo}" size="10" required="true"
+				requiredMessage="digite o sexo" >
+			</h:inputText>
+			
+			<h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
+			<h:inputText id="paciente_dataNascimento" label="Data de Nascimento"
+				value="#{pacienteBean.paciente.dataNascimento}" size="40" required="true"
+				requiredMessage="digite a data de nascimento" >
+				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
+			</h:inputText>
+			
+			<h:outputLabel value="Data de Cadastro:" for="dataCadastro" />
+			<h:inputText id="paciente_dataCadastro" label="Data de Cadastro"
+				value="#{pacienteBean.paciente.dataCadastro}" size="40" required="true"
+				requiredMessage="digite a data de cadastro" >
+				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
+			</h:inputText>
+
+			
+
+		</h:panelGrid>
+
+		<h:commandButton action="#{pacienteBean.save}" value="Salvar">
+		</h:commandButton>
+
+	</h:form>
+</h:body>
+
+</html>

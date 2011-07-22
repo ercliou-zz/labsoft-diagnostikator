@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Cadastro de Doenca</title>
+</h:head>
+
+<h:body>
+	<h1>Cadastro de Doenca</h1>
+	<h:form id="doencaEditForm">
+
+		<h:messages />
+
+		<h:inputHidden value="#{doencaBean.doenca.id}" />
+
+		<h:panelGrid columns="1">
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Nome:" for="nome" />
+				<h:inputText id="doenca_nome" label="Nome"
+					value="#{doencaBean.doenca.nome}" size="45" required="true"
+					requiredMessage="digite o nome">
+				</h:inputText>
+
+				<h:outputLabel value="Descricao:" for="descricao" />
+				<h:inputTextarea rows="5" id="doenca_descricao" label="Descricao"
+					value="#{doencaBean.doenca.descricao}" size="250" required="true"
+					requiredMessage="digite a descricao">
+				</h:inputTextarea>
+			</h:panelGrid>
+			
+			<h:selectManyCheckbox layout="pageDirection" id="doenca_sintomas"
+				value="#{doencaBean.sintomasSelecionados}">
+				<c:forEach var="sintoma" items="#{sintomaBean.list}">
+					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" />
+				</c:forEach>
+			</h:selectManyCheckbox>
+
+		</h:panelGrid>
+
+		<h:commandButton action="#{doencaBean.save}" value="Salvar"/>
+		
+		<h:commandButton action="#{doencaBean.list}" value="Voltar"/>
+
+	</h:form>
+</h:body>
+
+</html>
