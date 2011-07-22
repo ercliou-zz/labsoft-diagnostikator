@@ -16,6 +16,7 @@ public class Medico extends Usuario {
 	private String endereco;
 	private Date dataAdmissao;
 	private String especialidade;
+	@org.hibernate.annotations.NaturalId
 	private String crm;
 	public String getNome() {
 		return nome;

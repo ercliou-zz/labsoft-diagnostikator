@@ -2,52 +2,56 @@ package br.com.diagnostikator.web;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.diagnostikator.business.UsuarioBR;
+
 @ManagedBean(name = "loginBean")
 public class LoginBean {
 	
-	private String cpf;
-	private String password;
+	private String login;
+	private String senha;
 	private boolean authorized;
+	private String type;
 	
 	public boolean getAuthorized(){
 		return authorized;
 	}
 	
-	public void logout(){
-		authorized = false;
-		cpf=null;
-		password=null;
+	public String getType() {
+		return type;
 	}
 
-	public String getCpf() {
-		return cpf;
+
+	public void logout(){
+		authorized = false;
+		login=null;
+		senha=null;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public String login(){
-//		FuncionarioBR funcionarioBR = new FuncionarioBR();
-//		Funcionario func = funcionarioBR.getByCpf(cpf);
-//		if(func!=null && func.getPassword().equals(password)){
-//			authorized = true;
-//			Class funcType = func.getClass();
-//			if(funcType.equals(Medico.class)){
-//				return "medicoMain";
-//			}
-//			else {
-//				return "funcionarioMain";
-//			}
-//		}
-//		FacesMessage facesMessage = new FacesMessage("Login incorreto");
-//		FacesContext context = FacesContext.getCurrentInstance();
-//		context.addMessage(null, facesMessage);
+		UsuarioBR usuarioBR = new UsuarioBR();
+		authorized = usuarioBR.login(login, senha);
+		if(authorized){
+			type = usuarioBR.resolveType(login);
+			return "index2";
+		}
 		return "login";
 	};
 	

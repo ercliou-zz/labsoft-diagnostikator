@@ -17,8 +17,8 @@ public class UsuarioBR {
 		return usuarioDAO.getById(id);
 	}
 	
-	public Usuario getByCpf(String cpf){
-		return usuarioDAO.getByCpf(cpf);
+	public Usuario getByCpf(String login){
+		return usuarioDAO.getByLogin(login);
 	}
 	
 	public void save(Usuario user){
@@ -38,4 +38,23 @@ public class UsuarioBR {
 	public List<Usuario> list(){
 		return usuarioDAO.list();
 	}
+	
+	public boolean login(String login, String senha){
+		if(login == null || login.trim().equals("") || senha == null || senha.trim().equals("")){
+			return false;
+		}
+		Usuario usuario = usuarioDAO.getByLogin(login.trim());
+		if(usuario != null && usuario.getSenha().equals(senha.trim())){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public String resolveType(String login){
+		Usuario usuario = usuarioDAO.getByLogin(login);
+		return usuario.getTipo();
+	}
+	
 }

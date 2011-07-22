@@ -9,6 +9,6 @@ public interface UsuarioDAO {
 	public void delete(Usuario user);
 	public void alter(Usuario user);
 	public Usuario getById(long idUsuario);
-	public Usuario getByCpf(String cpf);
+	public Usuario getByLogin(String login);
 	public List<Usuario> list();
 }

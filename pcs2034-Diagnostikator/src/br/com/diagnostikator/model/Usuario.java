@@ -21,6 +21,7 @@ public class Usuario {
 	@GeneratedValue
 	private long id;
 	
+	@org.hibernate.annotations.NaturalId
 	private String login;
 	
 	private String senha;

@@ -44,8 +44,8 @@ public class UsuarioDAOHibernate implements UsuarioDAO{
 	}
 
 	@Override
-	public Usuario getByCpf(String cpf) {
-		return (Usuario) session.createQuery("FROM Usuario u WHERE u.cpf='" + cpf + "' ").uniqueResult();
+	public Usuario getByLogin(String login) {
+		return (Usuario) session.createQuery("FROM Usuario u WHERE u.login='" + login + "' ").uniqueResult();
 	}
 
 }
