@@ -2,6 +2,11 @@ package br.com.diagnostikator.util;
 
 public class UtilException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public UtilException() {
 		// TODO Auto-generated constructor stub
 	}

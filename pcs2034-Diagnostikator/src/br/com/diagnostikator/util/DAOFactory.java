@@ -4,6 +4,7 @@ import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
 import br.com.diagnostikator.dao.DiagnosticoDAO;
 import br.com.diagnostikator.dao.DoencaDAO;
 import br.com.diagnostikator.dao.FuncionarioDAO;
+import br.com.diagnostikator.dao.MedicoDAO;
 import br.com.diagnostikator.dao.PacienteDAO;
 import br.com.diagnostikator.dao.SintomaDAO;
 import br.com.diagnostikator.dao.UsuarioDAO;
@@ -11,6 +12,7 @@ import br.com.diagnostikator.dao.implementation.hibernate.ConsultaConfirmadaDAOH
 import br.com.diagnostikator.dao.implementation.hibernate.DiagnosticoDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.DoencaDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.FuncionarioDAOHibernate;
+import br.com.diagnostikator.dao.implementation.hibernate.MedicoDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.PacienteDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.SintomaDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.UsuarioDAOHibernate;
@@ -44,6 +46,12 @@ public class DAOFactory {
 		FuncionarioDAOHibernate funcionarioDAO = new FuncionarioDAOHibernate();
 		funcionarioDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return funcionarioDAO;
+	}
+	
+	public static MedicoDAO createMedicoDAO(){
+		MedicoDAOHibernate medicoDAO = new MedicoDAOHibernate();
+		medicoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return medicoDAO;
 	}
 	
 	public static DiagnosticoDAO createDiagnosticoDAO(){

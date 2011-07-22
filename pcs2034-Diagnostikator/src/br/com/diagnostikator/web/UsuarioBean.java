@@ -14,7 +14,6 @@ public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private String confirmPassword;
 	private List<Usuario> list;
-	private String target;
 	
 	
 	public Usuario getUsuario() {
@@ -31,31 +30,15 @@ public class UsuarioBean {
 	}
 	
 	public String create(){
-		target = "usuarioSaved";
 		usuario = new Usuario();
-		usuario.setActive(true);
 		return "usuarioEdit";
 	}
 
 	public String edit(){
-		target = "usuarioSaved";
-		confirmPassword = usuario.getPassword();
+		confirmPassword = usuario.getSenha();
 		return "usuarioEdit";
 	}
 	
-	public String active(){
-		if(usuario.isActive()){
-			usuario.setActive(false);
-		}
-		else{
-			usuario.setActive(true);
-		}
-		
-		UsuarioBR user = new UsuarioBR();
-		user.save(usuario);
-		
-		return null;
-	}
 	
 	public String delete() {
 		UsuarioBR user = new UsuarioBR();
@@ -70,7 +53,7 @@ public class UsuarioBean {
 	public String save(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		
-		String password = usuario.getPassword();
+		String password = usuario.getSenha();
 		if(!password.equals(confirmPassword)){
 			FacesMessage facesMessage = new FacesMessage("Senha incorreta!");
 			context.addMessage(null, facesMessage);
@@ -79,7 +62,7 @@ public class UsuarioBean {
 		UsuarioBR usuarioBR = new UsuarioBR();
 		usuarioBR.save(usuario);
 		
-		return target;
+		return "usuarioSaved";
 	}
 	
 	public List<Usuario> getList(){
@@ -91,12 +74,6 @@ public class UsuarioBean {
 	}
 	public void setList(List<Usuario> list) {
 		this.list = list;
-	}
-	public String getTarget() {
-		return target;
-	}
-	public void setTarget(String target) {
-		this.target = target;
 	}
 	
 	

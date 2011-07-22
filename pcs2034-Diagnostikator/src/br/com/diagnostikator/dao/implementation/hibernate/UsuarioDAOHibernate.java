@@ -2,7 +2,6 @@ package br.com.diagnostikator.dao.implementation.hibernate;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.diagnostikator.dao.UsuarioDAO;
@@ -38,18 +37,15 @@ public class UsuarioDAOHibernate implements UsuarioDAO{
 		return (Usuario) session.get(Usuario.class, idUsuario);
 	}
 
-	@Override
-	public Usuario getByEmail(String email) {
-		String hql = "SELECT u FROM Usuario u WHERE u.email = :email";
-		Query query = session.createQuery(hql);
-		query.setString("email",email);
-		return (Usuario) query.uniqueResult();
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> list() {
 		return session.createCriteria(Usuario.class).list();
+	}
+
+	@Override
+	public Usuario getByCpf(String cpf) {
+		return (Usuario) session.createQuery("FROM Usuario u WHERE u.cpf='" + cpf + "' ").uniqueResult();
 	}
 
 }

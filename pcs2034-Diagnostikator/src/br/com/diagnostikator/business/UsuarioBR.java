@@ -17,8 +17,8 @@ public class UsuarioBR {
 		return usuarioDAO.getById(id);
 	}
 	
-	public Usuario getByEmail(String email){
-		return usuarioDAO.getByEmail(email);
+	public Usuario getByCpf(String cpf){
+		return usuarioDAO.getByCpf(cpf);
 	}
 	
 	public void save(Usuario user){

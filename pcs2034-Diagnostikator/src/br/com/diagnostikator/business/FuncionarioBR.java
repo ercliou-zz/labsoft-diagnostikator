@@ -13,37 +13,14 @@ public class FuncionarioBR {
 		funcionarioDAO = DAOFactory.createFuncionarioDAO();
 	}
 
-	public Funcionario getByCodigo(int codigo){
-		return funcionarioDAO.getByCodigo(codigo);
-	}	
-
-	public List<Funcionario> getByNome(String nome) {
-		return funcionarioDAO.getByNome(nome);	
-	}
-
-	public Funcionario getByRg(String rg) {		
-		return funcionarioDAO.getByRg(rg);
-	}
-
 	public Funcionario getByCpf(String cpf) {
 		return funcionarioDAO.getByCpf(cpf);
 	}
+	
+	public Funcionario getById(long id){
+		return funcionarioDAO.getById(id);
+	}
 
-	public List<Funcionario> getListaFuncionarios() {
-		return funcionarioDAO.getLista();
-	}	
-
-//	@Override
-//	public List<String> getListaStatus() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public List<String> getListaTipos() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 		
 	public void save(Funcionario funcionario){
 		long id = funcionario.getId();
@@ -60,6 +37,7 @@ public class FuncionarioBR {
 	}
 	
 	public List<Funcionario> list(){
-		return funcionarioDAO.getLista();
+		return funcionarioDAO.list();
 	}
+	
 }

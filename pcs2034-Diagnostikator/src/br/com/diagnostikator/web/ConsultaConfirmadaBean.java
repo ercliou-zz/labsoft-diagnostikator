@@ -9,14 +9,16 @@ import javax.faces.bean.ManagedBean;
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
 import br.com.diagnostikator.business.SintomaBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
+import br.com.diagnostikator.model.Diagnostico;
 import br.com.diagnostikator.model.Sintoma;
 
 @ManagedBean(name = "consultaConfirmadaBean")
 public class ConsultaConfirmadaBean {
 
+	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 	private ConsultaConfirmada consultaConfirmada = new ConsultaConfirmada();
 	private List<String> sintomasSelecionados;
-	
+	private Diagnostico diagnostico;
 	private List<ConsultaConfirmada> list;
 
 	public ConsultaConfirmada getConsultaConfirmada() {
@@ -41,8 +43,7 @@ public class ConsultaConfirmadaBean {
 	}
 
 	public String delete() {
-		ConsultaConfirmadaBR consultaConfirmada = new ConsultaConfirmadaBR();
-		consultaConfirmada.delete(this.consultaConfirmada);
+		consultaConfirmadaBR.delete(this.consultaConfirmada);
 
 		// para atualizar a lista
 		this.list = null;
@@ -52,7 +53,6 @@ public class ConsultaConfirmadaBean {
 	
 
 	public String save() {
-		ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 		
 		SintomaBR sintomaBR = new SintomaBR();
 		List<Sintoma> list = new ArrayList<Sintoma>();
@@ -76,10 +76,15 @@ public class ConsultaConfirmadaBean {
 
 	public List<ConsultaConfirmada> getList() {
 		if (this.list == null || this.list.isEmpty()) {
-			ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 			this.list = consultaConfirmadaBR.list();
 		}
 		return this.list;
+	}
+	
+	public String gerarDiagnostico(){
+		diagnostico = consultaConfirmadaBR.gerarDiagnostico(consultaConfirmada.getSintomas());
+		consultaConfirmada.setDiagnostico(diagnostico);
+		return "listaDeDoencas";
 	}
 
 	public void setList(List<ConsultaConfirmada> list) {
@@ -92,6 +97,14 @@ public class ConsultaConfirmadaBean {
 
 	public void setSintomasSelecionados(List<String> sintomasSelecionados) {
 		this.sintomasSelecionados = sintomasSelecionados;
+	}
+
+	public Diagnostico getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(Diagnostico diagnostico) {
+		this.diagnostico = diagnostico;
 	}
 	
 }

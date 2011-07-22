@@ -1,12 +1,6 @@
 package br.com.diagnostikator.web;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-
-import br.com.diagnostikator.business.FuncionarioBR;
-import br.com.diagnostikator.model.Funcionario;
-import br.com.diagnostikator.model.Medico;
 
 @ManagedBean(name = "loginBean")
 public class LoginBean {

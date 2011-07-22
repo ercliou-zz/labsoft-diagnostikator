@@ -1,25 +1,34 @@
 package br.com.diagnostikator.model;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-@Table(name="usuario")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+name="tipoUsuario",
+discriminatorType=DiscriminatorType.STRING
+)
+@DiscriminatorValue("usuario")
 public class Usuario {
 	@Id
 	@GeneratedValue
 	private long id;
 	
-	private String name;
+	private String login;
 	
-	@org.hibernate.annotations.NaturalId
-	private String email;
+	private String senha;
 	
-	private String password;
+	private String tipo;
 	
-	private boolean active;
+	private String status;
+	
 
 	public long getId() {
 		return id;
@@ -29,48 +38,48 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+
+	public String getStatus() {
+		return status;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (active ? 1231 : 1237);
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
 
@@ -83,30 +92,27 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (active != other.active)
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (id != other.id)
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (login == null) {
+			if (other.login != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!login.equals(other.login))
 			return false;
-		if (password == null) {
-			if (other.password != null)
+		if (senha == null) {
+			if (other.senha != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!senha.equals(other.senha))
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
 			return false;
 		return true;
 	}
 
-
-
+	
 	
 	
 }

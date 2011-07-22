@@ -31,6 +31,12 @@
     </managed-bean>
     
     <managed-bean>
+    	<managed-bean-name>medicoBean</managed-bean-name>
+    	<managed-bean-class>br.com.diagnostikator.web.MedicoBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
     	<managed-bean-name>sintomaBean</managed-bean-name>
     	<managed-bean-class>br.com.diagnostikator.web.SintomaBean</managed-bean-class>
     	<managed-bean-scope>request</managed-bean-scope>

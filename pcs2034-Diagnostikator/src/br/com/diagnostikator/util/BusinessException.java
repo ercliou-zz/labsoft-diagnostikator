@@ -2,6 +2,11 @@ package br.com.diagnostikator.util;
 
 public class BusinessException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BusinessException() {
 		// TODO Auto-generated constructor stub
 	}
