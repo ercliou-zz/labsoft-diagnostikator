@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +21,9 @@ public class Diagnostico {
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	private List<Doenca> doencas;
 	private String observacoes;
+	
+	@OneToOne(mappedBy = "diagnostico")
+	private ConsultaConfirmada consultaConfirmadaPai;
 	
 	
 	public long getId() {
@@ -40,10 +44,20 @@ public class Diagnostico {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
+	public ConsultaConfirmada getConsultaConfirmada() {
+		return consultaConfirmadaPai;
+	}
+	public void setConsultaConfirmada(ConsultaConfirmada consultaConfirmada) {
+		this.consultaConfirmadaPai = consultaConfirmada;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime
+				* result
+				+ ((consultaConfirmadaPai == null) ? 0 : consultaConfirmadaPai
+						.hashCode());
 		result = prime * result + ((doencas == null) ? 0 : doencas.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result
@@ -59,6 +73,11 @@ public class Diagnostico {
 		if (getClass() != obj.getClass())
 			return false;
 		Diagnostico other = (Diagnostico) obj;
+		if (consultaConfirmadaPai == null) {
+			if (other.consultaConfirmadaPai != null)
+				return false;
+		} else if (!consultaConfirmadaPai.equals(other.consultaConfirmadaPai))
+			return false;
 		if (doencas == null) {
 			if (other.doencas != null)
 				return false;

@@ -1,11 +1,13 @@
 package br.com.diagnostikator.util;
 
+import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
 import br.com.diagnostikator.dao.DiagnosticoDAO;
 import br.com.diagnostikator.dao.DoencaDAO;
 import br.com.diagnostikator.dao.FuncionarioDAO;
 import br.com.diagnostikator.dao.PacienteDAO;
 import br.com.diagnostikator.dao.SintomaDAO;
 import br.com.diagnostikator.dao.UsuarioDAO;
+import br.com.diagnostikator.dao.implementation.hibernate.ConsultaConfirmadaDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.DiagnosticoDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.DoencaDAOHibernate;
 import br.com.diagnostikator.dao.implementation.hibernate.FuncionarioDAOHibernate;
@@ -48,5 +50,11 @@ public class DAOFactory {
 		DiagnosticoDAOHibernate diagnosticoDAO = new DiagnosticoDAOHibernate();
 		diagnosticoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return diagnosticoDAO;
+	}
+	
+	public static ConsultaConfirmadaDAO createConsultaConfirmadaDAO(){
+		ConsultaConfirmadaDAOHibernate consultaConfirmadaDAO = new ConsultaConfirmadaDAOHibernate();
+		consultaConfirmadaDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return consultaConfirmadaDAO;
 	}
 }

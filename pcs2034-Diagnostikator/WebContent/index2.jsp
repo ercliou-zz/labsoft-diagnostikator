@@ -5,7 +5,6 @@
 <head>
 <title>Jsp Frameset</title>
 <link href="resources/css/main.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript">
 	//         
 	// written by: Coothead
@@ -57,6 +56,12 @@
 				<a href="usuarioList.jsf"
 					onclick="updateObjectIframe(this); return false;">this is an
 					object test not an iframe test</a>
+					
+					
+					<a href="usuarioList.jsf" onclick="updateObjectIframe(this); return false;">usuarios</a>
+		<a href="pacienteList.jsf" target="content">paciente</a>
+		<a href="doencaList.jsf" onclick="updateObjectIframe(this); return false;">doenca</a>
+		<a href="sintomaList.jsf" onclick="updateObjectIframe(this); return false;">sintomas</a>
 			<h:inputTextarea ></h:inputTextarea>
 			</div>
 			<div id="content"></div>

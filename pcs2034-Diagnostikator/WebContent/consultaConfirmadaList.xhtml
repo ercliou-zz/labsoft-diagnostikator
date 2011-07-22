@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>lista</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:commandButton action="#{consultaConfirmadaBean.create}" value="Novo"></h:commandButton>
+	</h:form>
+
+	<h:form>
+		<h:messages />
+		<h:dataTable value="#{consultaConfirmadaBean.list}"
+			var="consultaConfirmada" rules="rows">
+			<f:facet name="caption">
+				<!-- 							conteudo aqui  -->
+			</f:facet>
+
+			<f:facet name="header">Lista de Consultas Confirmadas</f:facet>
+
+			<f:facet name="footer">fim</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{consultaConfirmada.id}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data</f:facet>
+							#{consultaConfirmada.data}
+						</h:column>
+
+			<h:column>
+				<f:facet name="header">Visualizar</f:facet>
+				<h:commandLink action="#{consultaConfirmadaBean.view}">view
+								<f:setPropertyActionListener
+						target="#{consultaConfirmadaBean.consultaConfirmada}"
+						value="#{consultaConfirmada}" />
+				</h:commandLink>
+			</h:column>
+
+
+		</h:dataTable>
+	</h:form>
+
+
+</h:body>
+
+</html>
+

@@ -29,6 +29,8 @@
         <mapping class="br.com.diagnostikator.model.Funcionario"/>
         <mapping class="br.com.diagnostikator.model.Doenca"/>
         <mapping class="br.com.diagnostikator.model.Sintoma"/>
+        <mapping class="br.com.diagnostikator.model.Diagnostico"/>
+        <mapping class="br.com.diagnostikator.model.ConsultaConfirmada"/>
         
         
     </session-factory>

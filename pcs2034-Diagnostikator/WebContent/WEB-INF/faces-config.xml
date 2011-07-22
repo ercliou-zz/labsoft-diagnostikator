@@ -42,4 +42,10 @@
     	<managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean>
+    	<managed-bean-name>consultaConfirmadaBean</managed-bean-name>
+    	<managed-bean-class>br.com.diagnostikator.web.ConsultaConfirmadaBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config>

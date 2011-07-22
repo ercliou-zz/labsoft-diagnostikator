@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Realização de Consulta</title>
+</h:head>
+
+<h:body>
+	<h1>Realização de Consulta</h1>
+	<h:form id="consultaConfirmadaForm">
+
+		<h:messages />
+
+		<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
+		
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Informação:" for="informacao" />
+			<h:inputText id="informacao" label="Informação"
+				value="#{consultaConfirmadaBean.consultaConfirmada.informacao}">
+			</h:inputText>
+			
+			<h:outputLabel value="Receita:" for="receita" />
+			<h:inputTextarea rows="10" id="receita" label="Receita"
+				value="#{consultaConfirmadaBean.consultaConfirmada.receita}" size="250" >
+			</h:inputTextarea >
+			
+			<h:selectManyCheckbox layout="pageDirection" id="consulta_sintomas"
+				value="#{consultaConfirmadaBean.sintomasSelecionados}">
+				<c:forEach var="sintoma" items="#{sintomaBean.list}">
+					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" />
+				</c:forEach>
+			</h:selectManyCheckbox>
+			
+		</h:panelGrid>
+
+		<h:commandButton action="#{consultaConfirmadaBean.save}" value="Salvar"/>
+		
+		<h:commandButton action="#{consultaConfirmada.list}" value="Voltar"/>
+
+	</h:form>
+</h:body>
+
+</html>
