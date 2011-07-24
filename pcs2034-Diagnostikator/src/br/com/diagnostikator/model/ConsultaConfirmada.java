@@ -9,11 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="consulta_confirmada")
+@Table(name="consultaConfirmada")
 public class ConsultaConfirmada {
 	
 	@Id
@@ -31,7 +32,8 @@ public class ConsultaConfirmada {
 	@JoinColumn(name="diagnostico_fk")
 	private Diagnostico diagnostico;
 	
-	@OneToOne(mappedBy = "consulta_confirmada")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="prontuario_fk", insertable=false, updatable=false)
 	private Prontuario prontuario;
 
 	public long getId() {

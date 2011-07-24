@@ -3,9 +3,9 @@ package br.com.diagnostikator.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,7 +23,8 @@ public class Medico extends Usuario {
 	@org.hibernate.annotations.NaturalId
 	private String crm;
 	
-	@OneToMany(mappedBy="medico", cascade = CascadeType.PERSIST)
+	@OneToMany
+	@JoinColumn(name="medico_fk")
 	private List<Prontuario> prontuarios;	
 	
 	public String getNome() {

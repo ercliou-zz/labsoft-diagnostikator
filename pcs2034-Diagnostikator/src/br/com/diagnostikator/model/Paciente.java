@@ -3,10 +3,10 @@ package br.com.diagnostikator.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,7 +34,8 @@ public class Paciente {
 	
 	private String sexo;
 	
-	@OneToMany(mappedBy="paciente", cascade = CascadeType.PERSIST)
+	@OneToMany
+	@JoinColumn(name="paciente_fk")
 	private List<Prontuario> prontuarios;
 	
 	public long getId() {

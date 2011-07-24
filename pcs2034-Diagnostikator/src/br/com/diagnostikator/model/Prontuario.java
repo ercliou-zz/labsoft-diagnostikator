@@ -18,15 +18,16 @@ public class Prontuario {
 	@GeneratedValue
 	private long id;
 	
-	@OneToMany(mappedBy="prontuario", cascade = CascadeType.PERSIST)
+	@OneToMany
+	@JoinColumn(name="prontuario_fk")
 	private List<ConsultaConfirmada> consultasConfirmadas;	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="paciente_fk")
+	@JoinColumn(name="paciente_fk", insertable=false, updatable=false)
 	private Paciente pacientePai;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="medico_fk")
+	@JoinColumn(name="medico_fk", insertable=false, updatable=false)
 	private Medico medicoPai;
 
 	public long getId() {
