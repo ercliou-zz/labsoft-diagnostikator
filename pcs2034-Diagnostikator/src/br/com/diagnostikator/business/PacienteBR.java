@@ -1,9 +1,11 @@
 package br.com.diagnostikator.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.diagnostikator.dao.PacienteDAO;
 import br.com.diagnostikator.model.Paciente;
+import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.util.DAOFactory;
 
 public class PacienteBR {
@@ -37,5 +39,19 @@ public class PacienteBR {
 	
 	public List<Paciente> list(){
 		return pacienteDAO.list();
+	}
+	
+	public List<Paciente> list(long idMedico) {
+		List<Paciente> filtered = new ArrayList<Paciente>() ;
+		List<Paciente> full = this.list();
+		for (Paciente paciente : full) {
+			for(Prontuario prontuario : paciente.getProntuarios()){
+				if(prontuario.getMedico().getId() == idMedico){
+					filtered.add(paciente);
+					break;
+				}
+			}
+		}
+		return filtered;
 	}
 }

@@ -1,5 +1,6 @@
 package br.com.diagnostikator.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.diagnostikator.dao.ProntuarioDAO;
@@ -34,4 +35,16 @@ public class ProntuarioBR {
 	public List<Prontuario> list(){
 		return prontuarioDAO.list();
 	}
+	
+	public List<Prontuario> list(long idMedico){
+		List<Prontuario> full = prontuarioDAO.list();
+		List<Prontuario> filtered = new ArrayList<Prontuario>();
+		for (Prontuario prontuario : full) {
+			if(prontuario.getMedico().getId() == idMedico){
+				filtered.add(prontuario);
+			}
+		}
+		return filtered;
+	}
+	
 }

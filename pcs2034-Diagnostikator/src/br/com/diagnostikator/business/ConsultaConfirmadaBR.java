@@ -57,5 +57,16 @@ public class ConsultaConfirmadaBR {
 		
 		return diagnostico;
 	}
+	
+	public List<ConsultaConfirmada> list(long idMedico, long idPaciente) {
+		List<ConsultaConfirmada> filtered = new ArrayList<ConsultaConfirmada>() ;
+		List<ConsultaConfirmada> full = this.list();
+		for (ConsultaConfirmada consultaConfirmada : full) {
+			if(consultaConfirmada.getProntuario().getMedico().getId() == idMedico && consultaConfirmada.getProntuario().getPaciente().getId() == idPaciente){
+				filtered.add(consultaConfirmada);
+			}
+		}
+		return filtered;
+	}
 
 }
