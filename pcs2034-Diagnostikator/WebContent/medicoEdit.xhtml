@@ -43,7 +43,7 @@
 				requiredMessage="digite o endereço" >
 			</h:inputText>
 			
-			<h:outputLabel value="Data de Admissão:" for="dataAdmissao" />
+			<h:outputLabel value="Data de Admissão: (dd/mm/aaaa)" for="dataAdmissao" />
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
 				value="#{medicoBean.medico.dataAdmissao}" size="40"  >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  

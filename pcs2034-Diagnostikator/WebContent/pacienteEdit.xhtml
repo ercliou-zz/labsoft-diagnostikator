@@ -43,14 +43,14 @@
 				requiredMessage="digite o endereço" >
 			</h:inputText>
 			
-			<h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
+			<h:outputLabel value="Data de Nascimento: (dd/mm/aaaa)" for="dataNascimento" />
 			<h:inputText id="paciente_dataNascimento" label="Data de Nascimento"
 				value="#{pacienteBean.paciente.dataNascimento}" size="40" required="true"
 				requiredMessage="digite a data de nascimento" >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
 			</h:inputText>
 			
-			<h:outputLabel value="Data de Cadastro:" for="dataCadastro" />
+			<h:outputLabel value="Data de Cadastro: (dd/mm/aaaa)" for="dataCadastro" />
 			<h:inputText id="paciente_dataCadastro" label="Data de Cadastro"
 				value="#{pacienteBean.paciente.dataCadastro}" size="40" required="true"
 				requiredMessage="digite a data de cadastro" >

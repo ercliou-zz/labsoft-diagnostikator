@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core">
 
 <h:head>
 	<title>Cadastro de Funcionario</title>
@@ -24,11 +25,15 @@
 			</h:inputText>
 			
 			<h:outputLabel value="Cpf:" for="cpf" />
-			<h:inputText id="funcionario_cpf" label="Cpf"
-				value="#{funcionarioBean.funcionario.cpf}" size="11" required="true"
-				requiredMessage="digite o cpf" validatorMessage="Cpf invalido">
-				<f:validateLength minimum="11" maximum="11" />
-			</h:inputText>
+
+				<h:inputText id="funcionario_cpf" rendered="#{funcionarioBean.funcionario.id == 0}" label="Cpf"
+					value="#{funcionarioBean.funcionario.cpf}" size="11" required="true"
+					requiredMessage="digite o cpf" validatorMessage="Cpf invalido">
+					<f:validateLength minimum="11" maximum="11" />
+				</h:inputText>
+
+				<h:outputText id="cpf" rendered="#{funcionarioBean.funcionario.id > 0}" value="#{funcionarioBean.funcionario.cpf}" />
+
 			
 			<h:outputLabel value="RG:" for="rg" />
 			<h:inputText id="funcionario_rg" label="RG"
@@ -43,7 +48,7 @@
 				requiredMessage="digite o endereço" >
 			</h:inputText>
 			
-			<h:outputLabel value="Data de Admissão:" for="dataAdmissao" />
+			<h:outputLabel value="Data de Admissão: (dd/mm/aaaa)" for="dataAdmissao" />
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
 				value="#{funcionarioBean.funcionario.dataAdmissao}" size="40"  >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
