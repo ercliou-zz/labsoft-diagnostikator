@@ -1,5 +1,6 @@
 package br.com.diagnostikator.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -22,6 +23,7 @@ public class Usuario {
 	private long id;
 	
 	@org.hibernate.annotations.NaturalId
+	@Column(unique = true)
 	private String login;
 	
 	private String senha;
