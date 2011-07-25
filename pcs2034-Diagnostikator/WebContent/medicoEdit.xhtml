@@ -52,15 +52,7 @@
 			<h:outputLabel value="CRM:" for="crm" />
 			<h:inputText id="crm" label="CRM"
 				value="#{medicoBean.medico.crm}" size="40"  >
-			</h:inputText>
-			
-			<h:panelGrid columns="3">
-			<h:outputLabel value="Especialidade:" />
-			<h:selectOneRadio layout="pageDirection" id="medico_especialidade" value="#{medicoBean.medico.especialidade}" >
-				<f:selectItem id="ginecologista" itemLabel="Ginecologista" itemValue="GINECOLOGISTA" />
-				<f:selectItem id="obstetra" itemLabel="Obstetra" itemValue="OBSTETRA" />
-			</h:selectOneRadio>
-			</h:panelGrid>
+			</h:inputText>				
 			
 			<h:outputLabel value="Login:" for="login" />
 			<h:inputText id="login" label="Login"
@@ -92,6 +84,14 @@
 				<f:selectItem id="inativo" itemLabel="Inativo" itemValue="INATIVO" />
 				<f:selectItem id="ativo" itemLabel="Ativo" itemValue="ATIVO" />
 				<f:selectItem id="afastado" itemLabel="Afastado" itemValue="AFASTADO" />
+			</h:selectOneRadio>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Especialidade:" />
+			<h:selectOneRadio layout="pageDirection" id="medico_especialidade" value="#{medicoBean.medico.especialidade}" >
+				<f:selectItem id="ginecologista" itemLabel="Ginecologista" itemValue="GINECOLOGISTA" />
+				<f:selectItem id="obstetra" itemLabel="Obstetra" itemValue="OBSTETRA" />
 			</h:selectOneRadio>
 			</h:panelGrid>
 

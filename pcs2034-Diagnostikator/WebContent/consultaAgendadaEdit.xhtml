@@ -22,6 +22,7 @@
 			<h:inputText id="consultaAgendada_dataConsulta" label="DataConsulta"
 				value="#{consultaAgendadaBean.consultaAgendada.dataConsulta}" size="45" required="true"
 				requiredMessage="Digite a data e o horario" >
+				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
 			</h:inputText>
 			
 			<h:outputLabel value="Nome do Medico:" for="nomeMedico" />
@@ -35,6 +36,15 @@
 				value="#{consultaAgendadaBean.consultaAgendada.nomePaciente}" size="45" required="true"
 				requiredMessage="digite o nome do paciente" >
 			</h:inputTextarea >
+			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Status:" />
+			<h:selectOneRadio layout="pageDirection" id="consultaAgendada_status" value="#{consultaAgendadaBean.consultaAgendada.status}" >
+				<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />
+				<f:selectItem id="cancelada" itemLabel="Cancelada" itemValue="CANCELADA" />
+				<f:selectItem id="confirmada" itemLabel="Confirmada" itemValue="CONFIRMADA" />
+			</h:selectOneRadio>
+			</h:panelGrid>
 			
 		</h:panelGrid>
 

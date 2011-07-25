@@ -22,18 +22,26 @@ public class ConsultaAgendadaBR {
 		return consultaAgendadaDAO.getByPaciente(nomePaciente);
 	}
 	
-	public ConsultaAgendada getByHorario(Date dataConsulta){
-		return consultaAgendadaDAO.getByHorario(dataConsulta);
-	}
+//	public ConsultaAgendada getByHorario(Date dataConsulta){
+//		return consultaAgendadaDAO.getByHorario(dataConsulta);
+//	}
 	
 	public void save(ConsultaAgendada consultaAgendada){
-		ConsultaAgendada consultaAgendadaExistente  = consultaAgendadaDAO.getByHorario(consultaAgendada.getDataConsulta());		
-		
-		if(consultaAgendadaExistente == null){
-			consultaAgendadaDAO.save(consultaAgendada);
-		}
-		else{
-			consultaAgendadaDAO.alter(consultaAgendada);		
+//		ConsultaAgendada consultaAgendadaExistente  = consultaAgendadaDAO.getByHorario(consultaAgendada.getDataConsulta());		
+//		
+//		if(consultaAgendadaExistente == null){
+//			consultaAgendadaDAO.save(consultaAgendada);
+//		}
+//		else{
+//			consultaAgendadaDAO.alter(consultaAgendada);		
+//		}
+//		
+		long id = consultaAgendada.getId();
+
+		if (id == 0) {
+			this.consultaAgendadaDAO.save(consultaAgendada);
+		} else {
+			this.consultaAgendadaDAO.alter(consultaAgendada);
 		}
 	}
 	

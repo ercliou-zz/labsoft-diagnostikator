@@ -17,6 +17,7 @@ public class ConsultaAgendada {
 	private String nomePaciente;	
 	private String nomeMedico;	
 	private Date dataConsulta;
+	private String status;
 	
 	public long getId() {
 		return id;
@@ -49,4 +50,13 @@ public class ConsultaAgendada {
 	public void setDataConsulta(Date dataConsulta) {
 		this.dataConsulta = dataConsulta;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}	
+	
 }

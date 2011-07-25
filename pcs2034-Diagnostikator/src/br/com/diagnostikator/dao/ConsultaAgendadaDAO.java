@@ -11,6 +11,6 @@ public interface ConsultaAgendadaDAO {
 	public void alter(ConsultaAgendada consultaAgendada);
 	public List<ConsultaAgendada> getByPaciente(String nomePaciente);
 	public List<ConsultaAgendada> getByMedico(String nomeMedico);
-	public ConsultaAgendada getByHorario(Date dataConsulta);
+//	public ConsultaAgendada getByHorario(Date dataConsulta);
 	public List<ConsultaAgendada> list();
 }

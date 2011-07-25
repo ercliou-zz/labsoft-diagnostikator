@@ -1,17 +1,25 @@
 package br.com.diagnostikator.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ProntuarioBR;
+import br.com.diagnostikator.business.ConsultaConfirmadaBR;
+import br.com.diagnostikator.model.Medico;
+import br.com.diagnostikator.model.Paciente;
 import br.com.diagnostikator.model.Prontuario;
+import br.com.diagnostikator.model.ConsultaConfirmada;
 
 @ManagedBean(name = "prontuarioBean")
 public class ProntuarioBean {
 
 	private Prontuario prontuario = new Prontuario();
 	private List<Prontuario> list;
+	private List<String> consultasConfirmadas;
+	private Medico medico;
+	private Paciente paciente;
 
 	public Prontuario getProntuario() {
 		return this.prontuario;
@@ -49,7 +57,19 @@ public class ProntuarioBean {
 	}
 
 	public String save() {
+		
+		ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
+		
 		ProntuarioBR prontuarioBR = new ProntuarioBR();
+		List<ConsultaConfirmada> list = new ArrayList<ConsultaConfirmada>();
+
+		for (String consultaConfirmadaId : this.consultasConfirmadas ) {
+			long consultaConfirmadaIdLong = Long.parseLong(consultaConfirmadaId);
+			list.add(consultaConfirmadaBR.getByID(consultaConfirmadaIdLong));
+		}
+		prontuario.setConsultasConfirmadas(list);		
+		prontuario.setMedico(medico);
+		prontuario.setPaciente(paciente);
 		prontuarioBR.save(this.prontuario);
 
 		return "prontuarioSaved";
@@ -66,5 +86,29 @@ public class ProntuarioBean {
 	public void setList(List<Prontuario> list) {
 		this.list = list;
 	}
+
+	public List<String> getConsultasConfirmadas() {
+		return consultasConfirmadas;
+	}
+
+	public void setConsultasConfirmadas(List<String> consultasConfirmadas) {
+		this.consultasConfirmadas = consultasConfirmadas;
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}	
 
 }

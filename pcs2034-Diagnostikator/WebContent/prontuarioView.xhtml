@@ -16,6 +16,49 @@
 
 		<h:outputLabel value="ID:" for="prontuario_id" />
 		<h:outputText id="prontuario_id" value="#{prontuarioBean.prontuario.id}" />
+		
+		<h:outputLabel value="Nome do Paciente:" for="prontuario_nomePaciente" />
+		<h:outputText id="prontuario_nomePaciente" value="#{prontuarioBean.prontuario.paciente.nome}" />
+
+		<h:outputLabel value="Nome do Paciente:" for="prontuario_nomeMedico" />
+		<h:outputText id="prontuario_nomeMedico" value="#{prontuarioBean.prontuario.medico.nome}" />
+
+		<h:form>
+		<h:messages />
+		<h:dataTable value="#{consultaConfirmadaBean.list}"
+			var="consultaConfirmada" rules="rows">
+			<f:facet name="caption">
+				<!-- 							conteudo aqui  -->
+			</f:facet>
+
+			<f:facet name="header">Lista de Consultas Confirmadas</f:facet>
+
+			<f:facet name="footer">fim</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{consultaConfirmada.id}"></h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data</f:facet>
+							#{consultaConfirmada.data}
+						</h:column>
+
+			<h:column>
+				<f:facet name="header">Visualizar</f:facet>
+				<h:commandLink action="#{consultaConfirmadaBean.view}">view
+								<f:setPropertyActionListener
+						target="#{consultaConfirmadaBean.consultaConfirmada}"
+						value="#{consultaConfirmada}" />
+				</h:commandLink>
+			</h:column>
+
+
+		</h:dataTable>
+	</h:form>
+		
+
 
 		
 	</h:panelGrid>

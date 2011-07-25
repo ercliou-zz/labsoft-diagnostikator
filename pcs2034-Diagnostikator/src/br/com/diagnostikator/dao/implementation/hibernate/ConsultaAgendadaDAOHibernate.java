@@ -48,9 +48,9 @@ public class ConsultaAgendadaDAOHibernate implements ConsultaAgendadaDAO {
 		return session.createCriteria(ConsultaAgendada.class).list();
 	}
 
-	@Override
-	public ConsultaAgendada getByHorario(Date dataConsulta) {
-		return (ConsultaAgendada) session.createQuery("FROM Consulta_Agendada c where c.dataConsulta=:dataConsulta").setDate("dataConsulta", dataConsulta).uniqueResult();
-	}
+//	@Override
+//	public ConsultaAgendada getByHorario(Date dataConsulta) {
+//		return (ConsultaAgendada) session.createQuery("FROM Consulta_Agendada c where c.dataConsulta='" + dataConsulta + "' ").uniqueResult();
+//	}
 
 }

@@ -35,16 +35,7 @@
 			<h:inputText id="paciente_rg" label="RG"
 				value="#{pacienteBean.paciente.rg}" size="15" required="true"
 				requiredMessage="digite o rg" >
-			</h:inputText>
-			
-			<h:panelGrid columns="3">
-			<h:outputLabel value="Sexo:" for="paciente_sexo" />
-			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" >
-				<f:selectItem id="masc" itemLabel="Masculino" itemValue="MASCULINO" />
-				<f:selectItem id="fem" itemLabel="Feminino" itemValue="FEMININO" />
-			</h:selectOneRadio>
-			</h:panelGrid>
-			
+			</h:inputText>							
 			
 			<h:outputLabel value="Endereço:" for="endereco" />
 			<h:inputText id="paciente_endereco" label="Endereço"
@@ -66,7 +57,13 @@
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
 			</h:inputText>
 
-			
+			<h:panelGrid columns="3">
+			<h:outputLabel value="Sexo:" for="paciente_sexo" />
+			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" >
+				<f:selectItem id="masc" itemLabel="Masculino" itemValue="MASCULINO" />
+				<f:selectItem id="fem" itemLabel="Feminino" itemValue="FEMININO" />
+			</h:selectOneRadio>
+			</h:panelGrid>
 
 		</h:panelGrid>
 
