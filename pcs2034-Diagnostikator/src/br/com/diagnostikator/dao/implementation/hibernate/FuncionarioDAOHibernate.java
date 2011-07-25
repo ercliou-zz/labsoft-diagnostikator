@@ -41,10 +41,27 @@ public class FuncionarioDAOHibernate implements FuncionarioDAO {
 	public Funcionario getByCpf(String cpf) {
 		return (Funcionario) session.createQuery("FROM Funcionario u WHERE u.cpf='" + cpf + "' ").uniqueResult();
 	}
+	
+	@Override
+	public Funcionario getByRg(String rg) {
+		return (Funcionario) session.createQuery("FROM Funcionario u WHERE u.rg='" + rg + "' ").uniqueResult();
+	}
 
 	@Override
 	public Funcionario getById(long id) {
 		return (Funcionario) session.get(Funcionario.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Funcionario> getByNome(String nome) {
+		return session.createQuery("FROM Funcionario c WHERE c.nome LIKE '%" + nome + "%' ").list();
+	}	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Funcionario> getByTipo(String tipo) {
+		return session.createQuery("FROM Funcionario WHERE tipo LIKE '%" + tipo + "%' ").list();
 	}
 	
 	

@@ -17,10 +17,21 @@ public class FuncionarioBR {
 		return funcionarioDAO.getByCpf(cpf);
 	}
 	
+	public Funcionario getByRg(String rg) {
+		return funcionarioDAO.getByRg(rg);
+	}
+	
 	public Funcionario getById(long id){
 		return funcionarioDAO.getById(id);
 	}
 
+	public List<Funcionario> getByNome(String nome) {
+		return funcionarioDAO.getByNome(nome);
+	}	
+	
+	public List<Funcionario> getByTipo(String tipo) {
+		return funcionarioDAO.getByTipo(tipo);
+	}
 		
 	public void save(Funcionario funcionario){
 		long id = funcionario.getId();
