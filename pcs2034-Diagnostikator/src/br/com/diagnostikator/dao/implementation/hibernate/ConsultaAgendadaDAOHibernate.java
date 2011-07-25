@@ -1,9 +1,9 @@
 package br.com.diagnostikator.dao.implementation.hibernate;
 
-import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
+
 import br.com.diagnostikator.dao.ConsultaAgendadaDAO;
 import br.com.diagnostikator.model.ConsultaAgendada;
 

@@ -10,4 +10,5 @@ public interface ProntuarioDAO {
 	public void alter(Prontuario prontuario);
 	public Prontuario getById(long id);
 	public List<Prontuario> list();
+	
 }

@@ -1,6 +1,5 @@
 package br.com.diagnostikator.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import br.com.diagnostikator.model.ConsultaAgendada;

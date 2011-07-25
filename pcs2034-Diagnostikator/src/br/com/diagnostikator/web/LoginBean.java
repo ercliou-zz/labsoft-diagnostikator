@@ -50,7 +50,7 @@ public class LoginBean {
 		authorized = usuarioBR.login(login, senha);
 		if(authorized){
 			type = usuarioBR.resolveType(login);
-			return "index2";
+			return "doencaList";
 		}
 		return "login";
 	};

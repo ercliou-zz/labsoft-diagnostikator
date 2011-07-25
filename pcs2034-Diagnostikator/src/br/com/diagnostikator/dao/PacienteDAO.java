@@ -15,4 +15,5 @@ public interface PacienteDAO {
 	public Paciente getByCpf(String cpf);
 
 	public List<Paciente> list();
+	
 }

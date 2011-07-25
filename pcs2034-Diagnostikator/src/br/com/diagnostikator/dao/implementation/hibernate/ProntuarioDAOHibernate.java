@@ -41,4 +41,5 @@ public class ProntuarioDAOHibernate implements ProntuarioDAO {
 		return session.createCriteria(Prontuario.class).list();
 	}
 
+
 }

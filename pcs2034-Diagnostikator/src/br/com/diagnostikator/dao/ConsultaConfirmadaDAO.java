@@ -15,4 +15,5 @@ public interface ConsultaConfirmadaDAO {
 	public ConsultaConfirmada getByID(long id);
 	
 	public List<ConsultaConfirmada> list();
+	
 }

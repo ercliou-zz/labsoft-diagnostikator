@@ -51,5 +51,5 @@ public class PacienteDAOHibernate implements PacienteDAO{
 	public List<Paciente> list() {
 		return session.createCriteria(Paciente.class).list();
 	}
-
+	
 }

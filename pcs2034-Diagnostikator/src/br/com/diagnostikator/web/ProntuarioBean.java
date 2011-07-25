@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
+import br.com.diagnostikator.business.ProntuarioBR;
+import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Medico;
 import br.com.diagnostikator.model.Paciente;
 import br.com.diagnostikator.model.Prontuario;
-import br.com.diagnostikator.model.ConsultaConfirmada;
 
 @ManagedBean(name = "prontuarioBean")
 public class ProntuarioBean {
@@ -20,6 +20,9 @@ public class ProntuarioBean {
 	private List<String> consultasConfirmadas;
 	private Medico medico;
 	private Paciente paciente;
+	
+	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
+	private ProntuarioBR prontuarioBR = new ProntuarioBR();
 
 	public Prontuario getProntuario() {
 		return this.prontuario;
@@ -58,8 +61,6 @@ public class ProntuarioBean {
 
 	public String save() {
 		
-		ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
-		
 		ProntuarioBR prontuarioBR = new ProntuarioBR();
 		List<ConsultaConfirmada> list = new ArrayList<ConsultaConfirmada>();
 
@@ -77,18 +78,17 @@ public class ProntuarioBean {
 
 	public List<Prontuario> getList() {
 		if (this.list == null || this.list.isEmpty()) {
-			ProntuarioBR prontuarioBR = new ProntuarioBR();
 			this.list = prontuarioBR.list();
 		}
 		return this.list;
 	}
+	
+	public List<ConsultaConfirmada> getConsultasConfirmadas(){
+		return this.consultaConfirmadaBR.list(medico.getId(), paciente.getId());
+	}
 
 	public void setList(List<Prontuario> list) {
 		this.list = list;
-	}
-
-	public List<String> getConsultasConfirmadas() {
-		return consultasConfirmadas;
 	}
 
 	public void setConsultasConfirmadas(List<String> consultasConfirmadas) {
