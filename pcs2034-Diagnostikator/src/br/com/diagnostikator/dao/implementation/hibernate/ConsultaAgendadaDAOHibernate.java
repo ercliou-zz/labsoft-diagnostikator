@@ -33,13 +33,13 @@ public class ConsultaAgendadaDAOHibernate implements ConsultaAgendadaDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ConsultaAgendada> getByPaciente(String nomePaciente) {
-		return session.createQuery("FROM ConsultaAgendada c WHERE c.nomePaciente LIKE '%" + nomePaciente + "%' ").list();
+		return session.createQuery("FROM ConsultaAgendada WHERE nomePaciente LIKE '%" + nomePaciente + "%' ").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ConsultaAgendada> getByMedico(String nomeMedico) {
-		return session.createQuery("FROM ConsultaAgendada c WHERE c.nomeMedico LIKE '%" + nomeMedico + "%' ").list();
+		return session.createQuery("FROM ConsultaAgendada WHERE nomeMedico LIKE '%" + nomeMedico + "%' ").list();
 	}
 
 	@SuppressWarnings("unchecked")

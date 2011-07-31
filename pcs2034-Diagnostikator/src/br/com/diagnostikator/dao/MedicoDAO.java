@@ -9,5 +9,10 @@ public interface MedicoDAO{
 	public void alter(Medico medico);
 	public Medico getByCpf(String cpf);	
 	public Medico getById(long id);	
+	public Medico getByRg(String rg);	
+	public Medico getByCrm(String crm);	
+	public List<Medico> getByEspecialidade(String especialidade);
+	public List<Medico> getByNome(String nome);
+	public List<Medico> getByTipo(String tipo);
 	public List<Medico> list();
 }

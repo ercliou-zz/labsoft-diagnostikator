@@ -59,7 +59,7 @@
 
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Sexo:" for="paciente_sexo" />
-			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" >
+			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" required="true">
 				<f:selectItem id="masc" itemLabel="Masculino" itemValue="MASCULINO" />
 				<f:selectItem id="fem" itemLabel="Feminino" itemValue="FEMININO" />
 			</h:selectOneRadio>

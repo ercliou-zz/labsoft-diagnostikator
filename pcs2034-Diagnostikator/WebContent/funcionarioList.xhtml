@@ -13,40 +13,32 @@
 		<h:commandButton action="#{funcionarioBean.create}" value="Novo"></h:commandButton>
 	</h:form>
 
-	<h:form>	
-
-	<h:inputHidden value="#{funcionarioBean.cpf}" />
-			
-	<h:panelGrid columns="2">
-	
+	<h:form>							
+		<h:panelGrid columns="2">
+		
 			<h:outputLabel value="Nome:" for="nome" />
 			<h:inputText id="funcionario_nome" label="Nome"
-				value="#{funcionarioBean.nome}" size="45" required="false">
-				<f:validateLength minimum="2" maximum="45" />
+				value="#{funcionarioBean.nome}">				
 			</h:inputText>
 			
 			<h:outputLabel value="Cpf:" for="cpf" />
 			<h:inputText id="funcionario_cpf" label="Cpf"
-				value="#{funcionarioBean.cpf}" size="11" required="false"
-				validatorMessage="Cpf invalido">
-				<f:validateLength minimum="11" maximum="11" />
+				value="#{funcionarioBean.cpf}">			
 			</h:inputText>	
 			
 			<h:outputLabel value="RG:" for="rg" />
 			<h:inputText id="funcionario_rg" label="RG"
-				value="#{funcionarioBean.rg}" size="15" required="false">
+				value="#{funcionarioBean.rg}">
 			</h:inputText>
 			
 			<h:outputLabel value="Tipo:" for="tipo" />
 			<h:inputText id="funcionario_tipo" label="Tipo"
-				value="#{funcionarioBean.tipo}" size="15" required="false">
+				value="#{funcionarioBean.tipo}">
 			</h:inputText>				
-
-	</h:panelGrid>
-			
-
-		<h:commandButton action="#{funcionarioBean.filter}" value="Filtrar"></h:commandButton>
 		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{funcionarioBean.filter}" value="Filtrar"></h:commandButton>		
 	</h:form>
 
 

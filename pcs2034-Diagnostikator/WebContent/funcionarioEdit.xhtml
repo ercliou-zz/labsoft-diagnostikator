@@ -19,28 +19,25 @@
 		<h:panelGrid columns="2">
 
 			<h:outputLabel value="Nome:" for="nome" />
-			<h:inputText id="funcionario_nome" label="Nome"
-				value="#{funcionarioBean.funcionario.nome}">
-				<f:validateLength minimum="2" maximum="45" />
-			</h:inputText>
+				<h:inputText id="funcionario_nome" label="Nome"
+					value="#{funcionarioBean.funcionario.nome}" required="true" 
+					requiredMessage="digite o nome">
+					<f:validateLength minimum="2" maximum="45" />
+				</h:inputText>
 			
 			<h:outputLabel value="Cpf:" for="cpf" />
-
 				<h:inputText id="funcionario_cpf" rendered="#{funcionarioBean.funcionario.id == 0}" label="Cpf"
 					value="#{funcionarioBean.funcionario.cpf}" size="11" required="true"
 					requiredMessage="digite o cpf" validatorMessage="Cpf invalido">
 					<f:validateLength minimum="11" maximum="11" />
 				</h:inputText>
-
-				<h:outputText id="cpf" rendered="#{funcionarioBean.funcionario.id > 0}" value="#{funcionarioBean.funcionario.cpf}" />
-
+			<h:outputText id="cpf" rendered="#{funcionarioBean.funcionario.id > 0}" value="#{funcionarioBean.funcionario.cpf}" />
 			
 			<h:outputLabel value="RG:" for="rg" />
 			<h:inputText id="funcionario_rg" label="RG"
 				value="#{funcionarioBean.funcionario.rg}" size="15" required="true"
 				requiredMessage="digite o rg" >
-			</h:inputText>
-			
+			</h:inputText>			
 			
 			<h:outputLabel value="Endereço:" for="endereco" />
 			<h:inputText id="funcionario_endereco" label="Endereço"
@@ -50,13 +47,15 @@
 			
 			<h:outputLabel value="Data de Admissão: (dd/mm/aaaa)" for="dataAdmissao" />
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
-				value="#{funcionarioBean.funcionario.dataAdmissao}" size="40"  >
+				value="#{funcionarioBean.funcionario.dataAdmissao}" size="40" required="true"
+				requiredMessage="digite a data de admissao" >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
 			</h:inputText>
 			
 			<h:outputLabel value="Login:" for="login" />
 			<h:inputText id="login" label="Login"
-				value="#{funcionarioBean.funcionario.login}" size="40">
+				value="#{funcionarioBean.funcionario.login}" size="40" required="true"
+				requiredMessage="digite o login">
 			</h:inputText>
 			
 			<h:outputLabel value="Senha:" for="senha" />
@@ -71,7 +70,7 @@
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Tipo:" />
-			<h:selectOneRadio layout="pageDirection" id="funcionario_tipo" value="#{funcionarioBean.funcionario.tipo}" >
+			<h:selectOneRadio layout="pageDirection" id="funcionario_tipo" value="#{funcionarioBean.funcionario.tipo}" required="true">
 				<f:selectItem id="recepcionista" itemLabel="Recepcionista" itemValue="RECEPCIONISTA" />
 				<f:selectItem id="administrador" itemLabel="Administrador" itemValue="ADMINISTRADOR" />
 			</h:selectOneRadio>
@@ -79,7 +78,7 @@
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Status:" />
-			<h:selectOneRadio layout="pageDirection" id="funcionario_status" value="#{funcionarioBean.funcionario.status}" >
+			<h:selectOneRadio layout="pageDirection" id="funcionario_status" value="#{funcionarioBean.funcionario.status}" required="true">
 				<f:selectItem id="inativo" itemLabel="Inativo" itemValue="INATIVO" />
 				<f:selectItem id="ativo" itemLabel="Ativo" itemValue="ATIVO" />
 				<f:selectItem id="afastado" itemLabel="Afastado" itemValue="AFASTADO" />

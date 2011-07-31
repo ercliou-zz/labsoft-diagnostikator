@@ -18,10 +18,10 @@ public class FuncionarioBean {
 	private String nome = null;
 	private String rg = null;
 	private String tipo = null;
-	private boolean cpfFlag = false;
+	private boolean listaTudo = true;
 	private List<Funcionario> list;
 	
-	
+	//Getters and Setters
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
@@ -34,64 +34,6 @@ public class FuncionarioBean {
 	public void setConfirmSenha(String confirmSenha) {
 		this.confirmSenha = confirmSenha;
 	}
-	
-	public String create(){
-		funcionario = new Funcionario();
-		return "funcionarioEdit";
-	}
-
-	public String edit(){
-		confirmSenha = funcionario.getSenha();
-		return "funcionarioEdit";
-	}
-	
-	public String list() {
-		return "funcionarioList";
-	}
-	
-	public String view() {
-		return "funcionarioView";
-	}
-	
-	
-	public String delete() {
-		FuncionarioBR user = new FuncionarioBR();
-		user.delete(funcionario);
-		
-		//para atualizar a lista
-		list = null;
-		
-		return null;
-	}
-	
-	public String save(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		
-		String password = funcionario.getSenha();
-		if(!password.equals(confirmSenha)){
-			FacesMessage facesMessage = new FacesMessage("Senha incorreta!");
-			context.addMessage(null, facesMessage);
-			return null;
-		}
-		FuncionarioBR funcionarioBR = new FuncionarioBR();
-		funcionarioBR.save(funcionario);
-		
-		return "funcionarioSaved";
-	}
-	
-	public List<Funcionario> getList(){
-		if(list == null || list.isEmpty()){
-			if((nome == null || nome.equals("")) && (cpf == null || cpf.equals("")) && (rg == null || rg.equals("")) && (tipo == null || tipo.equals(""))){
-				FuncionarioBR funcionarioBR = new FuncionarioBR();
-				list = funcionarioBR.list();
-			}			
-		}
-		return list;
-	}
-	public void setList(List<Funcionario> list) {
-		this.list = list;
-	}	
-	
 	public String getCpf() {
 		return cpf;
 	}
@@ -99,16 +41,7 @@ public class FuncionarioBean {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
-	
-	public boolean isCpfFlag() {
-		return cpfFlag;
-	}
-	
-	public void setCpfFlag(boolean cpfFlag) {
-		this.cpfFlag = cpfFlag;
-	}	
-	
+		
 	public String getNome() {
 		return nome;
 	}
@@ -133,28 +66,99 @@ public class FuncionarioBean {
 		this.tipo = tipo;
 	}
 	
+	public void setListaTudo(boolean listaTudo) {
+		this.listaTudo = listaTudo;
+	}
+	
+	public boolean getListaTudo() {
+		return listaTudo;
+	}
+	
+	public List<Funcionario> getList(){
+		if(list == null || list.isEmpty()){
+			//if((nome == null || nome.equals("")) && (cpf == null || cpf.equals("")) && (rg == null || rg.equals("")) && (tipo == null || tipo.equals(""))){
+			if(listaTudo){
+				FuncionarioBR funcionarioBR = new FuncionarioBR();
+				list = funcionarioBR.list();
+			}			
+		}
+		return list;
+	}
+	
+	public void setList(List<Funcionario> list) {
+		this.list = list;
+	}	
+	
+	//Actions
+	public String create(){
+		funcionario = new Funcionario();
+		return "funcionarioEdit";
+	}
+
+	public String edit(){
+		confirmSenha = funcionario.getSenha();
+		return "funcionarioEdit";
+	}
+	
+	public String list() {
+		return "funcionarioList";
+	}
+	
+	public String view() {
+		return "funcionarioView";
+	}
+	
+	public String save(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		String password = funcionario.getSenha();
+		if(!password.equals(confirmSenha)){
+			FacesMessage facesMessage = new FacesMessage("Senha incorreta!");
+			context.addMessage(null, facesMessage);
+			return null;
+		}
+		FuncionarioBR funcionarioBR = new FuncionarioBR();
+		funcionarioBR.save(funcionario);
+		
+		return "funcionarioSaved";
+	}	
+	
 	public String filter() {
 		FuncionarioBR funcionarioBR = new FuncionarioBR();
 		list = new ArrayList<Funcionario>();
+		listaTudo = true;
 		
-		if (nome != null && !nome.equals("")){
-			cpf = null;
+		if (nome != null && !nome.equals("")){			
 			list = funcionarioBR.getByNome(nome);
+			listaTudo = false;
 		}		
-		else if (cpf != null && !cpf.equals("")){
-			nome=null;
-			list.add(funcionarioBR.getByCpf(cpf));
+		else if (cpf != null && !cpf.equals("")){	
+			funcionario = funcionarioBR.getByCpf(cpf);
+			if (funcionario != null)
+				list.add(funcionario);
+			listaTudo = false;
 		}		
-		else if (rg != null && !rg.equals("")){
-			nome=null;
-			list.add(funcionarioBR.getByRg(rg));
+		else if (rg != null && !rg.equals("")){		
+			funcionario = funcionarioBR.getByRg(cpf);
+			if (funcionario != null)
+				list.add(funcionario);
+			listaTudo = false;
 		}		
-		else if (tipo != null && !tipo.equals("")){
-			cpf = null;
+		else if (tipo != null && !tipo.equals("")){			
 			list = funcionarioBR.getByTipo(tipo);
+			listaTudo = false;
 		}
 		return "funcionarioList";
 	}
 	
-	
+	//TODO: remover?
+	public String delete() {
+		FuncionarioBR user = new FuncionarioBR();
+		user.delete(funcionario);
+		
+		//para atualizar a lista
+		list = null;
+		
+		return null;
+	}	
 }

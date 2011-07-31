@@ -15,14 +15,6 @@ public class PacienteBR {
 		pacienteDAO = DAOFactory.createPacienteDAO();
 	}
 
-	public Paciente getById(long id){
-		return pacienteDAO.getById(id);
-	}
-	
-	public Paciente getByCpf(String cpf){
-		return pacienteDAO.getByCpf(cpf);
-	}
-	
 	public void save(Paciente user){
 		long id = user.getId();
 		if(id == 0){
@@ -36,6 +28,22 @@ public class PacienteBR {
 	public void delete(Paciente user) {
 		pacienteDAO.delete(user);
 	}
+	
+	public Paciente getById(long id){
+		return pacienteDAO.getById(id);
+	}
+	
+	public Paciente getByCpf(String cpf){
+		return pacienteDAO.getByCpf(cpf);
+	}
+	
+	public Paciente getByRg(String rg) {
+		return pacienteDAO.getByRg(rg);
+	}
+	
+	public List<Paciente> getByNome(String nome) {
+		return pacienteDAO.getByNome(nome);
+	}	
 	
 	public List<Paciente> list(){
 		return pacienteDAO.list();

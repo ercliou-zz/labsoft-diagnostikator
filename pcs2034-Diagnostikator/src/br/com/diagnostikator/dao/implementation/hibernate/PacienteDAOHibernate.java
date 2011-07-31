@@ -1,8 +1,6 @@
 package br.com.diagnostikator.dao.implementation.hibernate;
 
 import java.util.List;
-
-import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.diagnostikator.dao.PacienteDAO;
@@ -40,16 +38,23 @@ public class PacienteDAOHibernate implements PacienteDAO{
 
 	@Override
 	public Paciente getByCpf(String cpf) {
-		String hql = "SELECT u FROM Paciente u WHERE u.cpf = :cpf";
-		Query query = session.createQuery(hql);
-		query.setString("cpf",cpf);
-		return (Paciente) query.uniqueResult();
+		return (Paciente) session.createQuery("FROM Paciente WHERE cpf='" + cpf + "' ").uniqueResult();
+	}
+	
+	@Override
+	public Paciente getByRg(String rg) {
+		return (Paciente) session.createQuery("FROM Paciente WHERE rg='" + rg + "' ").uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Paciente> getByNome(String nome) {
+		return session.createQuery("FROM Paciente WHERE nome LIKE '%" + nome + "%' ").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Paciente> list() {
 		return session.createCriteria(Paciente.class).list();
-	}
-	
+	}	
 }

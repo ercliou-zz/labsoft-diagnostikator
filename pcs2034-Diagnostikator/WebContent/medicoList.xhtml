@@ -11,6 +11,44 @@
 	<h:form>
 		<h:commandButton action="#{medicoBean.create}" value="Novo"></h:commandButton>
 	</h:form>
+	
+	<h:form>	
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="medico_nome" label="Nome"
+				value="#{medicoBean.nome}">				
+			</h:inputText>
+			
+			<h:outputLabel value="Crm:" for="crm" />
+			<h:inputText id="medico_crm" label="Crm"
+				value="#{medicoBean.crm}">			
+			</h:inputText>	
+			
+			<h:outputLabel value="Cpf:" for="cpf" />
+			<h:inputText id="medico_cpf" label="Cpf"
+				value="#{medicoBean.cpf}">			
+			</h:inputText>	
+			
+			<h:outputLabel value="RG:" for="rg" />
+			<h:inputText id="medico_rg" label="RG"
+				value="#{medicoBean.rg}">
+			</h:inputText>
+			
+			<h:outputLabel value="Tipo:" for="tipo" />
+			<h:inputText id="medico_tipo" label="Tipo"
+				value="#{medicoBean.tipo}">
+			</h:inputText>		
+			
+			<h:outputLabel value="Especialidade:" for="especialidade:" />
+			<h:inputText id="medico_especialidade" label="Especialidade:"
+				value="#{medicoBean.especialidade}">			
+			</h:inputText>			
+		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{medicoBean.filter}" value="Filtrar"></h:commandButton>		
+	</h:form>
 
 	<h:form>
 		<h:messages />
@@ -31,6 +69,11 @@
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
 							#{medico.nome}
+						</h:column>
+						
+			<h:column>
+				<f:facet name="header">Especialidade</f:facet>
+							#{medico.especialidade}
 						</h:column>
 
 			<h:column>

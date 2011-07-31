@@ -13,6 +13,20 @@ public class FuncionarioBR {
 		funcionarioDAO = DAOFactory.createFuncionarioDAO();
 	}
 
+	public void save(Funcionario funcionario){
+		long id = funcionario.getId();
+		if(id == 0){
+			funcionarioDAO.save(funcionario);
+		}
+		else{
+			funcionarioDAO.alter(funcionario);
+		}
+	}
+	
+	public void delete(Funcionario funcionario) {
+		funcionarioDAO.delete(funcionario);
+	}
+	
 	public Funcionario getByCpf(String cpf) {
 		return funcionarioDAO.getByCpf(cpf);
 	}
@@ -31,24 +45,9 @@ public class FuncionarioBR {
 	
 	public List<Funcionario> getByTipo(String tipo) {
 		return funcionarioDAO.getByTipo(tipo);
-	}
-		
-	public void save(Funcionario funcionario){
-		long id = funcionario.getId();
-		if(id == 0){
-			funcionarioDAO.save(funcionario);
-		}
-		else{
-			funcionarioDAO.alter(funcionario);
-		}
-	}
-	
-	public void delete(Funcionario funcionario) {
-		funcionarioDAO.delete(funcionario);
-	}
+	}	
 	
 	public List<Funcionario> list(){
 		return funcionarioDAO.list();
-	}
-	
+	}	
 }

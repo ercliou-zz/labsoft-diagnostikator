@@ -11,6 +11,29 @@
 	<h:form>
 		<h:commandButton action="#{pacienteBean.create}" value="Novo"></h:commandButton>
 	</h:form>
+	
+	<h:form>				
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="paciente_nome" label="Nome"
+				value="#{pacienteBean.nome}">				
+			</h:inputText>
+			
+			<h:outputLabel value="Cpf:" for="cpf" />
+			<h:inputText id="paciente_cpf" label="Cpf"
+				value="#{pacienteBean.cpf}">			
+			</h:inputText>	
+			
+			<h:outputLabel value="RG:" for="rg" />
+			<h:inputText id="paciente_rg" label="RG"
+				value="#{pacienteBean.rg}">
+			</h:inputText>
+		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{pacienteBean.filter}" value="Filtrar"></h:commandButton>		
+	</h:form>
 
 	<h:form>
 		<h:messages />

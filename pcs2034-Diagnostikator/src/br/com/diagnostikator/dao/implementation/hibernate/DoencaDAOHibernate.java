@@ -18,30 +18,27 @@ public class DoencaDAOHibernate implements DoencaDAO {
 	@Override
 	public void save(Doenca doenca) {
 		session.save(doenca);
-
 	}
 
 	@Override
 	public void delete(Doenca doenca) {
 		session.delete(doenca);
-
 	}
 
 	@Override
 	public void alter(Doenca doenca) {
 		session.update(doenca);
-
 	}
 
 	@Override
 	public Doenca getByID(long id) {
 		return (Doenca) session.get(Doenca.class, id);
-	}
-	
+	}	
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Doenca getByName(String nome) {
-		return (Doenca) session.createQuery("FROM Doenca d WHERE d.nome='" + nome + "' ").uniqueResult();
+	public List<Doenca> getByNome(String nome) {
+		return session.createQuery("FROM Doenca WHERE nome LIKE '%" + nome + "%' ").list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -49,5 +46,4 @@ public class DoencaDAOHibernate implements DoencaDAO {
 	public List<Doenca> list() {
 		return session.createCriteria(Doenca.class).list();
 	}
-
 }

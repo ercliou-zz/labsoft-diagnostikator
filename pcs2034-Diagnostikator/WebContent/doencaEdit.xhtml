@@ -27,13 +27,12 @@
 
 				<h:outputLabel value="Descricao:" for="descricao" />
 				<h:inputTextarea rows="5" id="doenca_descricao" label="Descricao"
-					value="#{doencaBean.doenca.descricao}" size="250" required="true"
-					requiredMessage="digite a descricao">
+					value="#{doencaBean.doenca.descricao}" size="250">
 				</h:inputTextarea>
 			</h:panelGrid>
 			
 			<h:selectManyCheckbox layout="pageDirection" id="doenca_sintomas"
-				value="#{doencaBean.sintomasSelecionados}">
+				value="#{doencaBean.sintomasSelecionados}" required="true">
 				<c:forEach var="sintoma" items="#{sintomaBean.list}">
 					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" />
 				</c:forEach>

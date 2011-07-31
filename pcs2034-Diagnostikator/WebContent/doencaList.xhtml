@@ -12,6 +12,19 @@
 		<h:commandButton action="#{doencaBean.create}" value="Novo"></h:commandButton>
 		#{loginBean.type}
 	</h:form>
+	
+	<h:form>							
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="doenca_nome" label="Nome"
+				value="#{doencaBean.nome}">				
+			</h:inputText>			
+		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{doencaBean.filter}" value="Filtrar"></h:commandButton>		
+	</h:form>
 
 	<h:form>
 		<h:messages />
@@ -31,19 +44,13 @@
 
 			<h:column>
 				<f:facet name="header">nome</f:facet>
-							#{doenca.nome}
-						</h:column>
-
-			<h:column>
-				<f:facet name="header">Descricao</f:facet>
-							#{doenca.descricao}
-						</h:column>
-
+					#{doenca.nome}
+			</h:column>		
 
 			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
 				<h:commandLink action="#{doencaBean.view}">view
-								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+					<f:setPropertyActionListener target="#{doencaBean.doenca}"
 						value="#{doenca}" />
 				</h:commandLink>
 			</h:column>
@@ -51,7 +58,7 @@
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink action="#{doencaBean.edit}">edit
-								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+					<f:setPropertyActionListener target="#{doencaBean.doenca}"
 						value="#{doenca}" />
 				</h:commandLink>
 			</h:column>
@@ -59,14 +66,13 @@
 			<h:column>
 				<f:facet name="header">Deletar</f:facet>
 				<h:commandLink action="#{doencaBean.delete}">delete
-								<f:setPropertyActionListener target="#{doencaBean.doenca}"
+					<f:setPropertyActionListener target="#{doencaBean.doenca}"
 						value="#{doenca}" />
 				</h:commandLink>
 			</h:column>
 
 		</h:dataTable>
 	</h:form>
-
 
 </h:body>
 

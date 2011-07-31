@@ -13,14 +13,6 @@ public class SintomaBR {
 		this.sintomaDAO = DAOFactory.createSintomaDAO();
 	}
 
-	public Sintoma getByName(String nome) {
-		return this.sintomaDAO.getByName(nome);
-	}
-	
-	public Sintoma getByID(long id){
-		return this.sintomaDAO.getByID(id);
-	}
-
 	public void save(Sintoma sintoma) {
 		long id = sintoma.getId();
 
@@ -33,10 +25,17 @@ public class SintomaBR {
 
 	public void delete(Sintoma sintoma) {
 		this.sintomaDAO.delete(sintoma);
+	}	
+
+	public List<Sintoma> getByNome(String nome) {
+		return this.sintomaDAO.getByNome(nome);
+	}
+	
+	public Sintoma getByID(long id){
+		return this.sintomaDAO.getByID(id);
 	}
 
 	public List<Sintoma> list() {
 		return this.sintomaDAO.list();
 	}
-
 }

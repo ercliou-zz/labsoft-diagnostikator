@@ -13,15 +13,6 @@ public class MedicoBR {
 		medicoDAO = DAOFactory.createMedicoDAO();
 	}
 
-	public Medico getByCpf(String cpf) {
-		return medicoDAO.getByCpf(cpf);
-	}
-	
-	public Medico getById(long id){
-		return medicoDAO.getById(id);
-	}
-
-		
 	public void save(Medico medico){
 		long id = medico.getId();
 		if(id == 0){
@@ -36,8 +27,35 @@ public class MedicoBR {
 		medicoDAO.delete(medico);
 	}
 	
-	public List<Medico> list(){
-		return medicoDAO.list();
+	public Medico getByCpf(String cpf) {
+		return medicoDAO.getByCpf(cpf);
 	}
 	
+	public Medico getById(long id){
+		return medicoDAO.getById(id);
+	}
+	
+	public Medico getByRg(String rg) {
+		return medicoDAO.getByRg(rg);
+	}
+	
+	public Medico getByCrm(String crm) {
+		return medicoDAO.getByCrm(crm);
+	}
+	
+	public List<Medico> getByEspecialidade(String especialidade) {
+		return medicoDAO.getByEspecialidade(especialidade);
+	}
+	
+	public List<Medico> getByNome(String nome) {
+		return medicoDAO.getByNome(nome);
+	}	
+	
+	public List<Medico> getByTipo(String tipo) {
+		return medicoDAO.getByTipo(tipo);
+	}	
+	
+	public List<Medico> list(){
+		return medicoDAO.list();
+	}	
 }

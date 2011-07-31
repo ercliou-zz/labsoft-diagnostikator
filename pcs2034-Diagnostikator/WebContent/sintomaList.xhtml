@@ -11,6 +11,19 @@
 	<h:form>
 		<h:commandButton action="#{sintomaBean.create}" value="Novo"></h:commandButton>
 	</h:form>
+	
+	<h:form>							
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome:" for="nome" />
+			<h:inputText id="sintoma_nome" label="Nome"
+				value="#{sintomaBean.nome}">				
+			</h:inputText>			
+		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{sintomaBean.filter}" value="Filtrar"></h:commandButton>		
+	</h:form>
 
 	<h:form>
 		<h:messages />
@@ -30,27 +43,21 @@
 
 			<h:column>
 				<f:facet name="header">nome</f:facet>
-							#{sintoma.nome}
-						</h:column>
-
-			<h:column>
-				<f:facet name="header">Descricao</f:facet>
-							#{sintoma.descricao}
-						</h:column>
+					#{sintoma.nome}
+			</h:column>			
 
 			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
 				<h:commandLink action="#{sintomaBean.view}">view
-								<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
+					<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
 						value="#{sintoma}" />
 				</h:commandLink>
 			</h:column>
 
-
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink action="#{sintomaBean.edit}">edit
-								<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
+					<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
 						value="#{sintoma}" />
 				</h:commandLink>
 			</h:column>
@@ -58,14 +65,13 @@
 			<h:column>
 				<f:facet name="header">Deletar</f:facet>
 				<h:commandLink action="#{sintomaBean.delete}">delete
-								<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
+					<f:setPropertyActionListener target="#{sintomaBean.sintoma}"
 						value="#{sintoma}" />
 				</h:commandLink>
 			</h:column>
 
 		</h:dataTable>
 	</h:form>
-
 
 </h:body>
 

@@ -26,22 +26,21 @@
 			</h:inputText>
 			
 			<h:outputLabel value="Nome do Medico:" for="nomeMedico" />
-			<h:inputTextarea id="consultaAgendada_nomeMedico" label="Nome do Medico"
+			<h:inputText id="consultaAgendada_nomeMedico" label="Nome do Medico"
 				value="#{consultaAgendadaBean.consultaAgendada.nomeMedico}" size="45" required="true"
 				requiredMessage="digite o nome do medico" >
-			</h:inputTextarea >
+			</h:inputText >
 			
 			<h:outputLabel value="Nome do Paciente:" for="nomePaciente" />
-			<h:inputTextarea id="consultaAgendada_nomePaciente" label="Nome do Paciente"
+			<h:inputText id="consultaAgendada_nomePaciente" label="Nome do Paciente"
 				value="#{consultaAgendadaBean.consultaAgendada.nomePaciente}" size="45" required="true"
 				requiredMessage="digite o nome do paciente" >
-			</h:inputTextarea >
+			</h:inputText >
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Status:" />
 			<h:selectOneRadio layout="pageDirection" id="consultaAgendada_status" value="#{consultaAgendadaBean.consultaAgendada.status}" >
-				<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />
-				<f:selectItem id="cancelada" itemLabel="Cancelada" itemValue="CANCELADA" />
+				<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />				
 				<f:selectItem id="confirmada" itemLabel="Confirmada" itemValue="CONFIRMADA" />
 			</h:selectOneRadio>
 			</h:panelGrid>

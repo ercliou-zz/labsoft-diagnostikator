@@ -11,6 +11,24 @@
 	<h:form>
 		<h:commandButton action="#{consultaAgendadaBean.create}" value="Novo"></h:commandButton>
 	</h:form>
+	
+	<h:form>				
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome do Paciente:" for="nomePaciente" />
+			<h:inputText id="consultaAgendada_nomePaciente" label="Nome do Paciente"
+				value="#{consultaAgendadaBean.nomePaciente}">				
+			</h:inputText>
+			
+			<h:outputLabel value="Nome do Medico" for="nomeMedico" />
+			<h:inputText id="consultaAgendada_nomeMedico" label="Nome do Medico"
+				value="#{consultaAgendadaBean.nomeMedico}">				
+			</h:inputText>			
+		
+		</h:panelGrid>			
+
+		<h:commandButton action="#{consultaAgendadaBean.filter}" value="Filtrar"></h:commandButton>		
+	</h:form>
 
 	<h:form>
 		<h:messages />
@@ -31,13 +49,18 @@
 
 			<h:column>
 				<f:facet name="header">Data</f:facet>
-							#{consultaAgendada.dataConsulta}
-						</h:column>
+					#{consultaAgendada.dataConsulta}
+			</h:column>
+						
+			<h:column>
+				<f:facet name="header">Nome do Medico</f:facet>
+					#{consultaAgendada.nomeMedico}
+			</h:column>
 
 			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
 				<h:commandLink action="#{consultaAgendadaBean.view}">view
-								<f:setPropertyActionListener
+					<f:setPropertyActionListener
 						target="#{consultaAgendadaBean.consultaAgendada}"
 						value="#{consultaAgendada}" />
 				</h:commandLink>
@@ -46,7 +69,7 @@
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink action="#{consultaAgendadaBean.edit}">edit
-								<f:setPropertyActionListener 
+					<f:setPropertyActionListener 
 						target="#{consultaAgendadaBean.consultaAgendada}"
 						value="#{consultaAgendada}" />
 				</h:commandLink>
@@ -55,16 +78,14 @@
 			<h:column>
 				<f:facet name="header">Deletar</f:facet>
 				<h:commandLink action="#{consultaAgendadaBean.delete}">delete
-								<f:setPropertyActionListener 
+					<f:setPropertyActionListener 
 						target="#{consultaAgendadaBean.consultaAgendada}"
 						value="#{consultaAgendada}" />
 				</h:commandLink>
 			</h:column>
 
-
 		</h:dataTable>
 	</h:form>
-
 
 </h:body>
 

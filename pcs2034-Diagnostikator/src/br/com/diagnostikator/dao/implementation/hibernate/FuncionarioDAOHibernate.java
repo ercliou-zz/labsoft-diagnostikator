@@ -29,7 +29,21 @@ public class FuncionarioDAOHibernate implements FuncionarioDAO {
 	public void alter(Funcionario user) {
 		session.update(user);
 	}
-
+	
+	@Override
+	public Funcionario getById(long id) {
+		return (Funcionario) session.get(Funcionario.class, id);
+	}	
+	
+	@Override
+	public Funcionario getByCpf(String cpf) {
+		return (Funcionario) session.createQuery("FROM Funcionario WHERE cpf='" + cpf + "' ").uniqueResult();
+	}
+	
+	@Override
+	public Funcionario getByRg(String rg) {
+		return (Funcionario) session.createQuery("FROM Funcionario WHERE rg='" + rg + "' ").uniqueResult();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -37,34 +51,15 @@ public class FuncionarioDAOHibernate implements FuncionarioDAO {
 		return session.createCriteria(Funcionario.class).list();
 	}
 	
-	@Override
-	public Funcionario getByCpf(String cpf) {
-		return (Funcionario) session.createQuery("FROM Funcionario u WHERE u.cpf='" + cpf + "' ").uniqueResult();
-	}
-	
-	@Override
-	public Funcionario getByRg(String rg) {
-		return (Funcionario) session.createQuery("FROM Funcionario u WHERE u.rg='" + rg + "' ").uniqueResult();
-	}
-
-	@Override
-	public Funcionario getById(long id) {
-		return (Funcionario) session.get(Funcionario.class, id);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Funcionario> getByNome(String nome) {
-		return session.createQuery("FROM Funcionario c WHERE c.nome LIKE '%" + nome + "%' ").list();
+		return session.createQuery("FROM Funcionario WHERE nome LIKE '%" + nome + "%' ").list();
 	}	
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Funcionario> getByTipo(String tipo) {
 		return session.createQuery("FROM Funcionario WHERE tipo LIKE '%" + tipo + "%' ").list();
-	}
-	
-	
-
-	
+	}	
 }

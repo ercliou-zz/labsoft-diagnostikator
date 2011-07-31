@@ -11,15 +11,7 @@ public class DoencaBR {
 
 	public DoencaBR() {
 		this.doencaDAO = DAOFactory.createDoencaDAO();
-	}
-
-	public Doenca getByName(String nome) {
-		return this.doencaDAO.getByName(nome);
-	}
-	
-	public Doenca getByID(long id){
-		return this.doencaDAO.getByID(id);
-	}
+	}	
 
 	public void save(Doenca doenca) {
 		long id = doenca.getId();
@@ -34,9 +26,16 @@ public class DoencaBR {
 	public void delete(Doenca doenca) {
 		this.doencaDAO.delete(doenca);
 	}
+	
+	public List<Doenca> getByNome(String nome) {
+		return this.doencaDAO.getByNome(nome);
+	}
+	
+	public Doenca getByID(long id){
+		return this.doencaDAO.getByID(id);
+	}
 
 	public List<Doenca> list() {
 		return this.doencaDAO.list();
 	}
-
 }

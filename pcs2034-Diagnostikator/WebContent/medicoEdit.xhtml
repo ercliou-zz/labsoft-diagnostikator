@@ -19,8 +19,16 @@
 
 			<h:outputLabel value="Nome:" for="nome" />
 			<h:inputText id="medico_nome" label="Nome"
-				value="#{medicoBean.medico.nome}">
+				value="#{medicoBean.medico.nome}" required="true" 
+				requiredMessage="digite o nome">
 				<f:validateLength minimum="2" maximum="45" />
+			</h:inputText>
+			
+			<h:outputLabel value="CRM:" for="crm" />
+			<h:inputText id="crm" label="CRM"
+				value="#{medicoBean.medico.crm}" size="40" required="true" 
+				requiredMessage="digite o crm" >
+				<f:validateLength minimum="5" maximum="5" />
 			</h:inputText>
 			
 			<h:outputLabel value="Cpf:" for="cpf" />
@@ -34,8 +42,7 @@
 			<h:inputText id="medico_rg" label="RG"
 				value="#{medicoBean.medico.rg}" size="15" required="true"
 				requiredMessage="digite o rg" >
-			</h:inputText>
-			
+			</h:inputText>			
 			
 			<h:outputLabel value="Endereço:" for="endereco" />
 			<h:inputText id="medico_endereco" label="Endereço"
@@ -45,18 +52,15 @@
 			
 			<h:outputLabel value="Data de Admissão: (dd/mm/aaaa)" for="dataAdmissao" />
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
-				value="#{medicoBean.medico.dataAdmissao}" size="40"  >
+				value="#{medicoBean.medico.dataAdmissao}" size="40" required="true" 
+				requiredMessage="digite a data de admissao" >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
-			</h:inputText>
-			
-			<h:outputLabel value="CRM:" for="crm" />
-			<h:inputText id="crm" label="CRM"
-				value="#{medicoBean.medico.crm}" size="40"  >
-			</h:inputText>				
+			</h:inputText>							
 			
 			<h:outputLabel value="Login:" for="login" />
 			<h:inputText id="login" label="Login"
-				value="#{medicoBean.medico.login}" size="40">
+				value="#{medicoBean.medico.login}" size="40" required="true" 
+				requiredMessage="digite o login">
 			</h:inputText>
 			
 			<h:outputLabel value="Senha:" for="senha" />
@@ -71,7 +75,7 @@
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Tipo:" />
-			<h:selectOneRadio layout="pageDirection" id="medico_tipo" value="#{medicoBean.medico.tipo}" >
+			<h:selectOneRadio layout="pageDirection" id="medico_tipo" value="#{medicoBean.medico.tipo}" required="true">
 				<f:selectItem id="especialista" itemLabel="Especialista" itemValue="ESPECIALISTA" />
 				<f:selectItem id="supervisor" itemLabel="Supervisor" itemValue="SUPERVISOR" />
 				<f:selectItem id="atendente" itemLabel="Atendente" itemValue="ATENDENTE" />
@@ -80,7 +84,7 @@
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Status:" />
-			<h:selectOneRadio layout="pageDirection" id="medico_status" value="#{medicoBean.medico.status}" >
+			<h:selectOneRadio layout="pageDirection" id="medico_status" value="#{medicoBean.medico.status}" required="true">
 				<f:selectItem id="inativo" itemLabel="Inativo" itemValue="INATIVO" />
 				<f:selectItem id="ativo" itemLabel="Ativo" itemValue="ATIVO" />
 				<f:selectItem id="afastado" itemLabel="Afastado" itemValue="AFASTADO" />
@@ -89,7 +93,7 @@
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Especialidade:" />
-			<h:selectOneRadio layout="pageDirection" id="medico_especialidade" value="#{medicoBean.medico.especialidade}" >
+			<h:selectOneRadio layout="pageDirection" id="medico_especialidade" value="#{medicoBean.medico.especialidade}" required="true">
 				<f:selectItem id="ginecologista" itemLabel="Ginecologista" itemValue="GINECOLOGISTA" />
 				<f:selectItem id="obstetra" itemLabel="Obstetra" itemValue="OBSTETRA" />
 			</h:selectOneRadio>

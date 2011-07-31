@@ -18,30 +18,27 @@ public class SintomaDAOHibernate implements SintomaDAO {
 	@Override
 	public void save(Sintoma sintoma) {
 		session.save(sintoma);
-
 	}
 
 	@Override
 	public void delete(Sintoma sintoma) {
 		session.delete(sintoma);
-
 	}
 
 	@Override
 	public void alter(Sintoma sintoma) {
 		session.update(sintoma);
-
 	}
 
 	@Override
 	public Sintoma getByID(long id) {
 		return (Sintoma) session.get(Sintoma.class, id);
-	}
-	
+	}	
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Sintoma getByName(String nome) {
-		return (Sintoma) session.createQuery("FROM Sintoma s WHERE s.nome='" + nome + "' ").uniqueResult();		
+	public List<Sintoma> getByNome(String nome) {
+		return session.createQuery("FROM Sintoma WHERE nome LIKE '%" + nome + "%' ").list();
 	}
 
 	@SuppressWarnings("unchecked")

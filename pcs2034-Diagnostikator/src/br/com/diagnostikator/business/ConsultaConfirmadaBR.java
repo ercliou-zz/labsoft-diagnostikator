@@ -17,11 +17,6 @@ public class ConsultaConfirmadaBR {
 		this.consultaConfirmadaDAO = DAOFactory.createConsultaConfirmadaDAO();
 	}
 
-	
-	public ConsultaConfirmada getByID(long id){
-		return this.consultaConfirmadaDAO.getByID(id);
-	}
-
 	public void save(ConsultaConfirmada consultaConfirmada) {
 		long id = consultaConfirmada.getId();
 
@@ -34,6 +29,10 @@ public class ConsultaConfirmadaBR {
 
 	public void delete(ConsultaConfirmada consultaConfirmada) {
 		this.consultaConfirmadaDAO.delete(consultaConfirmada);
+	}
+	
+	public ConsultaConfirmada getByID(long id){
+		return this.consultaConfirmadaDAO.getByID(id);
 	}
 
 	public List<ConsultaConfirmada> list() {
@@ -68,5 +67,4 @@ public class ConsultaConfirmadaBR {
 		}
 		return filtered;
 	}
-
 }

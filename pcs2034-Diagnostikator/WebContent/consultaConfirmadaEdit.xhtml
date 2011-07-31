@@ -19,12 +19,12 @@
 		<h:panelGrid columns="2">
 		
 			<h:outputLabel value="Informação:" for="informacao" />
-			<h:inputText id="informacao" label="Informação"
-				value="#{consultaConfirmadaBean.consultaConfirmada.informacao}">
-			</h:inputText>
+			<h:inputTextarea rows="5" id="informacao" label="Informação"
+				value="#{consultaConfirmadaBean.consultaConfirmada.informacao}" size="250" required="true">
+			</h:inputTextarea>
 			
 			<h:outputLabel value="Receita:" for="receita" />
-			<h:inputTextarea rows="10" id="receita" label="Receita"
+			<h:inputTextarea rows="5" id="receita" label="Receita"
 				value="#{consultaConfirmadaBean.consultaConfirmada.receita}" size="250" >
 			</h:inputTextarea >
 			

@@ -14,22 +14,68 @@ import br.com.diagnostikator.model.Sintoma;
 public class DoencaBean {
 
 	private Doenca doenca = new Doenca();
+	private String nome = null;	
+	private boolean listaTudo = true;
 	private List<Doenca> list;
 	private List<String> sintomasSelecionados;
 	private String sintomaIteracao;
 
+	//Getters and Setters
 	public Doenca getDoenca() {
 		return this.doenca;
-	}
-	
-	public String list() {
-		return "doencaList";
 	}
 
 	public void setDoenca(Doenca doenca) {
 		this.doenca = doenca;
+	}	
+	
+	public String getNome() {
+		return nome;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public boolean isListaTudo() {
+		return listaTudo;
+	}
+
+	public void setListaTudo(boolean listaTudo) {
+		this.listaTudo = listaTudo;
+	}
+
+	public List<String> getSintomasSelecionados() {
+		return sintomasSelecionados;
+	}
+
+	public void setSintomasSelecionados(List<String> sintomasSelecionados) {
+		this.sintomasSelecionados = sintomasSelecionados;
+	}
+
+	public String getSintomaIteracao() {
+		return sintomaIteracao;
+	}
+
+	public void setSintomaIteracao(String sintomaIteracao) {
+		this.sintomaIteracao = sintomaIteracao;
+	}
+	
+	public List<Doenca> getList() {
+		if (this.list == null || this.list.isEmpty()) {
+			if (listaTudo){
+				DoencaBR doencaBR = new DoencaBR();
+				this.list = doencaBR.list();
+			}
+		}
+		return this.list;
+	}
+
+	public void setList(List<Doenca> list) {
+		this.list = list;
+	}
+
+	//Actions
 	public String create() {
 		this.doenca = new Doenca();
 		return "doencaEdit";
@@ -59,7 +105,6 @@ public class DoencaBean {
 		return null;
 	}
 	
-
 	public String save() {
 		DoencaBR doencaBR = new DoencaBR();
 		SintomaBR sintomaBR = new SintomaBR();
@@ -74,33 +119,21 @@ public class DoencaBean {
 		doencaBR.save(this.doenca);
 		return "doencaSaved";
 	}
-
-	public List<Doenca> getList() {
-		if (this.list == null || this.list.isEmpty()) {
-			DoencaBR doencaBR = new DoencaBR();
-			this.list = doencaBR.list();
-		}
-		return this.list;
-	}
-
-	public void setList(List<Doenca> list) {
-		this.list = list;
-	}
-
-	public List<String> getSintomasSelecionados() {
-		return sintomasSelecionados;
-	}
-
-	public void setSintomasSelecionados(List<String> sintomasSelecionados) {
-		this.sintomasSelecionados = sintomasSelecionados;
-	}
-
-	public String getSintomaIteracao() {
-		return sintomaIteracao;
-	}
-
-	public void setSintomaIteracao(String sintomaIteracao) {
-		this.sintomaIteracao = sintomaIteracao;
-	}
 	
+	public String list() {
+		return "doencaList";
+	}
+
+	public String filter() {
+		DoencaBR doencaBR = new DoencaBR();
+		list = new ArrayList<Doenca>();
+		listaTudo = true;
+		
+		if (nome != null && !nome.equals("")){			
+			list = doencaBR.getByNome(nome);
+			listaTudo = false;
+		}				
+		
+		return "doencaList";
+	}			
 }
