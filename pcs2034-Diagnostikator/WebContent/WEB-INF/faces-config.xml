@@ -21,7 +21,7 @@
     <managed-bean>
     	<managed-bean-name>loginBean</managed-bean-name>
     	<managed-bean-class>br.com.diagnostikator.web.LoginBean</managed-bean-class>
-    	<managed-bean-scope>request</managed-bean-scope>
+    	<managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
     <managed-bean>
@@ -64,6 +64,12 @@
     	<managed-bean-name>prontuarioBean</managed-bean-name>
     	<managed-bean-class>br.com.diagnostikator.web.ProntuarioBean</managed-bean-class>
     	<managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>  
+    </managed-bean> 
+    
+    <managed-bean>
+    	<managed-bean-name>sessionLogin</managed-bean-name>
+    	<managed-bean-class>br.com.diagnostikator.web.SessionLogin</managed-bean-class>
+    	<managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
     
 </faces-config>
