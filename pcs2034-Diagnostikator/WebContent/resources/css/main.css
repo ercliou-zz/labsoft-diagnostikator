@@ -13,36 +13,30 @@ body {
 
 #middle {
 	width: 100%;
-	background-color: #AAAAAA;
-	height: 500px;
+	background-color: #EEEEEE;
 }
 
 #header {
 	width: 100%;
 	height: 120px;
-	background-color: #FF0000;
+	background-color: #FFFFCC;
 }
 
 
 #sidebar {
 	float: left;
 	width: 175px;
-	height: 100%;
-	padding-top: 120px;
-	padding-bottom: 30px;
-	background-color: #0000FF;
+	background-color: #CCDDFF;
 }
 
 #content {
-	float: left;
-	background-color: #505050;
 }
 
 #footer {
 	clear:both;
 	width: 100%;
 	height: 30px;
-	background-color: #00FF00;
+	background-color: #A6FFD2;
 	
 }
 

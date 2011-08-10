@@ -5,51 +5,13 @@
 	>
 	
 <head>
-<title>Jsp Frameset</title>
-<link href="resources/css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-//nao tirar comentario que ta embaixo, for backward compatibility
-//<![CDATA[
-function updateObjectIframe(which) {
-	document.getElementById('content').innerHTML = '<object id="foo" name="foo" type="text/html" data="'+which.href+'"><\/object>';
-}
-
-function ahah(url, target) {
-	document.getElementById(target).innerHTML = ' Fetching data...';
-	if (window.XMLHttpRequest) {
-		req = new XMLHttpRequest();
-	} else if (window.ActiveXObject) {
-		req = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	if (req != undefined) {
-		req.onreadystatechange = function() {
-			ahahDone(url, target);
-		};
-		req.open("GET", url, true);
-		req.send("");
-	}
-}
-
-function ahahDone(url, target) {
-	if (req.readyState == 4) { // only if req is "loaded"
-		if (req.status == 200) { // only if "OK"
-			document.getElementById(target).innerHTML = req.responseText;
-		} else {
-			document.getElementById(target).innerHTML = " AHAH Error:\n"
-					+ req.status + "\n" + req.statusText;
-		}
-	}
-}
-
-function load(name, div) {
-	ahah(name, div);
-	return false;
-}
-//]]>
-</script>
-
+	<title>DIAGNOSTIKATOR</title>
+	<script type="text/javascript" src="resources/js/jquery-1.6.1.js"></script>
+	<script type="text/javascript" src="resources/js/util.js"></script>
+	<link href="resources/css/main.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+
+<body onload="initializeSizes()">
 	
 	<div id="main_container">
 		<div id="header"></div>
@@ -61,11 +23,14 @@ function load(name, div) {
 						onclick="updateObjectIframe(this); return false;">VC EH ADMIN !!</a>
 				</h:panelGroup>
 				
-				<a href="usuarioList.jsf" onclick="updateObjectIframe(this); return false;">usuarios</a>
-				<a href="pacienteList.jsf" target="content">paciente</a>
-				<a href="doencaList.jsf" onclick="updateObjectIframe(this); return false;">doenca</a>
-				<a href="sintomaList.jsf" onclick="updateObjectIframe(this); return false;">sintomas</a>
-			<h:inputTextarea ></h:inputTextarea>
+				<div class="sidebar_button"><a href="consultaConfirmadaList.jsf" onclick="loadToContent(this); return false;">Atendimento</a></div>
+				<div class="sidebar_button"><a href="consultaAgendadaList.jsf" onclick="loadToContent(this); return false;">Consultas</a></div>
+				<div class="sidebar_button"><a href="prontuarioList.jsf" onclick="loadToContent(this); return false;">Prontuario</a></div>
+				<div class="sidebar_button"><a href="funcionarioList.jsf" onclick="loadToContent(this); return false;">Funcionario</a></div>
+				<div class="sidebar_button"><a href="medicoList.jsf" onclick="loadToContent(this); return false;">Medico</a></div>
+				<div class="sidebar_button"><a href="pacienteList.jsf" onclick="loadToContent(this); return false;">Paciente</a></div>
+				<div class="sidebar_button"><a href="doencaList.jsf" onclick="loadToContent(this); return false;">Doenca</a></div>
+				<div class="sidebar_button"><a href="sintomaList.jsf" onclick="loadToContent(this); return false;">Sintoma</a></div>
 
 			</div>
 			<div id="content"></div>
