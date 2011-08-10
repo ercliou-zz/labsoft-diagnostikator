@@ -17,12 +17,12 @@
 		
 			<h:outputLabel value="Nome do Paciente:" for="nomePaciente" />
 			<h:inputText id="consultaAgendada_nomePaciente" label="Nome do Paciente"
-				value="#{consultaAgendadaBean.nomePaciente}">				
+				value="#{consultaAgendadaBean.consultaAgendada.paciente.nome}">				
 			</h:inputText>
 			
 			<h:outputLabel value="Nome do Medico" for="nomeMedico" />
 			<h:inputText id="consultaAgendada_nomeMedico" label="Nome do Medico"
-				value="#{consultaAgendadaBean.nomeMedico}">				
+				value="#{consultaAgendadaBean.consultaAgendada.medico.nome}">				
 			</h:inputText>			
 		
 		</h:panelGrid>			
@@ -54,7 +54,7 @@
 						
 			<h:column>
 				<f:facet name="header">Nome do Medico</f:facet>
-					#{consultaAgendada.nomeMedico}
+					#{consultaAgendada.medico.nome}
 			</h:column>
 
 			<h:column>

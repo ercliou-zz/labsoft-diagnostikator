@@ -6,6 +6,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ConsultaAgendadaBR;
+import br.com.diagnostikator.business.MedicoBR;
+import br.com.diagnostikator.business.PacienteBR;
 import br.com.diagnostikator.model.ConsultaAgendada;
 
 @ManagedBean(name = "consultaAgendadaBean")
@@ -14,12 +16,32 @@ public class ConsultaAgendadaBean {
 	private ConsultaAgendada consultaAgendada = new ConsultaAgendada();
 	private String nomePaciente = null;
 	private String nomeMedico = null;
+	
+	private String pacienteId;
+	private String medicoId;
+	
 	private boolean listaTudo = true;
 	private List<ConsultaAgendada> list;
 
 	//Getters and Setters
 	public ConsultaAgendada getConsultaAgendada() {
 		return consultaAgendada;
+	}
+
+	public String getPacienteId() {
+		return pacienteId;
+	}
+
+	public void setPacienteId(String pacienteId) {
+		this.pacienteId = pacienteId;
+	}
+
+	public String getMedicoId() {
+		return medicoId;
+	}
+
+	public void setMedicoId(String medicoId) {
+		this.medicoId = medicoId;
 	}
 
 	public void setConsultaAgendada(ConsultaAgendada consultaAgendada) {
@@ -91,6 +113,12 @@ public class ConsultaAgendadaBean {
 	public String save() {
 		
 		ConsultaAgendadaBR consultaAgendadaBR = new ConsultaAgendadaBR();
+		
+		MedicoBR medicoBR = new MedicoBR();
+		PacienteBR pacienteBR = new PacienteBR();
+		this.consultaAgendada.setMedico(medicoBR.getById(Long.parseLong(medicoId)));
+		this.consultaAgendada.setPaciente(pacienteBR.getById(Long.parseLong(pacienteId)));
+		
 		consultaAgendadaBR.save(this.consultaAgendada);
 
 		return "consultaAgendadaSaved";

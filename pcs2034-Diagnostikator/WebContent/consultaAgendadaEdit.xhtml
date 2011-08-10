@@ -25,17 +25,23 @@
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
 			</h:inputText>
 			
-			<h:outputLabel value="Nome do Medico:" for="nomeMedico" />
-			<h:inputText id="consultaAgendada_nomeMedico" label="Nome do Medico"
-				value="#{consultaAgendadaBean.consultaAgendada.nomeMedico}" size="45" required="true"
-				requiredMessage="digite o nome do medico" >
-			</h:inputText >
+			<h:outputLabel value="Medico:" for="consulta_medico" />
 			
-			<h:outputLabel value="Nome do Paciente:" for="nomePaciente" />
-			<h:inputText id="consultaAgendada_nomePaciente" label="Nome do Paciente"
-				value="#{consultaAgendadaBean.consultaAgendada.nomePaciente}" size="45" required="true"
-				requiredMessage="digite o nome do paciente" >
-			</h:inputText >
+			<h:selectOneListbox layout="pageDirection" id="consulta_medico"
+				value="#{consultaAgendadaBean.medicoId}" required="true">
+				<c:forEach var="medico" items="#{medicoBean.list}">
+					<f:selectItem itemLabel="#{medico.nome}" itemValue="#{medico.id}" />
+				</c:forEach>
+			</h:selectOneListbox>
+			
+			<h:outputLabel value="Paciente:" for="consulta_paciente" />
+			
+			<h:selectOneListbox layout="pageDirection" id="consulta_paciente"
+				value="#{consultaAgendadaBean.pacienteId}" required="true">
+				<c:forEach var="paciente" items="#{pacienteBean.list}">
+					<f:selectItem itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+				</c:forEach>
+			</h:selectOneListbox>
 			
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Status:" />

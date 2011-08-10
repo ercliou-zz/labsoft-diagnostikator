@@ -2,9 +2,12 @@ package br.com.diagnostikator.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +17,14 @@ public class ConsultaAgendada {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String nomePaciente;	
-	private String nomeMedico;	
+	
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Paciente.class )
+	@JoinColumn(name="consulta_paciente_fk")
+	private Paciente paciente;
+	
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Medico.class )
+	@JoinColumn(name="consulta_medico_fk")
+	private Medico medico;	
 	private Date dataConsulta;
 	private String status;
 	
@@ -27,20 +36,21 @@ public class ConsultaAgendada {
 		this.id = id;
 	}
 	
-	public String getNomePaciente() {
-		return nomePaciente;
-	}
-	
-	public void setNomePaciente(String nomePaciente) {
-		this.nomePaciente = nomePaciente;
+
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public String getNomeMedico() {
-		return nomeMedico;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
-	public void setNomeMedico(String nomeMedico) {
-		this.nomeMedico = nomeMedico;
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
 	public Date getDataConsulta() {
