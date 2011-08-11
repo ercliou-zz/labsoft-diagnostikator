@@ -6,6 +6,8 @@ import org.hibernate.Session;
 
 import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
 import br.com.diagnostikator.model.ConsultaConfirmada;
+import br.com.diagnostikator.model.Funcionario;
+import br.com.diagnostikator.model.Prontuario;
 
 public class ConsultaConfirmadaDAOHibernate implements ConsultaConfirmadaDAO {
 
@@ -43,6 +45,13 @@ public class ConsultaConfirmadaDAOHibernate implements ConsultaConfirmadaDAO {
 	@Override
 	public List<ConsultaConfirmada> list() {
 		return session.createCriteria(ConsultaConfirmada.class).list();
+	}
+	
+	//TODO
+	public Prontuario getProntuarioByID(long id){
+		List<Prontuario> prontuarios = (List<Prontuario>) session.createQuery("FROM Prontuario");
+		
+		return null;
 	}
 
 }
