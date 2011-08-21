@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -51,10 +51,20 @@
 				<f:facet name="header">Data</f:facet>
 					#{consultaAgendada.dataConsulta}
 			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+					#{consultaAgendada.status}
+			</h:column>
 						
 			<h:column>
-				<f:facet name="header">Nome do Medico</f:facet>
+				<f:facet name="header">Médico</f:facet>
 					#{consultaAgendada.medico.nome}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Paciente</f:facet>
+					#{consultaAgendada.paciente.nome}
 			</h:column>
 
 			<h:column>
@@ -78,6 +88,15 @@
 			<h:column>
 				<f:facet name="header">Deletar</f:facet>
 				<h:commandLink action="#{consultaAgendadaBean.delete}">delete
+					<f:setPropertyActionListener 
+						target="#{consultaAgendadaBean.consultaAgendada}"
+						value="#{consultaAgendada}" />
+				</h:commandLink>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Confirmar</f:facet>
+				<h:commandLink action="#{consultaAgendadaBean.confirm}">confirm
 					<f:setPropertyActionListener 
 						target="#{consultaAgendadaBean.consultaAgendada}"
 						value="#{consultaAgendada}" />
