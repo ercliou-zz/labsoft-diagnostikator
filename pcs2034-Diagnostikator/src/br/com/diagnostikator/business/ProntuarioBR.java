@@ -40,7 +40,7 @@ public class ProntuarioBR {
 		List<Prontuario> full = prontuarioDAO.list();
 		List<Prontuario> filtered = new ArrayList<Prontuario>();
 		for (Prontuario prontuario : full) {
-			if(prontuario.getMedico().getId() == idMedico){
+			if(prontuario.getMedicoPai().getId() == idMedico){
 				filtered.add(prontuario);
 			}
 		}

@@ -2,6 +2,7 @@ package br.com.diagnostikator.dao.implementation.hibernate;
 
 import java.util.List;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 
 import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
@@ -47,11 +48,17 @@ public class ConsultaConfirmadaDAOHibernate implements ConsultaConfirmadaDAO {
 		return session.createCriteria(ConsultaConfirmada.class).list();
 	}
 	
-	//TODO
+
 	public Prontuario getProntuarioByID(long id){
-		List<Prontuario> prontuarios = (List<Prontuario>) session.createQuery("FROM Prontuario");
+		SQLQuery query = session.createSQLQuery("SELECT prontuario.* from prontuario inner join consultaConfirmada on consultaConfirmada.prontuario_fk = prontuario.id where prontuario.id=:id");
+		//where owner.name=:username
+		query.addEntity(Prontuario.class);
+		query.setInteger("id",(int)id);
+		Prontuario prontuario =(Prontuario)query.uniqueResult();
+		//Prontuario prontuario = (Prontuario) session.createQuery("FROM Prontuario p, ConsultaConfirmada c WHERE c.prontuario_fk = p.id").uniqueResult();
+		// AND p.id =' "+id+"'
 		
-		return null;
+		return prontuario;
 	}
 
 }

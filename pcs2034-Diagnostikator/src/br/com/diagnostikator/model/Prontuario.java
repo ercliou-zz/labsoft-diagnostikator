@@ -47,19 +47,21 @@ public class Prontuario {
 		this.consultasConfirmadas = consultasConfirmadas;
 	}
 
-	public Paciente getPaciente() {
+
+
+	public Paciente getPacientePai() {
 		return pacientePai;
 	}
 
-	public void setPaciente(Paciente pacientePai) {
+	public void setPacientePai(Paciente pacientePai) {
 		this.pacientePai = pacientePai;
 	}
 
-	public Medico getMedico() {
+	public Medico getMedicoPai() {
 		return medicoPai;
 	}
 
-	public void setMedico(Medico medicoPai) {
+	public void setMedicoPai(Medico medicoPai) {
 		this.medicoPai = medicoPai;
 	}
 

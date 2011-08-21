@@ -54,7 +54,7 @@ public class PacienteBR {
 		List<Paciente> full = this.list();
 		for (Paciente paciente : full) {
 			for(Prontuario prontuario : paciente.getProntuarios()){
-				if(prontuario.getMedico().getId() == idMedico){
+				if(prontuario.getMedicoPai().getId() == idMedico){
 					filtered.add(paciente);
 					break;
 				}

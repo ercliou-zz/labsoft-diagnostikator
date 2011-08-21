@@ -7,6 +7,7 @@ import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
 import br.com.diagnostikator.model.Doenca;
+import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.model.Sintoma;
 import br.com.diagnostikator.util.DAOFactory;
 
@@ -61,10 +62,14 @@ public class ConsultaConfirmadaBR {
 		List<ConsultaConfirmada> filtered = new ArrayList<ConsultaConfirmada>() ;
 		List<ConsultaConfirmada> full = this.list();
 		for (ConsultaConfirmada consultaConfirmada : full) {
-			if(consultaConfirmada.getProntuario().getMedico().getId() == idMedico && consultaConfirmada.getProntuario().getPaciente().getId() == idPaciente){
+			if(consultaConfirmada.getProntuario().getMedicoPai().getId() == idMedico && consultaConfirmada.getProntuario().getPacientePai().getId() == idPaciente){
 				filtered.add(consultaConfirmada);
 			}
 		}
 		return filtered;
+	}
+	
+	public Prontuario getProntuarioByID(long id){
+		return this.consultaConfirmadaDAO.getProntuarioByID(id);
 	}
 }

@@ -69,8 +69,8 @@ public class ProntuarioBean {
 			list.add(consultaConfirmadaBR.getByID(consultaConfirmadaIdLong));
 		}
 		prontuario.setConsultasConfirmadas(list);		
-		prontuario.setMedico(medico);
-		prontuario.setPaciente(paciente);
+		prontuario.setMedicoPai(medico);
+		prontuario.setPacientePai(paciente);
 		prontuarioBR.save(this.prontuario);
 
 		return "prontuarioSaved";
