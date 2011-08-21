@@ -14,5 +14,6 @@ public interface MedicoDAO{
 	public List<Medico> getByEspecialidade(String especialidade);
 	public List<Medico> getByNome(String nome);
 	public List<Medico> getByTipo(String tipo);
+	public Medico getByLogin(String login);
 	public List<Medico> list();
 }
