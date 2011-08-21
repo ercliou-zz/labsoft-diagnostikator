@@ -5,6 +5,7 @@
 
 <h:head>
 	<title>Cadastro de Funcionario</title>
+	<script src="resources/js/datetimepicker_css.js"></script>
 </h:head>
 
 <h:body>
@@ -44,12 +45,15 @@
 				requiredMessage="digite o endereço" >
 			</h:inputText>
 			
-			<h:outputLabel value="Data de Admissão: (dd/mm/aaaa)" for="dataAdmissao" />
+			<h:outputLabel value="Data de Admissão: " for="dataAdmissao" />
+			<h:panelGrid columns="2">
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
 				value="#{funcionarioBean.funcionario.dataAdmissao}" size="40" required="true"
 				requiredMessage="digite a data de admissao" >
-				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
+				<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date"/>  
 			</h:inputText>
+			<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('funcionarioEditForm:dataAdmissao','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+			</h:panelGrid>
 			
 			<h:outputLabel value="Login:" for="login" />
 			<h:inputText id="login" label="Login"

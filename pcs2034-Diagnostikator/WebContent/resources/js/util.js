@@ -13,5 +13,11 @@ function initializeSizes(){
 	$("#sidebar").css("height",h);
 	$("#middle").css("height",h);
 	$("#content").css("height",h);
+	
+}
+
+function loadDatePickers(){
+	
+	
 }
 //]]>

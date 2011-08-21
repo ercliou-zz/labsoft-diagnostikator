@@ -6,9 +6,10 @@
 
 <h:head>
 	<title>Cadastro de Consulta</title>
+	<script src="resources/js/datetimepicker_css.js"></script>
 </h:head>
 
-<h:body>
+<h:body onload="loaddatepicker();">
 	<h1>Cadastro de Consulta</h1>
 	<h:form id="consultaAgendadaEditForm">
 
@@ -18,44 +19,51 @@
 
 		<h:panelGrid columns="2">
 
-			<h:outputLabel value="DataConsulta: (dd/mm/aaaa)" for="dataConsulta" />
-			<h:inputText id="consultaAgendada_dataConsulta" label="DataConsulta"
-				value="#{consultaAgendadaBean.consultaAgendada.dataConsulta}" size="45" required="true"
-				requiredMessage="Digite a data e o horario" >
-				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
-			</h:inputText>
+			<h:outputLabel value="Data da Consulta: " for="dataConsulta" />
+			<h:panelGrid columns="2">
+				<h:inputText id="consultaAgendada_dataConsulta"
+					label="DataConsulta"
+					value="#{consultaAgendadaBean.consultaAgendada.dataConsulta}"
+					size="45" required="true"
+					requiredMessage="Digite a data e o horario">
+					<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date" />
+				</h:inputText>
+				<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('consultaAgendadaEditForm:consultaAgendada_dataConsulta','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+			</h:panelGrid>
 			
 			<h:outputLabel value="Medico:" for="consulta_medico" />
-			
+
 			<h:selectOneListbox layout="pageDirection" id="consulta_medico"
 				value="#{consultaAgendadaBean.medicoId}" required="true">
 				<c:forEach var="medico" items="#{medicoBean.list}">
 					<f:selectItem itemLabel="#{medico.nome}" itemValue="#{medico.id}" />
 				</c:forEach>
 			</h:selectOneListbox>
-			
+
 			<h:outputLabel value="Paciente:" for="consulta_paciente" />
-			
+
 			<h:selectOneListbox layout="pageDirection" id="consulta_paciente"
 				value="#{consultaAgendadaBean.pacienteId}" required="true">
 				<c:forEach var="paciente" items="#{pacienteBean.list}">
-					<f:selectItem itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+					<f:selectItem itemLabel="#{paciente.nome}"
+						itemValue="#{paciente.id}" />
 				</c:forEach>
 			</h:selectOneListbox>
-			
-			<h:panelGrid columns="3">
-			<h:outputLabel value="Status:" />
-			<h:selectOneRadio layout="pageDirection" id="consultaAgendada_status" value="#{consultaAgendadaBean.consultaAgendada.status}" >
-				<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />				
-				<f:selectItem id="confirmada" itemLabel="Confirmada" itemValue="CONFIRMADA" />
-			</h:selectOneRadio>
-			</h:panelGrid>
-			
+
+				<h:outputLabel value="Status:" />
+				<h:selectOneRadio layout="pageDirection"
+					id="consultaAgendada_status"
+					value="#{consultaAgendadaBean.consultaAgendada.status}">
+					<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />
+					<f:selectItem id="confirmada" itemLabel="Confirmada"
+						itemValue="CONFIRMADA" />
+				</h:selectOneRadio>
+
 		</h:panelGrid>
 
-		<h:commandButton action="#{consultaAgendadaBean.save}" value="Salvar"/>
-		
-		<h:commandButton action="#{consultaAgendadaBean.list}" value="Voltar"/>
+		<h:commandButton action="#{consultaAgendadaBean.save}" value="Salvar" />
+
+		<h:commandButton action="#{consultaAgendadaBean.list}" value="Voltar" />
 
 	</h:form>
 </h:body>
