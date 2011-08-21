@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,8 +36,7 @@ public class Paciente {
 
 	private String sexo;
 
-	@OneToMany
-	@JoinColumn(name = "paciente_fk")
+	@OneToMany(mappedBy="pacientePai")
 	private List<Prontuario> prontuarios;
 
 	public long getId() {

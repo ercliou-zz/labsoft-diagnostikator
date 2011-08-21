@@ -32,8 +32,8 @@ public class ConsultaConfirmada {
 	@JoinColumn(name="diagnostico_fk")
 	private Diagnostico diagnostico;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="prontuario_fk", insertable=false, updatable=false)
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Prontuario.class )
+	@JoinColumn(name="consconf_prontuario_fk")
 	private Prontuario prontuario;
 
 	public long getId() {

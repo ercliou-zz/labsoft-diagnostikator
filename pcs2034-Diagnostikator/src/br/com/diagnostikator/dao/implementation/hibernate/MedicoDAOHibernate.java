@@ -63,6 +63,11 @@ public class MedicoDAOHibernate implements MedicoDAO {
 		return session.createQuery("FROM Medico WHERE tipo LIKE '%" + tipo + "%' ").list();		
 	}
 	
+	@Override
+	public Medico getByLogin(String login) {
+			return (Medico) session.createQuery("FROM Medico WHERE login='" + login + "' ").uniqueResult();
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> list() {

@@ -55,6 +55,10 @@ public class MedicoBR {
 		return medicoDAO.getByTipo(tipo);
 	}	
 	
+	public Medico getByLogin(String login) {
+		return medicoDAO.getByLogin(login);
+	}	
+	
 	public List<Medico> list(){
 		return medicoDAO.list();
 	}	
