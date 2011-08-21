@@ -171,14 +171,14 @@ public class ConsultaAgendadaBean {
 		List<Prontuario> prontuarios = prontuarioBR.list(medico.getId());
 		List<Prontuario> prontuariosFiltrados = new ArrayList<Prontuario>();
 		for (Prontuario prontuario : prontuarios) {
-			if (prontuario.getPaciente().getId() == paciente.getId()) {
+			if (prontuario.getPacientePai().getId() == paciente.getId()) {
 				prontuariosFiltrados.add(prontuario);
 			}
 		}
 		if (prontuariosFiltrados.isEmpty()) {
 			Prontuario novoProntuario = new Prontuario();
-			novoProntuario.setMedico(medico);
-			novoProntuario.setPaciente(this.consultaAgendada.getPaciente());
+			novoProntuario.setMedicoPai(medico);
+			novoProntuario.setPacientePai(this.consultaAgendada.getPaciente());
 			prontuarioBR.save(novoProntuario);
 			consultaConfirmada.setProntuario(novoProntuario);
 		} else {

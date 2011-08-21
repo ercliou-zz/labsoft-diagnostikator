@@ -74,6 +74,10 @@ public class ConsultaConfirmadaBean {
 		return "consultaConfirmadaSaved";
 	}
 	
+	public String confirm() {
+		return "";
+	}
+	
 	public String list(){
 		return "consultaConfirmadaList";
 	}
