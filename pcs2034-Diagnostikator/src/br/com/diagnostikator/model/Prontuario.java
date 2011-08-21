@@ -18,16 +18,15 @@ public class Prontuario {
 	@GeneratedValue
 	private long id;
 	
-	@OneToMany
-	@JoinColumn(name="prontuario_fk")
+	@OneToMany(mappedBy="prontuario")
 	private List<ConsultaConfirmada> consultasConfirmadas;	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="paciente_fk", insertable=false, updatable=false)
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Paciente.class )
+	@JoinColumn(name="prontuario_paciente_fk")
 	private Paciente pacientePai;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="medico_fk", insertable=false, updatable=false)
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Medico.class )
+	@JoinColumn(name="prontuario_medico_fk")
 	private Medico medicoPai;
 
 	public long getId() {
@@ -47,21 +46,19 @@ public class Prontuario {
 		this.consultasConfirmadas = consultasConfirmadas;
 	}
 
-
-
-	public Paciente getPacientePai() {
+	public Paciente getPaciente() {
 		return pacientePai;
 	}
 
-	public void setPacientePai(Paciente pacientePai) {
+	public void setPaciente(Paciente pacientePai) {
 		this.pacientePai = pacientePai;
 	}
 
-	public Medico getMedicoPai() {
+	public Medico getMedico() {
 		return medicoPai;
 	}
 
-	public void setMedicoPai(Medico medicoPai) {
+	public void setMedico(Medico medicoPai) {
 		this.medicoPai = medicoPai;
 	}
 
