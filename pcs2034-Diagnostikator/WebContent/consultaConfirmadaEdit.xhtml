@@ -6,6 +6,16 @@
 
 <h:head>
 	<title>Realização de Consulta</title>
+	
+	<script language="javascript">
+
+		function init(){
+			document.getElementById("consultaConfirmadaForm:statusHidden").value = 'edit';
+		}
+		
+		window.onload=init;
+	</script>
+ 	
 </h:head>
 
 <h:body>
@@ -38,10 +48,13 @@
 			<h:commandButton action="#{consultaConfirmadaBean.gerarDiagnostico}" value="Gerar Diagnostico"/>
 			
 		</h:panelGrid>
+		
+		<h:inputHidden id="statusHidden" 
+				value="#{consultaConfirmadaBean.status}" ></h:inputHidden>
 
 		<h:commandButton action="#{consultaConfirmadaBean.save}" value="Salvar"/>
-		
-		<h:commandButton action="#{consultaConfirmada.list}" value="Voltar"/>
+		<h:commandButton action="#{consultaConfirmadaBean.imprimir}" value="Imprimir"/>
+		<h:commandButton action="#{consultaConfirmadaBean.list}" value="Voltar"/>
 
 	</h:form>
 </h:body>

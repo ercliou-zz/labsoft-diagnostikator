@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" >
+	
+	<head>
+	
+	</head>
+	<body>
+	<h:form>
+		<b>CONSULTA</b><br/><br/>
+		<b>Data:</b> #{consultaConfirmadaBean.consultaConfirmada.data} <br/>
+		------------------------------------------------------------------------------<br/>
+		<b>Dados do Medico</b><br/>
+		<b>Nome:</b> #{consultaConfirmadaBean.prontuario.medicoPai.nome}<br/>
+		<b>CRM:</b> #{consultaConfirmadaBean.prontuario.medicoPai.crm}<br/>
+		------------------------------------------------------------------------------<br/>
+		<b>Dados do Paciente</b><br/>
+		<b>Nome:</b> #{consultaConfirmadaBean.prontuario.pacientePai.nome}<br/>
+		<b>CPF:</b> #{consultaConfirmadaBean.prontuario.pacientePai.cpf}<br/>
+		------------------------------------------------------------------------------<br/>
+		<b>Sintomas:</b><br/> 
+		<c:forEach var="sintoma" items="#{consultaConfirmadaBean.consultaConfirmada.sintomas}">
+				- #{sintoma.nome} <br/>
+		</c:forEach><br/>
+		<b>Doenca Diagnosticada:</b> #{consultaConfirmadaBean.consultaConfirmada.diagnostico.doencas} ??
+		<br/><br/>
+		<b>Observacoes do Diagnostico:</b> #{consultaConfirmadaBean.consultaConfirmada.diagnostico.observacoes}
+		<br/><br/>
+		<b>Receita:</b> #{consultaConfirmadaBean.consultaConfirmada.diagnostico.receita}
+		<br/><br/>
+		<b>Informacoes da Consulta:</b> #{consultaConfirmadaBean.consultaConfirmada.diagnostico.informacao}
+		<br/><br/>
+	
+	<h:inputHidden id="idHidden"  type="hidden"
+				value="#{consultaConfirmadaBean.consultaConfirmada.id}" ></h:inputHidden>
+	<h:inputHidden id="statusHidden"  type="hidden"
+				value="#{consultaConfirmadaBean.status}" ></h:inputHidden>
+	<p>
+	<a href="JavaScript:window.print();">Imprimir esta página</a>
+	</p>     
+	<h:commandButton action="#{consultaConfirmadaBean.fimImprimir}" value="Voltar"/>
+	
+	</h:form>
+	</body>
+	
+	
+	
+</html>

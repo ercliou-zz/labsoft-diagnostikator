@@ -6,12 +6,48 @@
 
 <h:head>
 	<title>Consulta Confirmada</title>
+	<script type="text/javascript">
+
+	
+	function popup(mylink, windowname)
+	{
+		if (! window.focus)return true;
+		var href;
+		if (typeof(mylink) == 'string')
+	  		 href=mylink;
+		else
+	   		href=mylink.href;
+		window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+		return false;
+	}
+	
+	function popup1(mylink, windowname)
+	{
+		if (! window.focus)return true;
+		var href;
+		if (typeof(mylink) == 'string')
+	  		 href=mylink;
+		else
+	   		href=mylink.href;
+		var newWindow = window.open(href, windowname, 'width=400,height=200,scrollbars=yes');
+		newWindow.my_special_setting = "Hello World";
+		return false;
+	}
+	function init(){
+		document.getElementById("myForm:statusHidden").value = 'view';
+	}
+	
+	window.onload=init;
+
+	</script>
 </h:head>
 
 <h:body>
 	<h1>Consulta Confirmada</h1>
+	
+<!-- 	<h:inputHidden id="idHidden" value="#{consultaConfirmadaBean.consultaConfirmada.id}" /> -->
 
-
+<h:form id="myForm">
 	<h:panelGrid columns="2">
 
 		<h:outputLabel value="ID:" for="consultaConfirmada_id" />
@@ -35,10 +71,20 @@
 		</c:forEach>
 
 	</h:panelGrid>
-
-	<h:form>
-		<h:commandButton action="#{consultaConfirmadaBean.list}" value="Voltar"></h:commandButton>
-	</h:form>
+	
+	
+	<h:inputHidden id="idHidden"  type="hidden"
+				value="#{consultaConfirmadaBean.consultaConfirmada.id}" ></h:inputHidden>
+	<h:inputHidden id="statusHidden"  type="hidden"
+				value="#{consultaConfirmadaBean.status}" ></h:inputHidden>
+					
+	<h:commandButton action="#{consultaConfirmadaBean.imprimir}" value="Imprimir"/>
+	<h:commandButton action="#{consultaConfirmadaBean.list}" value="Voltar"></h:commandButton>
+	
+	
+<!-- 	<a href="consultaConfirmadaImpressao.jsf" onclick="return popup(this, 'notes')">imprimir</a> -->
+		
+</h:form>
 </h:body>
 
 </html>

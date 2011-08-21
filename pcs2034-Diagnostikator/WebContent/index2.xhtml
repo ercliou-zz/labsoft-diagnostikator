@@ -42,7 +42,7 @@
 					<div class="sidebar_button"><a href="medicoList.jsf" onclick="loadToContent(this); return false;">Medico</a></div>
 				</h:panelGroup>
 				
-				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_ESP' || sessionLogin.loginBean.type=='MEDICO_AT' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_ESP' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
 					<div class="sidebar_button"><a href="doencaList.jsf" onclick="loadToContent(this); return false;">Doenca</a></div>
 					<div class="sidebar_button"><a href="sintomaList.jsf" onclick="loadToContent(this); return false;">Sintoma</a></div>
 				</h:panelGroup>
