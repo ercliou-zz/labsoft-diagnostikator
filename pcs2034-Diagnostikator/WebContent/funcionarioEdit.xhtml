@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -75,6 +75,7 @@
 			<h:outputLabel value="Tipo:" />
 			<h:selectOneRadio layout="pageDirection" id="funcionario_tipo" value="#{funcionarioBean.funcionario.tipo}" required="true">
 				<f:selectItem id="recepcionista" itemLabel="Recepcionista" itemValue="RECEPCIONISTA" />
+				<f:selectItem id="funcionario" itemLabel="Funcionario" itemValue="FUNCIONARIO" />
 				<f:selectItem id="administrador" itemLabel="Administrador" itemValue="ADMINISTRADOR" />
 			</h:selectOneRadio>
 			</h:panelGrid>

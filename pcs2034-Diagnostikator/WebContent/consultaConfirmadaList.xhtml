@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -35,8 +34,22 @@
 						</h:column>
 
 			<h:column>
+				<f:facet name="header">Paciente</f:facet>
+							#{consultaConfirmada.prontuario.paciente.nome}
+						</h:column>
+
+			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
 				<h:commandLink action="#{consultaConfirmadaBean.view}">view
+								<f:setPropertyActionListener
+						target="#{consultaConfirmadaBean.consultaConfirmada}"
+						value="#{consultaConfirmada}" />
+				</h:commandLink>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Atender</f:facet>
+				<h:commandLink action="#{consultaConfirmadaBean.consult}">Consultar
 								<f:setPropertyActionListener
 						target="#{consultaConfirmadaBean.consultaConfirmada}"
 						value="#{consultaConfirmada}" />
