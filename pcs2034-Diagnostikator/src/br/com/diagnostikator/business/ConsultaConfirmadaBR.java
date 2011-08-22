@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.diagnostikator.dao.ConsultaConfirmadaDAO;
+import br.com.diagnostikator.dao.DiagnosticoDAO;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
-import br.com.diagnostikator.model.Doenca;
 import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.model.Sintoma;
 import br.com.diagnostikator.util.DAOFactory;
 
 public class ConsultaConfirmadaBR {
 	private ConsultaConfirmadaDAO consultaConfirmadaDAO;
+	private DiagnosticoDAO diagnosticoDAO;
 
 	public ConsultaConfirmadaBR() {
 		this.consultaConfirmadaDAO = DAOFactory.createConsultaConfirmadaDAO();
+		this.diagnosticoDAO = DAOFactory.createDiagnosticoDAO();
 	}
 
 	public void save(ConsultaConfirmada consultaConfirmada) {
@@ -41,19 +43,12 @@ public class ConsultaConfirmadaBR {
 	}
 	
 	public Diagnostico gerarDiagnostico(List<Sintoma> sintomas){
-		List<Doenca> doencas = new ArrayList<Doenca>();
+
 		Diagnostico diagnostico = new Diagnostico();
-		diagnostico.setDoencas(doencas);
+		diagnostico.setDoencas(this.diagnosticoDAO.getDoencas(sintomas));
 		
-		
-		diagnostico.setObservacoes("observacoez");
-		Doenca doenca = new Doenca();
-		doenca.setDescricao("desc");
-		doenca.setId(99999);
-		doenca.setNome("nomeDoenca");
-		doenca.setSintomas(new ArrayList<Sintoma>());
-		doencas.add(doenca);
-		//TODO IMPLEMENTAR A GERAÇÃO DE DIAGNOSTICO AQUI!
+		//diagnostico.setObservacoes("observacoez");
+
 		
 		return diagnostico;
 	}
