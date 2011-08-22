@@ -65,11 +65,13 @@
 			<h:inputText id="login" label="Login"
 				value="#{medicoBean.medico.login}" size="40" required="true" 
 				requiredMessage="digite o login">
+				<f:validateLength minimum="5"/>
 			</h:inputText>
 			
 			<h:outputLabel value="Senha:" for="senha" />
 			<h:inputSecret id="senha" label="Senha"
 				value="#{medicoBean.medico.senha}" size="40" redisplay="true">
+				<f:validateLength minimum="6"/>
 			</h:inputSecret>
 			
 			
