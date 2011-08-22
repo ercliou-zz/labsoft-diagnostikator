@@ -9,17 +9,13 @@
 
 <h:body>
 	<h:form>
-		<h:commandButton action="#{prontuarioBean.create}" value="Novo"></h:commandButton>
-	</h:form>
-
-	<h:form>
 		<h:messages />
 		<h:dataTable value="#{prontuarioBean.list}" var="prontuario" rules="rows">
 			<f:facet name="caption">
 				<!-- 							conteudo aqui  -->
 			</f:facet>
 
-			<f:facet name="header">Lista de Prontuarios</f:facet>
+			<f:facet name="header">Lista de Pacientes</f:facet>
 
 			<f:facet name="footer">fim</f:facet>
 
@@ -30,14 +26,9 @@
 
 			<h:column>
 				<f:facet name="header">Nome do Paciente</f:facet>
-							#{prontuario.paciente.nome}
+							#{prontuario.pacientePai.nome}
 			</h:column>
 			
-			<h:column>
-				<f:facet name="header">Nome do Medico</f:facet>
-							#{prontuario.medico.nome}
-			</h:column>
-
 			<h:column>
 				<f:facet name="header">Visualizar</f:facet>
 				<h:commandLink action="#{prontuarioBean.view}">view

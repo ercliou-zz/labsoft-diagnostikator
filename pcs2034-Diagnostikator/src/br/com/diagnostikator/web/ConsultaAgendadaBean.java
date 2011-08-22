@@ -90,6 +90,23 @@ public class ConsultaAgendadaBean {
 				this.list = consultaAgendadaBR.list();
 			}
 		}
+		
+		SessionLogin sl = new SessionLogin();
+		String medicoLogin = sl.getLoginBean().getLogin();
+		MedicoBR medicoBR = new MedicoBR();
+		Medico medicoLogado = medicoBR.getByLogin(medicoLogin);
+		
+		
+		List<ConsultaAgendada> filtradas= new ArrayList<ConsultaAgendada>();
+		if(medicoLogado != null){
+			for (ConsultaAgendada consultaAgendada : this.list) {
+				if(consultaAgendada.getMedico().getId() == medicoLogado.getId()){
+					filtradas.add(consultaAgendada);
+				}
+			}
+			this.list = filtradas;
+		}
+		
 		return this.list;
 	}
 

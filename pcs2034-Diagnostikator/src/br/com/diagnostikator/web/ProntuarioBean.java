@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
+import br.com.diagnostikator.business.MedicoBR;
 import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Medico;
@@ -20,7 +21,7 @@ public class ProntuarioBean {
 	private List<String> consultasConfirmadas;
 	private Medico medico;
 	private Paciente paciente;
-	
+
 	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 	private ProntuarioBR prontuarioBR = new ProntuarioBR();
 
@@ -40,11 +41,11 @@ public class ProntuarioBean {
 	public String edit() {
 		return "prontuarioEdit";
 	}
-	
+
 	public String view() {
 		return "prontuarioView";
 	}
-	
+
 	public String list() {
 		return "prontuarioList";
 	}
@@ -60,15 +61,16 @@ public class ProntuarioBean {
 	}
 
 	public String save() {
-		
+
 		ProntuarioBR prontuarioBR = new ProntuarioBR();
 		List<ConsultaConfirmada> list = new ArrayList<ConsultaConfirmada>();
 
-		for (String consultaConfirmadaId : this.consultasConfirmadas ) {
-			long consultaConfirmadaIdLong = Long.parseLong(consultaConfirmadaId);
+		for (String consultaConfirmadaId : this.consultasConfirmadas) {
+			long consultaConfirmadaIdLong = Long
+					.parseLong(consultaConfirmadaId);
 			list.add(consultaConfirmadaBR.getByID(consultaConfirmadaIdLong));
 		}
-		prontuario.setConsultasConfirmadas(list);		
+		prontuario.setConsultasConfirmadas(list);
 		prontuario.setMedicoPai(medico);
 		prontuario.setPacientePai(paciente);
 		prontuarioBR.save(this.prontuario);
@@ -77,14 +79,33 @@ public class ProntuarioBean {
 	}
 
 	public List<Prontuario> getList() {
+
+		SessionLogin sl = new SessionLogin();
+		String medicoLogin = sl.getLoginBean().getLogin();
+		MedicoBR medicoBR = new MedicoBR();
+		Medico medicoLogado = medicoBR.getByLogin(medicoLogin);
+
 		if (this.list == null || this.list.isEmpty()) {
 			this.list = prontuarioBR.list();
 		}
+
+		if (medicoLogado != null) {
+			List<Prontuario> filtrados = new ArrayList<Prontuario>();
+			for (Prontuario prontuario : list) {
+				if (prontuario.getMedicoPai().getId() == medicoLogado.getId()) {
+					filtrados.add(prontuario);
+				}
+			}
+			list = filtrados;
+		}
+		else{
+			list = new ArrayList<Prontuario>();
+		}
 		return this.list;
 	}
-	
-	public List<ConsultaConfirmada> getConsultasConfirmadas(){
-		return this.consultaConfirmadaBR.list(medico.getId(), paciente.getId());
+
+	public List<ConsultaConfirmada> getConsultasConfirmadas() {
+		return this.consultaConfirmadaBR.list(this.prontuario.getMedicoPai().getId(), this.prontuario.getPacientePai().getId());
 	}
 
 	public void setList(List<Prontuario> list) {
@@ -109,6 +130,6 @@ public class ProntuarioBean {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
-	}	
+	}
 
 }

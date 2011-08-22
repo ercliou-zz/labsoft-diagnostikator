@@ -14,53 +14,34 @@
 
 	<h:panelGrid columns="2">
 
-		<h:outputLabel value="ID:" for="prontuario_id" />
-		<h:outputText id="prontuario_id" value="#{prontuarioBean.prontuario.id}" />
-		
-		<h:outputLabel value="Nome do Paciente:" for="prontuario_nomePaciente" />
-		<h:outputText id="prontuario_nomePaciente" value="#{prontuarioBean.prontuario.paciente.nome}" />
+				<h:outputLabel value="ID:" for="prontuario_id" />
+				<h:outputText id="prontuario_id" value="#{prontuarioBean.prontuario.id}" />
 
-		<h:outputLabel value="Nome do Paciente:" for="prontuario_nomeMedico" />
-		<h:outputText id="prontuario_nomeMedico" value="#{prontuarioBean.prontuario.medico.nome}" />
+				<h:outputLabel value="Nome do Paciente:" for="prontuario_nomePaciente" />
+				<h:outputText id="prontuario_nomePaciente" value="#{prontuarioBean.prontuario.pacientePai.nome}" />
 
-		<h:form>
-		<h:messages />
-		<h:dataTable value="#{prontuarioBean.consultasConfirmadas}"
-			var="consultaConfirmada" rules="rows">
-			<f:facet name="caption">
-				<!-- 							conteudo aqui  -->
-			</f:facet>
-
-			<f:facet name="header">Lista de Consultas Confirmadas</f:facet>
-
-			<f:facet name="footer">fim</f:facet>
-
-			<h:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{consultaConfirmada.id}"></h:outputText>
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Data</f:facet>
-							#{consultaConfirmada.data}
-						</h:column>
-
-			<h:column>
-				<f:facet name="header">Visualizar</f:facet>
-				<h:commandLink action="#{consultaConfirmadaBean.view}">view
-								<f:setPropertyActionListener
-						target="#{consultaConfirmadaBean.consultaConfirmada}"
-						value="#{consultaConfirmada}" />
-				</h:commandLink>
-			</h:column>
+				<h:outputLabel value="Nome do Paciente:" for="prontuario_nomeMedico" />
+				<h:outputText id="prontuario_nomeMedico" value="#{prontuarioBean.prontuario.medicoPai.nome}" />
 
 
-		</h:dataTable>
-	</h:form>
-		
+			<h:outputLabel value="Consultas Realizadas:" />
+			<h:outputText value=""></h:outputText>
+			
+			<c:forEach var="consultaConfirmada"
+				items="#{prontuarioBean.prontuario.consultasConfirmadas}">
+				<h:outputLabel value="Data: " />
+				<h:outputText value="#{consultaConfirmada.data}"></h:outputText>
+				<h:outputLabel value="Informação: " />
+				<h:outputText value="#{consultaConfirmada.informacao}"></h:outputText>
+				<h:outputLabel value="Receita: " />
+				<h:outputText value="#{consultaConfirmada.receita}"></h:outputText>
+				<h:outputLabel value="Diagnostico: " />
+				<h:outputText
+					value="#{consultaConfirmada.diagnostico.doencas}"></h:outputText>
+				<br />
+			</c:forEach>
 
 
-		
 	</h:panelGrid>
 
 	<h:form>

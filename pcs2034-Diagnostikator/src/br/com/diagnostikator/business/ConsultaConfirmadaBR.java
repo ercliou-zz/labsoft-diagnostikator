@@ -64,6 +64,17 @@ public class ConsultaConfirmadaBR {
 		return filtered;
 	}
 	
+	public List<ConsultaConfirmada> list(long idMedico) {
+		List<ConsultaConfirmada> filtered = new ArrayList<ConsultaConfirmada>() ;
+		List<ConsultaConfirmada> full = this.list();
+		for (ConsultaConfirmada consultaConfirmada : full) {
+			if(consultaConfirmada.getProntuario().getMedicoPai().getId() == idMedico){
+				filtered.add(consultaConfirmada);
+			}
+		}
+		return filtered;
+	}
+	
 	public Prontuario getProntuarioByID(long id){
 		return this.consultaConfirmadaDAO.getProntuarioByID(id);
 	}
