@@ -12,10 +12,12 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
 import br.com.diagnostikator.business.DoencaBR;
+import br.com.diagnostikator.business.MedicoBR;
 import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.SintomaBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
+import br.com.diagnostikator.model.Medico;
 import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.model.Sintoma;
 
@@ -102,8 +104,18 @@ public class ConsultaConfirmadaBean {
 	}
 
 	public List<ConsultaConfirmada> getList() {
+
+		SessionLogin sl = new SessionLogin();
+		String medicoLogin = sl.getLoginBean().getLogin();
+		MedicoBR medicoBR = new MedicoBR();
+		Medico medicoLogado = medicoBR.getByLogin(medicoLogin);
+
 		if (this.list == null || this.list.isEmpty()) {
-			this.list = consultaConfirmadaBR.list();
+			if (medicoLogado != null) {
+				this.list = consultaConfirmadaBR.list(medicoLogado.getId());
+			} else {
+				this.list = consultaConfirmadaBR.list();
+			}
 		}
 		return this.list;
 	}
