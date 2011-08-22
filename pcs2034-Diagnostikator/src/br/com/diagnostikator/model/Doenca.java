@@ -54,7 +54,10 @@ public class Doenca {
 	public void setSintomas(List<Sintoma> sintomas) {
 		this.sintomas = sintomas;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return nome;
+	}
 
 }
