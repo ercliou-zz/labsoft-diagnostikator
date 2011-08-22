@@ -65,7 +65,7 @@ var ThemeBg = "";//Background image of Calendar window.
 var PrecedeZero = true;//Preceding zero [true|false]
 var MondayFirstDay = true;//true:Use Monday as first day; false:Sunday as first day. [true|false]  //added in version 1.7
 var UseImageFiles = true;//Use image files with "arrows" and "close" button
-var DisableBeforeToday = true; //Make date before today unclickable.
+var DisableBeforeToday = false; //Make date before today unclickable.
 var imageFilesPath = "resources/img/";
 
 

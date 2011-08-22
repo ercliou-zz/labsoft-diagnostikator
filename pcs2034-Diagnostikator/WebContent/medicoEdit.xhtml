@@ -5,6 +5,7 @@
 
 <h:head>
 	<title>Cadastro de Medico</title>
+	<script src="resources/js/datetimepicker_css.js"></script>
 </h:head>
 
 <h:body>
@@ -51,11 +52,14 @@
 			</h:inputText>
 			
 			<h:outputLabel value="Data de Admissão: " for="dataAdmissao" />
+			<h:panelGrid columns="2">
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
 				value="#{medicoBean.medico.dataAdmissao}" size="40" required="true" 
 				requiredMessage="digite a data de admissao" >
 				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
-			</h:inputText>							
+			</h:inputText>		
+			<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('medicoEditForm:dataAdmissao','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+			</h:panelGrid>					
 			
 			<h:outputLabel value="Login:" for="login" />
 			<h:inputText id="login" label="Login"
@@ -67,6 +71,7 @@
 			<h:inputSecret id="senha" label="Senha"
 				value="#{medicoBean.medico.senha}" size="40" redisplay="true">
 			</h:inputSecret>
+			
 			
 			<h:outputLabel value="Confirmar Senha:" for="confirmarSenha" />
 			<h:inputSecret id="confirmarSenha" label="Confirmar Senha"
