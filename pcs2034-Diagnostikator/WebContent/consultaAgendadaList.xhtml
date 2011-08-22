@@ -9,7 +9,9 @@
 
 <h:body>
 	<h:form>
-		<h:commandButton action="#{consultaAgendadaBean.create}" value="Novo"></h:commandButton>
+		<h:panelGroup rendered="#{sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+			<h:commandButton action="#{consultaAgendadaBean.create}" value="Novo"></h:commandButton>
+		</h:panelGroup>
 	</h:form>
 	
 	<h:form>				

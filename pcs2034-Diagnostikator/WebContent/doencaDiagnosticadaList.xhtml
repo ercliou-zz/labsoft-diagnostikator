@@ -17,11 +17,19 @@
 		<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
 		
 		<h:selectManyCheckbox layout="pageDirection" id="doencas_diagnosticadas"
-				value="#{consultaConfirmadaBean.doencasSelecionadasId}" required="true">
-			<c:forEach var="doenca" items="#{consultaConfirmadaBean.consultaConfirmada.diagnostico.doencas}">
+				value="#{consultaConfirmadaBean.doencasSelecionadasId}">
+			<c:forEach var="doenca" items="#{diagnosticoBean.lista}">
 				<f:selectItem itemLabel="#{doenca.nome}" itemValue="#{doenca.id}" />
 			</c:forEach>
 		</h:selectManyCheckbox>
+		
+		
+<!-- 		<h:selectManyCheckbox layout="pageDirection" id="consulta_sintomas" -->
+<!-- 				value="#{consultaConfirmadaBean.sintomasSelecionados}"> -->
+<!-- 				<c:forEach var="sintoma" items="#{sintomaBean.list}"> -->
+<!-- 					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" /> -->
+<!-- 				</c:forEach> -->
+<!-- 			</h:selectManyCheckbox> -->
 
 		<h:commandButton action="#{consultaConfirmadaBean.selecionarDoencas}" value="Selecionar"/>
 

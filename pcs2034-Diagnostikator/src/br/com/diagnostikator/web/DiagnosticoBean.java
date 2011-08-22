@@ -16,11 +16,12 @@ import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.SintomaBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
+import br.com.diagnostikator.model.Doenca;
 import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.model.Sintoma;
 
 @ManagedBean(name = "consultaConfirmadaBean")
-public class ConsultaConfirmadaBean {
+public class DiagnosticoBean {
 
 	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 	private ProntuarioBR prontuarioBR = new ProntuarioBR();
@@ -33,6 +34,8 @@ public class ConsultaConfirmadaBean {
 	private long prontuarioId;
 	private String dataConsulta;
 	private String status;
+	
+	private List<Doenca> lista;
 
 	private List<String> doencasSelecionadasId;
 	private List<String> doencasSelecionadasNome;
@@ -241,8 +244,6 @@ public class ConsultaConfirmadaBean {
 	public String fimImprimir() {
 		this.consultaConfirmada = this.consultaConfirmadaBR
 				.getByID(this.consultaConfirmada.getId());
-		this.prontuarioId = consultaConfirmada.getProntuario().getId();
-		this.dataConsulta = this.consultaConfirmada.getData().toString();
 		if (status.equals("edit")) {
 
 			sintomasSelecionados = new ArrayList<String>();
@@ -256,23 +257,24 @@ public class ConsultaConfirmadaBean {
 	}
 
 	public String selecionarDoencas() {
-		//Prontuario prontuario = prontuarioBR.getById(prontuarioId);
-		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
+		
 		this.prontuarioId = consultaConfirmada.getProntuario().getId();
-		this.dataConsulta = this.consultaConfirmada.getData().toString();
+		this.dataConsulta = consultaConfirmada.getData().toString();
+		
+		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
 
 		if (!this.doencasSelecionadasId.isEmpty()) {
 			String doencasSelecionadas = "Possível(is) doença(s): ";
 			Iterator<String> it = this.doencasSelecionadasId.iterator();
 			while (it.hasNext()) {
-				String doencatemp = it.next();
-				doencasSelecionadas += (this.doencaBR.getByID(Long.parseLong(doencatemp)).getNome());
+				doencasSelecionadas.concat(this.doencaBR.getByID(
+						Long.parseLong(it.next())).getNome());
 				if (it.hasNext()) {
-					doencasSelecionadas += (", ");
+					doencasSelecionadas.concat(", ");
 				}
 			}
-			this.consultaConfirmada.setInformacao(this.consultaConfirmada.getInformacao()+doencasSelecionadas);
 
+			this.consultaConfirmada.setInformacao(doencasSelecionadas);
 		}
 
 		
@@ -283,5 +285,17 @@ public class ConsultaConfirmadaBean {
 
 		return "consultaConfirmadaEdit";
 	}
+	
+	public List<Doenca> getLista() {
+		if (this.lista == null || this.lista.isEmpty()) {
+			this.lista = doencaBR.list();
+		}
+		return this.lista;
+	}
+
+	public void setLista(List<Doenca> lista) {
+		this.lista = lista;
+	}
+
 
 }

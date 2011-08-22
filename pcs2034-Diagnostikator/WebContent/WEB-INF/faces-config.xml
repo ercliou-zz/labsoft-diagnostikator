@@ -78,4 +78,12 @@
     	<managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean>
+    	<managed-bean-name>diagnosticoBean</managed-bean-name>
+    	<managed-bean-class>br.com.diagnostikator.web.DiagnosticoBean</managed-bean-class>
+    	<managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    
+    
 </faces-config>
