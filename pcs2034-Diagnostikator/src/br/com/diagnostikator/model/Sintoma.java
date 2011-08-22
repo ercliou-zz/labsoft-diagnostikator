@@ -1,5 +1,6 @@
 package br.com.diagnostikator.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ public class Sintoma {
 	@Id
 	@GeneratedValue
 	private long id;
+	@Column(unique = true)
 	private String nome;
 	private String descricao;
 
