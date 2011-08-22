@@ -14,35 +14,16 @@
 
 		<h:messages />
 
-		<h:inputHidden value="#{consultaConfirmada.doenca.id}" />
-
-		<h:panelGrid columns="1">
-			<h:panelGrid columns="2">
-
-				<h:outputLabel value="Nome:" for="nome" />
-				<h:inputText id="doenca_nome" label="Nome"
-					value="#{doencaBean.doenca.nome}" size="45" required="true"
-					requiredMessage="digite o nome">
-				</h:inputText>
-
-				<h:outputLabel value="Descricao:" for="descricao" />
-				<h:inputTextarea rows="5" id="doenca_descricao" label="Descricao"
-					value="#{doencaBean.doenca.descricao}" size="250">
-				</h:inputTextarea>
-			</h:panelGrid>
-			
-			<h:selectManyCheckbox layout="pageDirection" id="doenca_sintomas"
-				value="#{doencaBean.sintomasSelecionados}" required="true">
-				<c:forEach var="sintoma" items="#{sintomaBean.list}">
-					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" />
-				</c:forEach>
-			</h:selectManyCheckbox>
-
-		</h:panelGrid>
-
-		<h:commandButton action="#{doencaBean.save}" value="Salvar"/>
+		<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
 		
-		<h:commandButton action="#{doencaBean.list}" value="Voltar"/>
+		<h:selectManyCheckbox layout="pageDirection" id="doencas_diagnosticadas"
+				value="#{consultaConfirmadaBean.doencasSelecionadasId}">
+			<c:forEach var="doenca" items="#{diagnostico.doencas}">
+				<f:selectItem itemLabel="#{doenca.nome}" itemValue="#{doenca.id}" />
+			</c:forEach>
+		</h:selectManyCheckbox>
+
+		<h:commandButton action="#{consultaConfirmadaBean.selecionarDoencas}" value="Selecionar"/>
 
 	</h:form>
 </h:body>

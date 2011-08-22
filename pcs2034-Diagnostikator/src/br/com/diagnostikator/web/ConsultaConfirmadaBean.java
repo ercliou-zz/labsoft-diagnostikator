@@ -36,9 +36,9 @@ public class ConsultaConfirmadaBean {
 
 	private List<String> doencasSelecionadasId;
 	private List<String> doencasSelecionadasNome;
-	
+
 	public ConsultaConfirmada getConsultaConfirmada() {
-		
+
 		return consultaConfirmada;
 	}
 
@@ -56,12 +56,12 @@ public class ConsultaConfirmadaBean {
 		this.dataConsulta = consultaConfirmada.getData().toString();
 		return "consultaConfirmadaEdit";
 	}
-	
-	public String edit(){
+
+	public String edit() {
 		this.prontuarioId = consultaConfirmada.getProntuario().getId();
 		return "consultaConfirmadaEdit";
 	}
-	
+
 	public String view() {
 		return "consultaConfirmadaView";
 	}
@@ -74,7 +74,6 @@ public class ConsultaConfirmadaBean {
 
 		return null;
 	}
-	
 
 	public String save() throws ParseException {
 
@@ -82,22 +81,22 @@ public class ConsultaConfirmadaBean {
 		SintomaBR sintomaBR = new SintomaBR();
 		List<Sintoma> list = new ArrayList<Sintoma>();
 
-		for (String sintomaId : this.sintomasSelecionados ) {
+		for (String sintomaId : this.sintomasSelecionados) {
 			long sintomaIdLong = Long.parseLong(sintomaId);
 			list.add(sintomaBR.getByID(sintomaIdLong));
 		}
 		consultaConfirmada.setSintomas(list);
 		consultaConfirmada.setProntuario(prontuario);
-		
+
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date data = formatter.parse(dataConsulta);
 		consultaConfirmada.setData(data);
-		
+
 		consultaConfirmadaBR.save(this.consultaConfirmada);
 		return "consultaConfirmadaSaved";
 	}
-	
-	public String list(){
+
+	public String list() {
 		return "consultaConfirmadaList";
 	}
 
@@ -107,37 +106,36 @@ public class ConsultaConfirmadaBean {
 		}
 		return this.list;
 	}
-	
-	public String gerarDiagnostico() throws ParseException{
+
+	public String gerarDiagnostico() throws ParseException {
 		SintomaBR sintomaBR = new SintomaBR();
 		List<Sintoma> sintomas = new ArrayList<Sintoma>();
 
-		for (String sintomaId : this.sintomasSelecionados ) {
+		for (String sintomaId : this.sintomasSelecionados) {
 			long sintomaIdLong = Long.parseLong(sintomaId);
 			sintomas.add(sintomaBR.getByID(sintomaIdLong));
 		}
 		diagnostico = consultaConfirmadaBR.gerarDiagnostico(sintomas);
 		consultaConfirmada.setDiagnostico(diagnostico);
 
-		//porquinho
+		// porquinho
 		Prontuario prontuario = prontuarioBR.getById(prontuarioId);
 		List<Sintoma> list = new ArrayList<Sintoma>();
 
-		for (String sintomaId : this.sintomasSelecionados ) {
+		for (String sintomaId : this.sintomasSelecionados) {
 			long sintomaIdLong = Long.parseLong(sintomaId);
 			list.add(sintomaBR.getByID(sintomaIdLong));
 		}
 		consultaConfirmada.setSintomas(list);
 		consultaConfirmada.setProntuario(prontuario);
-		
+
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date data = formatter.parse(dataConsulta);
 		consultaConfirmada.setData(data);
-		
+
 		consultaConfirmadaBR.save(this.consultaConfirmada);
-		
-		
-		return "listaDeDoencas";
+
+		return "doencaDiagnosticadaList";
 	}
 
 	public void setList(List<ConsultaConfirmada> list) {
@@ -159,7 +157,7 @@ public class ConsultaConfirmadaBean {
 	public void setDiagnostico(Diagnostico diagnostico) {
 		this.diagnostico = diagnostico;
 	}
-	
+
 	public Prontuario getProntuario() {
 		return prontuario;
 	}
@@ -167,7 +165,7 @@ public class ConsultaConfirmadaBean {
 	public void setProntuario(Prontuario prontuario) {
 		this.prontuario = prontuario;
 	}
-	
+
 	public String getDataConsulta() {
 		return dataConsulta;
 	}
@@ -179,15 +177,11 @@ public class ConsultaConfirmadaBean {
 	public String getStatus() {
 		return status;
 	}
-	
-	
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-	
-	
+
 	public long getProntuarioId() {
 		return prontuarioId;
 	}
@@ -195,7 +189,6 @@ public class ConsultaConfirmadaBean {
 	public void setProntuarioId(long prontuarioId) {
 		this.prontuarioId = prontuarioId;
 	}
-	
 
 	public List<String> getDoencasSelecionadasId() {
 		return doencasSelecionadasId;
@@ -213,67 +206,77 @@ public class ConsultaConfirmadaBean {
 		this.doencasSelecionadasNome = doencasSelecionadasNome;
 	}
 
-	public String imprimir(){
+	public String imprimir() {
 		Date dataAtual;
-		ConsultaConfirmada consultaBanco = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());;
-		
-		if(consultaBanco == null){
+		ConsultaConfirmada consultaBanco = this.consultaConfirmadaBR
+				.getByID(this.consultaConfirmada.getId());
+		;
+
+		if (consultaBanco == null) {
 			SintomaBR sintomaBR = new SintomaBR();
 			List<Sintoma> lista = new ArrayList<Sintoma>();
 
-			for (String sintomaId : this.sintomasSelecionados ) {
+			for (String sintomaId : this.sintomasSelecionados) {
 				long sintomaIdLong = Long.parseLong(sintomaId);
 				lista.add(sintomaBR.getByID(sintomaIdLong));
 			}
 			consultaConfirmada.setSintomas(lista);
-			
+
 			dataAtual = new Date();
 			consultaConfirmada.setData(dataAtual);
-			
+
 			consultaConfirmadaBR.save(this.consultaConfirmada);
 		} else {
-			this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
+			this.consultaConfirmada = this.consultaConfirmadaBR
+					.getByID(this.consultaConfirmada.getId());
 		}
-		
-		//this.prontuario = this.consultaConfirmadaBR.getProntuarioByID(this.consultaConfirmada.getId());
+
+		// this.prontuario =
+		// this.consultaConfirmadaBR.getProntuarioByID(this.consultaConfirmada.getId());
 		this.prontuario = this.prontuarioBR.getById(prontuarioId);
 		return "consultaConfirmadaImpressao";
 	}
-	
-	public String fimImprimir(){
-		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
-		if(status.equals("edit")){
-			
+
+	public String fimImprimir() {
+		this.consultaConfirmada = this.consultaConfirmadaBR
+				.getByID(this.consultaConfirmada.getId());
+		if (status.equals("edit")) {
+
 			sintomasSelecionados = new ArrayList<String>();
-			for (Sintoma sintoma : this.consultaConfirmada.getSintomas() ) {
+			for (Sintoma sintoma : this.consultaConfirmada.getSintomas()) {
 				sintomasSelecionados.add(Long.toString(sintoma.getId()));
 			}
-			
+
 			return "consultaConfirmadaEdit";
-		}
-		else return "consultaConfirmadaView";
+		} else
+			return "consultaConfirmadaView";
 	}
-	
-	public String selecionarDoencas(){
-		String doencasSelecionadas = "Possível(is) doença(s): ";
-		Iterator<String> it = this.doencasSelecionadasId.iterator();
-		while(it.hasNext()){
-			doencasSelecionadas.concat(this.doencaBR.getByID(Long.parseLong(it.next())).getNome());
-			if(it.hasNext()){
-				doencasSelecionadas.concat(", ");
-			}
-		}
+
+	public String selecionarDoencas() {
 		
-		this.consultaConfirmada.setInformacao(doencasSelecionadas);
 		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
+
+		if (!this.doencasSelecionadasId.isEmpty()) {
+			String doencasSelecionadas = "Possível(is) doença(s): ";
+			Iterator<String> it = this.doencasSelecionadasId.iterator();
+			while (it.hasNext()) {
+				doencasSelecionadas.concat(this.doencaBR.getByID(
+						Long.parseLong(it.next())).getNome());
+				if (it.hasNext()) {
+					doencasSelecionadas.concat(", ");
+				}
+			}
+
+			this.consultaConfirmada.setInformacao(doencasSelecionadas);
+		}
+
 		
 		this.sintomasSelecionados = new ArrayList<String>();
-		for (Sintoma sintoma : this.consultaConfirmada.getSintomas() ) {
+		for (Sintoma sintoma : this.consultaConfirmada.getSintomas()) {
 			this.sintomasSelecionados.add(Long.toString(sintoma.getId()));
 		}
-		
+
 		return "consultaConfirmadaEdit";
 	}
-	
-	
+
 }
