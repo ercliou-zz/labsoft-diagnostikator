@@ -41,10 +41,9 @@
 		</h:panelGrid>
 
 		<h:commandButton action="#{doencaBean.save}" value="Salvar"/>
-		
-		<h:commandButton action="#{doencaBean.list}" value="Voltar"/>
 
 	</h:form>
+	<form><input type="button" value="Voltar" onclick="history.go(-1)"></input></form>
 </h:body>
 
 </html>

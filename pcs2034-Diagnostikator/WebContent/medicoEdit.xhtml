@@ -56,7 +56,7 @@
 			<h:inputText id="dataAdmissao" label="Data de Admissão"
 				value="#{medicoBean.medico.dataAdmissao}" size="40" required="true" 
 				requiredMessage="digite a data de admissao" >
-				<f:convertDateTime pattern="dd/MM/yyyy" type="date"/>  
+				<f:convertDateTime pattern="dd-MM-yyyy HH:mm" type="date"/>  
 			</h:inputText>		
 			<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('medicoEditForm:dataAdmissao','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
 			</h:panelGrid>					
@@ -107,9 +107,9 @@
 		</h:panelGrid>
 
 		<h:commandButton action="#{medicoBean.save}" value="Salvar" />
-		<h:commandButton action="#{medicoBean.list}" value="Voltar"/>
 
 	</h:form>
+	<form><input type="button" value="Voltar" onclick="history.go(-1)"></input></form>
 </h:body>
 
 </html>
