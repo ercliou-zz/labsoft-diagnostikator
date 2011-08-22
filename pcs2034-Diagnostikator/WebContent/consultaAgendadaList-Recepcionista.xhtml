@@ -2,12 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-	<title>lista</title>
-</h:head>
-
-<h:body>
 	<h:form>
 		<h:commandButton action="#{consultaAgendadaBean.create}" value="Novo"></h:commandButton>
 	</h:form>
@@ -29,13 +23,9 @@
 
 		<h:commandButton action="#{consultaAgendadaBean.filter}" value="Filtrar"></h:commandButton>		
 	</h:form>
+
 	<h:form>
 		<h:messages />
-		
-		
-<!-- 		TABELA DE RECEPCIONISTAAAAAA	 -->
-		
-	<h:panelGroup rendered="#{sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
 		<h:dataTable value="#{consultaAgendadaBean.list}"
 			var="consultaAgendada" rules="rows">
 			<f:facet name="caption">
@@ -79,8 +69,8 @@
 						value="#{consultaAgendada}" />
 				</h:commandLink>
 			</h:column>
+			<h:panelGroup rendered="#{sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
 			<h:column>
-			
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink action="#{consultaAgendadaBean.edit}">edit
 					<f:setPropertyActionListener 
@@ -106,65 +96,10 @@
 						value="#{consultaAgendada}" />
 				</h:commandLink>
 			</h:column>
-			
+			</h:panelGroup>
 		</h:dataTable>
-		</h:panelGroup>
-		
-		
-<!-- 	TABELA DE MEDICOOOOO	 -->
-		
-		
-		<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_AT'}">
-		<h:dataTable value="#{consultaAgendadaBean.list}"
-			var="consultaAgendada" rules="rows">
-			<f:facet name="caption">
-				<!-- 							conteudo aqui  -->
-			</f:facet>
-
-			<f:facet name="header">Lista de Consultas Agendadas</f:facet>
-
-			<f:facet name="footer">fim</f:facet>
-
-			<h:column>
-				<f:facet name="header">ID</f:facet>
-				<h:outputText value="#{consultaAgendada.id}"></h:outputText>
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Data</f:facet>
-					#{consultaAgendada.dataConsulta}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Status</f:facet>
-					#{consultaAgendada.status}
-			</h:column>
-						
-			<h:column>
-				<f:facet name="header">Médico</f:facet>
-					#{consultaAgendada.medico.nome}
-			</h:column>
-			
-			<h:column>
-				<f:facet name="header">Paciente</f:facet>
-					#{consultaAgendada.paciente.nome}
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">Visualizar</f:facet>
-				<h:commandLink action="#{consultaAgendadaBean.view}">view
-					<f:setPropertyActionListener
-						target="#{consultaAgendadaBean.consultaAgendada}"
-						value="#{consultaAgendada}" />
-				</h:commandLink>
-			</h:column>
-			
-		</h:dataTable>
-		</h:panelGroup>
-		
 	</h:form>
-	
-</h:body>
+
 
 </html>
 
