@@ -90,7 +90,14 @@ public class ConsultaConfirmadaBean {
 	}
 	
 	public String gerarDiagnostico(){
-		diagnostico = consultaConfirmadaBR.gerarDiagnostico(consultaConfirmada.getSintomas());
+		SintomaBR sintomaBR = new SintomaBR();
+		List<Sintoma> sintomas = new ArrayList<Sintoma>();
+
+		for (String sintomaId : this.sintomasSelecionados ) {
+			long sintomaIdLong = Long.parseLong(sintomaId);
+			sintomas.add(sintomaBR.getByID(sintomaIdLong));
+		}
+		diagnostico = consultaConfirmadaBR.gerarDiagnostico(sintomas);
 		consultaConfirmada.setDiagnostico(diagnostico);
 		return "listaDeDoencas";
 	}
