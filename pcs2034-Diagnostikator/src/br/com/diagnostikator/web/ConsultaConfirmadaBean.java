@@ -5,11 +5,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
+import br.com.diagnostikator.business.DoencaBR;
 import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.SintomaBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
@@ -22,6 +24,7 @@ public class ConsultaConfirmadaBean {
 
 	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
 	private ProntuarioBR prontuarioBR = new ProntuarioBR();
+	private DoencaBR doencaBR = new DoencaBR();
 	private ConsultaConfirmada consultaConfirmada = new ConsultaConfirmada();
 	private List<String> sintomasSelecionados;
 	private Diagnostico diagnostico;
@@ -31,6 +34,9 @@ public class ConsultaConfirmadaBean {
 	private String dataConsulta;
 	private String status;
 
+	private List<String> doencasSelecionadasId;
+	private List<String> doencasSelecionadasNome;
+	
 	public ConsultaConfirmada getConsultaConfirmada() {
 		
 		return consultaConfirmada;
@@ -181,13 +187,30 @@ public class ConsultaConfirmadaBean {
 	
 	
 	
-
+	
 	public long getProntuarioId() {
 		return prontuarioId;
 	}
 
 	public void setProntuarioId(long prontuarioId) {
 		this.prontuarioId = prontuarioId;
+	}
+	
+
+	public List<String> getDoencasSelecionadasId() {
+		return doencasSelecionadasId;
+	}
+
+	public void setDoencasSelecionadasId(List<String> doencasSelecionadasId) {
+		this.doencasSelecionadasId = doencasSelecionadasId;
+	}
+
+	public List<String> getDoencasSelecionadasNome() {
+		return doencasSelecionadasNome;
+	}
+
+	public void setDoencasSelecionadasNome(List<String> doencasSelecionadasNome) {
+		this.doencasSelecionadasNome = doencasSelecionadasNome;
 	}
 
 	public String imprimir(){
@@ -231,6 +254,26 @@ public class ConsultaConfirmadaBean {
 		else return "consultaConfirmadaView";
 	}
 	
+	public String selecionarDoencas(){
+		String doencasSelecionadas = "Possível(is) doença(s): ";
+		Iterator<String> it = this.doencasSelecionadasId.iterator();
+		while(it.hasNext()){
+			doencasSelecionadas.concat(this.doencaBR.getByID(Long.parseLong(it.next())).getNome());
+			if(it.hasNext()){
+				doencasSelecionadas.concat(", ");
+			}
+		}
+		
+		this.consultaConfirmada.setInformacao(doencasSelecionadas);
+		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
+		
+		this.sintomasSelecionados = new ArrayList<String>();
+		for (Sintoma sintoma : this.consultaConfirmada.getSintomas() ) {
+			this.sintomasSelecionados.add(Long.toString(sintoma.getId()));
+		}
+		
+		return "consultaConfirmadaEdit";
+	}
 	
 	
 }
