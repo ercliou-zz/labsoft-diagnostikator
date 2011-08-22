@@ -6,6 +6,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.diagnostikator.business.UsuarioBR;
+import br.com.diagnostikator.util.AgendaDoDia;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped()
@@ -49,6 +50,9 @@ public class LoginBean {
 	}
 
 	public String login() {
+		AgendaDoDia t = new AgendaDoDia();
+		t.run();
+		
 		UsuarioBR usuarioBR = new UsuarioBR();
 		authorized = usuarioBR.login(login, senha);
 		if (authorized) {
@@ -58,6 +62,8 @@ public class LoginBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage facesMessage = new FacesMessage("Ugh.. Login ou Senha incorreto! Ou ambos!");
 		context.addMessage(null, facesMessage);
+		
+		
 
 		return "login";
 	}
