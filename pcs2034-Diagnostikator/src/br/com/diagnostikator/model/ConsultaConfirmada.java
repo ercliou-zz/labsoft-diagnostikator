@@ -152,5 +152,11 @@ public class ConsultaConfirmada {
 		} else if (!sintomas.equals(other.sintomas))
 			return false;
 		return true;
-	}	
+	}
+
+	
+
+
+
+	
 }

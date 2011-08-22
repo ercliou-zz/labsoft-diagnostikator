@@ -6,16 +6,15 @@
 
 <h:head>
 	<title>Realização de Consulta</title>
-	
-	<script language="javascript">
 
-		function init(){
+	<script language="javascript">
+		function init() {
 			document.getElementById("consultaConfirmadaForm:statusHidden").value = 'edit';
 		}
-		
-		window.onload=init;
+
+		window.onload = init;
 	</script>
- 	
+
 </h:head>
 
 <h:body>
@@ -24,39 +23,58 @@
 
 		<h:messages />
 
-			<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
-			<h:inputHidden value="#{consultaConfirmadaBean.prontuarioId}" />
-			<h:inputHidden value="#{consultaConfirmadaBean.dataConsulta}" />
-		
+		<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
+		<h:inputHidden value="#{consultaConfirmadaBean.prontuarioId}" />
+		<h:inputHidden value="#{consultaConfirmadaBean.dataConsulta}" />
+
 		<h:panelGrid columns="2">
-		
+
+			<h:outputLabel value="Prontuário:" />
+			<h:panelGrid columns="1">
+				<c:forEach var="consultaConfirmada"
+					items="#{consultaConfirmadaBean.consultaConfirmada.prontuario.consultasConfirmadas}">
+					<h:outputText value="Data: #{consultaConfirmada.data}"></h:outputText>
+					<h:outputText value="Informação: #{consultaConfirmada.informacao}"></h:outputText>
+					<h:outputText value="Receita: #{consultaConfirmada.receita}"></h:outputText>
+					<h:outputText value="Diagnostico: #{consultaConfirmada.diagnostico.doencas}"></h:outputText>
+					<br/>
+				</c:forEach>
+			</h:panelGrid>
+			
 			<h:outputLabel value="Informação:" for="informacao" />
 			<h:inputTextarea rows="5" id="informacao" label="Informação"
-				value="#{consultaConfirmadaBean.consultaConfirmada.informacao}" size="250" required="true">
+				value="#{consultaConfirmadaBean.consultaConfirmada.informacao}"
+				size="250" required="true">
 			</h:inputTextarea>
-			
+
 			<h:outputLabel value="Receita:" for="receita" />
 			<h:inputTextarea rows="5" id="receita" label="Receita"
-				value="#{consultaConfirmadaBean.consultaConfirmada.receita}" size="250" >
-			</h:inputTextarea >
-			
+				value="#{consultaConfirmadaBean.consultaConfirmada.receita}"
+				size="250">
+			</h:inputTextarea>
+
+
 			<h:selectManyCheckbox layout="pageDirection" id="consulta_sintomas"
 				value="#{consultaConfirmadaBean.sintomasSelecionados}">
 				<c:forEach var="sintoma" items="#{sintomaBean.list}">
 					<f:selectItem itemLabel="#{sintoma.nome}" itemValue="#{sintoma.id}" />
 				</c:forEach>
 			</h:selectManyCheckbox>
-			
-			<h:commandButton action="#{consultaConfirmadaBean.gerarDiagnostico}" value="Gerar Diagnostico"/>
-			
-		</h:panelGrid>
-		
-		<h:inputHidden id="statusHidden" 
-				value="#{consultaConfirmadaBean.status}" ></h:inputHidden>
 
-		<h:commandButton action="#{consultaConfirmadaBean.save}" value="Salvar"/>
-		<h:commandButton action="#{consultaConfirmadaBean.imprimir}" value="Imprimir"/>
-		<h:commandButton action="#{consultaConfirmadaBean.list}" value="Voltar"/>
+			<h:commandButton action="#{consultaConfirmadaBean.gerarDiagnostico}"
+				value="Gerar Diagnostico" />
+
+		</h:panelGrid>
+
+		<h:inputHidden id="statusHidden"
+			value="#{consultaConfirmadaBean.status}"></h:inputHidden>
+
+		<h:commandButton action="#{consultaConfirmadaBean.save}"
+			value="Salvar" />
+		<h:commandButton action="#{consultaConfirmadaBean.imprimir}"
+			value="Imprimir" />
+		<h:commandButton action="#{consultaConfirmadaBean.list}"
+			value="Voltar" />
 
 	</h:form>
 </h:body>

@@ -17,8 +17,8 @@
 		<h:inputHidden value="#{consultaConfirmadaBean.consultaConfirmada.id}" />
 		
 		<h:selectManyCheckbox layout="pageDirection" id="doencas_diagnosticadas"
-				value="#{consultaConfirmadaBean.doencasSelecionadasId}">
-			<c:forEach var="doenca" items="#{diagnostico.doencas}">
+				value="#{consultaConfirmadaBean.doencasSelecionadasId}" required="true">
+			<c:forEach var="doenca" items="#{consultaConfirmadaBean.consultaConfirmada.diagnostico.doencas}">
 				<f:selectItem itemLabel="#{doenca.nome}" itemValue="#{doenca.id}" />
 			</c:forEach>
 		</h:selectManyCheckbox>

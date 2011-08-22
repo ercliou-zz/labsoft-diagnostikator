@@ -59,6 +59,7 @@ public class ConsultaConfirmadaBean {
 
 	public String edit() {
 		this.prontuarioId = consultaConfirmada.getProntuario().getId();
+		this.dataConsulta = consultaConfirmada.getData().toString();
 		return "consultaConfirmadaEdit";
 	}
 
@@ -253,6 +254,9 @@ public class ConsultaConfirmadaBean {
 	}
 
 	public String selecionarDoencas() {
+		
+		this.prontuarioId = consultaConfirmada.getProntuario().getId();
+		this.dataConsulta = consultaConfirmada.getData().toString();
 		
 		this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
 

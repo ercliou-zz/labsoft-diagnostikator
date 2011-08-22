@@ -92,7 +92,7 @@ public class Diagnostico {
 			return false;
 		return true;
 	}
-	
-	
+
+
 	
 }
