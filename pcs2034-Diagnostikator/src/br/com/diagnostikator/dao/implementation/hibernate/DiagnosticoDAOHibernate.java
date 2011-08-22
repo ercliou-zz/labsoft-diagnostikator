@@ -46,6 +46,10 @@ public class DiagnosticoDAOHibernate implements DiagnosticoDAO {
 	@Override
 	public List<Doenca> getDoencas(List<Sintoma> sintomas) {
 		ArrayList<Doenca> doencasObj = new ArrayList<Doenca>();
+		
+		if (sintomas == null || sintomas.size() <= 0) {
+			return doencasObj;
+		}
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("(s.nome = '" + sintomas.get(0).getNome() + "'");
