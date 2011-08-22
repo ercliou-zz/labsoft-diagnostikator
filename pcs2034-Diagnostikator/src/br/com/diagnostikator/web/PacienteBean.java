@@ -125,7 +125,7 @@ public class PacienteBean {
 			listaTudo = false;
 		}		
 		else if (rg != null && !rg.equals("")){		
-			paciente = pacienteBR.getByRg(cpf);
+			paciente = pacienteBR.getByRg(rg);
 			if (paciente != null)
 				list.add(paciente);
 			listaTudo = false;

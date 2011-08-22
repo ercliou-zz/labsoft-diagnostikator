@@ -29,20 +29,20 @@
 		<div id="middle">
 			<div id="sidebar" >
 				
-				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_AT' || sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
-					<div class="sidebar_button"><a href="consultaAgendadaList.jsf" onclick="loadToContent(this); return false;">Consultas</a></div>
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='ATENDENTE' || sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+					<div class="sidebar_button"><a href="consultaAgendadaList.jsf" onclick="loadToContent(this); return false;">Consulta Agendada</a></div>
 				</h:panelGroup>
 				
 				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='RECEPCIONISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
 					<div class="sidebar_button"><a href="pacienteList.jsf" onclick="loadToContent(this); return false;">Paciente</a></div>
 				</h:panelGroup>
 				
-				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_AT' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
-					<div class="sidebar_button"><a href="consultaConfirmadaList.jsf" onclick="loadToContent(this); return false;">Atendimento</a></div>
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='ATENDENTE' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+					<div class="sidebar_button"><a href="consultaConfirmadaList.jsf" onclick="loadToContent(this); return false;">Consulta Confirmada</a></div>
 					<div class="sidebar_button"><a href="prontuarioList.jsf" onclick="loadToContent(this); return false;">Prontuario</a></div>
 				</h:panelGroup>
 				
-				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_ESP' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='ESPECIALISTA' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
 					<div class="sidebar_button"><a href="doencaList.jsf" onclick="loadToContent(this); return false;">Doenca</a></div>
 					<div class="sidebar_button"><a href="sintomaList.jsf" onclick="loadToContent(this); return false;">Sintoma</a></div>
 				</h:panelGroup>
@@ -52,13 +52,13 @@
 					<div class="sidebar_button"><a href="funcionarioList.jsf" onclick="loadToContent(this); return false;">Funcionario</a></div>
 				</h:panelGroup>
 				
-				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_SUP' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
-					<div class="sidebar_button"><a href="relatorioGenerate.jsf" onclick="loadToContent(this); return false;">Relatórios</a></div>
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='SUPERVISOR' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+					<div class="sidebar_button"><a href="relatorioGenerate.jsf" onclick="loadToContent(this); return false;">Relatorios</a></div>
 				</h:panelGroup>
 			</div>
 			<div id="content"></div>
 		</div>
-		<div id="footer"> @ Coop12 - Laboratório de Engenharia de Software - 2011</div>
+		<div id="footer"> @ Coop12 - Laboratorio de Engenharia de Software - 2011</div>
 	</div>
 
 

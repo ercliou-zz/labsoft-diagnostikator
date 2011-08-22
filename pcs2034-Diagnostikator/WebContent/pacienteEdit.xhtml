@@ -43,7 +43,17 @@
 				value="#{pacienteBean.paciente.endereco}" size="40" required="true"
 				requiredMessage="digite o endereço" >
 			</h:inputText>
-			
+						
+			<h:outputLabel value="Data de Cadastro: " for="dataCadastro" />
+			<h:panelGrid columns="2">
+			<h:inputText id="paciente_dataCadastro" label="Data de Cadastro"
+				value="#{pacienteBean.paciente.dataCadastro}" size="40" required="true"
+				requiredMessage="digite a data de cadastro" >
+				<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date"/>  
+			</h:inputText>
+				<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('pacienteEditForm:paciente_dataCadastro','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+				</h:panelGrid>
+									
 			<h:outputLabel value="Data de Nascimento: " for="dataNascimento" />
 			<h:panelGrid columns="2">
 			<h:inputText id="paciente_dataNascimento" label="Data de Nascimento"
@@ -54,16 +64,6 @@
 			<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('pacienteEditForm:paciente_dataNascimento','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
 			</h:panelGrid>
 			
-			<h:outputLabel value="Data de Cadastro: " for="dataCadastro" />
-			<h:panelGrid columns="2">
-			<h:inputText id="paciente_dataCadastro" label="Data de Cadastro"
-				value="#{pacienteBean.paciente.dataCadastro}" size="40" required="true"
-				requiredMessage="digite a data de cadastro" >
-				<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date"/>  
-			</h:inputText>
-				<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('pacienteEditForm:paciente_dataCadastro','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
-				</h:panelGrid>
-
 			<h:panelGrid columns="3">
 			<h:outputLabel value="Sexo:" for="paciente_sexo" />
 			<h:selectOneRadio layout="lineDirection" id="paciente_sexo" value="#{pacienteBean.paciente.sexo}" required="true">
