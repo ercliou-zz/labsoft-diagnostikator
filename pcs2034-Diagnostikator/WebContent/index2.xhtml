@@ -17,12 +17,14 @@
 	
 	<div id="main_container">
 		<div id="header">
+		<div class=header_title>DIAGNOSTIKATOR</div>
+		<div class=header_login>
 			<h:form>
-				<h:outputText value="XXXclass? Bem vindo! #{sessionLogin.loginBean.login}" /><br/>
-				<h:outputText value="type:#{sessionLogin.loginBean.type}" /><br/>
-				<h:commandLink action="#{sessionLogin.loginBean.logout}">logoutXXX class
-				</h:commandLink>
+				<h:outputText value="Bem vindo! #{sessionLogin.loginBean.login}" /><br/>
+<!-- 				<h:outputText value="type:#{sessionLogin.loginBean.type}" /><br/> -->
+				<h:commandLink action="#{sessionLogin.loginBean.logout}">Logout</h:commandLink>
 			</h:form>
+		</div>
 		</div>
 		<div id="middle">
 			<div id="sidebar" >
