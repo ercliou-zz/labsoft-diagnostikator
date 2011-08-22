@@ -51,6 +51,10 @@
 					<div class="sidebar_button"><a href="medicoList.jsf" onclick="loadToContent(this); return false;">Medico</a></div>
 					<div class="sidebar_button"><a href="funcionarioList.jsf" onclick="loadToContent(this); return false;">Funcionario</a></div>
 				</h:panelGroup>
+				
+				<h:panelGroup rendered="#{sessionLogin.loginBean.type=='MEDICO_SUP' || sessionLogin.loginBean.type=='ADMINISTRADOR'}">
+					<div class="sidebar_button"><a href="relatorioGenerate.jsf" onclick="loadToContent(this); return false;">Relatórios</a></div>
+				</h:panelGroup>
 			</div>
 			<div id="content"></div>
 		</div>
