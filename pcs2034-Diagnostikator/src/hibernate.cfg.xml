@@ -8,9 +8,9 @@
 <!--         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/crudteste</property> -->
 <!--         <property name="hibernate.connection.username">root</property> -->
 <!--         <property name="hibernate.connection.password">root</property> -->
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testelabsoft</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://143.107.102.24:3306/pcs2034-g2</property>
+        <property name="hibernate.connection.username">pcs2034-g2</property>
+        <property name="hibernate.connection.password">pcs2034-g2</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="current_session_context_class"> thread</property>
         <property name="hibernate.hbm2ddl.auto">update</property>

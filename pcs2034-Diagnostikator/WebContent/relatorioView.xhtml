@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Relatorio</title>
+</h:head>
+
+<h:body>
+	<h1>Relatorio</h1>
+
+<h:form id="myForm">
+	<h:inputHidden value="#{relatorioBean.tipo}" />		
+	
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="Tipo:" for="relatorio_tipo" />
+		<h:outputText id="relatorio_tipo" value="#{relatorioBean.tipo}" />
+
+		<h:outputLabel value="Data inicial:" for="relatorio_dataInicial" />
+		<h:outputText id="relatorio_dataInicial" value="#{relatorioBean.dataInicial}" />
+
+		<h:outputLabel value="Data final:" for="relatorio_dataFinal" />
+		<h:outputText id="relatorio_dataFinal" value="#{relatorioBean.dataFinal}" />
+		
+		<h:outputLabel value="Numero:" for="relatorio_valor" />
+		<h:outputText id="relatorio_valor" value="#{relatorioBean.valor}" />
+
+	</h:panelGrid>
+
+	<p>
+	<a href="JavaScript:window.print();">Imprimir esta página</a>
+	</p>
+	
+		<h:commandButton action="#{relatorioBean.cancel}" value="Voltar"></h:commandButton>
+	</h:form>
+</h:body>
+
+</html>

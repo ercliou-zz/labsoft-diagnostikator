@@ -1,12 +1,15 @@
 package br.com.diagnostikator.dao.implementation.hibernate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
 
 import br.com.diagnostikator.dao.DiagnosticoDAO;
+import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
 import br.com.diagnostikator.model.Doenca;
 import br.com.diagnostikator.model.Sintoma;
@@ -22,19 +25,16 @@ public class DiagnosticoDAOHibernate implements DiagnosticoDAO {
 	@Override
 	public void save(Diagnostico diagnostico) {
 		session.save(diagnostico);
-
 	}
 
 	@Override
 	public void delete(Diagnostico diagnostico) {
 		session.delete(diagnostico);
-
 	}
 
 	@Override
 	public void alter(Diagnostico diagnostico) {
 		session.update(diagnostico);
-
 	}
 
 	@Override
@@ -95,4 +95,16 @@ public class DiagnosticoDAOHibernate implements DiagnosticoDAO {
 		return doencasObj;
 	}
 
+	@SuppressWarnings({ "unchecked", "null" })
+	@Override
+	public int getNumByPeriodo(Date dataInicial, Date dataFinal) {
+		
+		SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String dataIni = formatador.format(dataInicial); 
+		String dataFi = formatador.format(dataFinal); 
+		List<ConsultaConfirmada> consultas = session.createQuery("FROM ConsultaConfirmada WHERE diagnostico_fk is not null AND data >='" + dataIni + "' AND data <= '" + dataFi + "'").list();
+		if (consultas != null || !consultas.isEmpty())
+			return consultas.size();
+		return 0;
+	}
 }

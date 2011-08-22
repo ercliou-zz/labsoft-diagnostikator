@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Geracao de relatorio</title>
+	<script src="resources/js/datetimepicker_css.js"></script>
+</h:head>
+
+<h:body>
+	<h1>Geracao de relatorio</h1>
+	
+	<h:form id="relatorioGenerateForm">	
+	
+		<h:inputHidden value="#{relatorioBean.tipo}" />			
+	
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Tipo:" />
+			<h:selectOneRadio layout="pageDirection" id="relatorio_tipo" value="#{relatorioBean.tipo}" required="true">
+				<f:selectItem id="consult_rel" itemLabel="Consultas realizadas" itemValue="ConsultaConfirmada" />
+				<f:selectItem id="diag_gerado" itemLabel="Diagnosticos gerados" itemValue="Diagnostico" />
+			</h:selectOneRadio>
+		</h:panelGrid>
+		
+		<h:outputLabel value="Data inicial:"/>
+			<h:panelGrid columns="2">
+				<h:inputText id="relatorio_dataInicial"
+					label="DataInicial"
+					value="#{relatorioBean.dataInicial}"
+					size="45" required="true"
+					requiredMessage="Digite a data inicial e o horario">
+					<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date" />
+				</h:inputText>
+				<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('relatorioGenerateForm:relatorio_dataInicial','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+			</h:panelGrid>
+			
+		<h:outputLabel value="Data final:"/>
+			<h:panelGrid columns="2">
+				<h:inputText id="relatorio_dataFinal"
+					label="DataFinal"
+					value="#{relatorioBean.dataFinal}"
+					size="45" required="true"
+					requiredMessage="Digite a data final e o horario">
+					<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="GMT-3" type="date" />
+				</h:inputText>
+				<img src="resources/img/cal.gif" alt="" onclick="javascript:NewCssCal('relatorioGenerateForm:relatorio_dataFinal','ddMMyyyy','arrow',true,'24')" style="cursor:pointer"></img>
+			</h:panelGrid>
+		
+		<h:commandButton action="#{relatorioBean.generate}" value="Gerar" />		
+		<h:commandButton action="#{relatorioBean.cancel}" value="Cancelar"/>
+
+	</h:form>
+</h:body>
+
+</html>
