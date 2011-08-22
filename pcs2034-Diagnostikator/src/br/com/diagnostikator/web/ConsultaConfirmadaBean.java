@@ -1,5 +1,8 @@
 package br.com.diagnostikator.web;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,8 +10,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import br.com.diagnostikator.business.ConsultaConfirmadaBR;
+import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.SintomaBR;
-import br.com.diagnostikator.dao.implementation.hibernate.ConsultaConfirmadaDAOHibernate;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
 import br.com.diagnostikator.model.Prontuario;
@@ -18,14 +21,18 @@ import br.com.diagnostikator.model.Sintoma;
 public class ConsultaConfirmadaBean {
 
 	private ConsultaConfirmadaBR consultaConfirmadaBR = new ConsultaConfirmadaBR();
+	private ProntuarioBR prontuarioBR = new ProntuarioBR();
 	private ConsultaConfirmada consultaConfirmada = new ConsultaConfirmada();
 	private List<String> sintomasSelecionados;
 	private Diagnostico diagnostico;
 	private List<ConsultaConfirmada> list;
 	private Prontuario prontuario;
+	private long prontuarioId;
+	private String dataConsulta;
 	private String status;
 
 	public ConsultaConfirmada getConsultaConfirmada() {
+		
 		return consultaConfirmada;
 	}
 
@@ -38,7 +45,14 @@ public class ConsultaConfirmadaBean {
 		return "consultaConfirmadaEdit";
 	}
 
-	public String edit() {
+	public String consult() {
+		this.prontuarioId = consultaConfirmada.getProntuario().getId();
+		this.dataConsulta = consultaConfirmada.getData().toString();
+		return "consultaConfirmadaEdit";
+	}
+	
+	public String edit(){
+		this.prontuarioId = consultaConfirmada.getProntuario().getId();
 		return "consultaConfirmadaEdit";
 	}
 	
@@ -56,8 +70,9 @@ public class ConsultaConfirmadaBean {
 	}
 	
 
-	public String save() {
-		
+	public String save() throws ParseException {
+
+		Prontuario prontuario = prontuarioBR.getById(prontuarioId);
 		SintomaBR sintomaBR = new SintomaBR();
 		List<Sintoma> list = new ArrayList<Sintoma>();
 
@@ -66,16 +81,14 @@ public class ConsultaConfirmadaBean {
 			list.add(sintomaBR.getByID(sintomaIdLong));
 		}
 		consultaConfirmada.setSintomas(list);
+		consultaConfirmada.setProntuario(prontuario);
 		
-		Date dataAtual = new Date();
-		consultaConfirmada.setData(dataAtual);
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date data = formatter.parse(dataConsulta);
+		consultaConfirmada.setData(data);
 		
 		consultaConfirmadaBR.save(this.consultaConfirmada);
 		return "consultaConfirmadaSaved";
-	}
-	
-	public String confirm() {
-		return "";
 	}
 	
 	public String list(){
@@ -89,7 +102,7 @@ public class ConsultaConfirmadaBean {
 		return this.list;
 	}
 	
-	public String gerarDiagnostico(){
+	public String gerarDiagnostico() throws ParseException{
 		SintomaBR sintomaBR = new SintomaBR();
 		List<Sintoma> sintomas = new ArrayList<Sintoma>();
 
@@ -99,6 +112,25 @@ public class ConsultaConfirmadaBean {
 		}
 		diagnostico = consultaConfirmadaBR.gerarDiagnostico(sintomas);
 		consultaConfirmada.setDiagnostico(diagnostico);
+
+		//porquinho
+		Prontuario prontuario = prontuarioBR.getById(prontuarioId);
+		List<Sintoma> list = new ArrayList<Sintoma>();
+
+		for (String sintomaId : this.sintomasSelecionados ) {
+			long sintomaIdLong = Long.parseLong(sintomaId);
+			list.add(sintomaBR.getByID(sintomaIdLong));
+		}
+		consultaConfirmada.setSintomas(list);
+		consultaConfirmada.setProntuario(prontuario);
+		
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date data = formatter.parse(dataConsulta);
+		consultaConfirmada.setData(data);
+		
+		consultaConfirmadaBR.save(this.consultaConfirmada);
+		
+		
 		return "listaDeDoencas";
 	}
 
@@ -130,12 +162,32 @@ public class ConsultaConfirmadaBean {
 		this.prontuario = prontuario;
 	}
 	
+	public String getDataConsulta() {
+		return dataConsulta;
+	}
+
+	public void setDataConsulta(String dataConsulta) {
+		this.dataConsulta = dataConsulta;
+	}
+
 	public String getStatus() {
 		return status;
 	}
-
+	
+	
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+	
+
+	public long getProntuarioId() {
+		return prontuarioId;
+	}
+
+	public void setProntuarioId(long prontuarioId) {
+		this.prontuarioId = prontuarioId;
 	}
 
 	public String imprimir(){
@@ -160,7 +212,8 @@ public class ConsultaConfirmadaBean {
 			this.consultaConfirmada = this.consultaConfirmadaBR.getByID(this.consultaConfirmada.getId());
 		}
 		
-		this.prontuario = this.consultaConfirmadaBR.getProntuarioByID(this.consultaConfirmada.getId());
+		//this.prontuario = this.consultaConfirmadaBR.getProntuarioByID(this.consultaConfirmada.getId());
+		this.prontuario = this.prontuarioBR.getById(prontuarioId);
 		return "consultaConfirmadaImpressao";
 	}
 	
