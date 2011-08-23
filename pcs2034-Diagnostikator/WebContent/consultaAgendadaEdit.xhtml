@@ -50,15 +50,12 @@
 				</c:forEach>
 			</h:selectOneListbox>
 
-				<h:outputLabel value="Status:" />
-				<h:selectOneRadio layout="pageDirection"
-					id="consultaAgendada_status"
-					value="#{consultaAgendadaBean.consultaAgendada.status}">
-					<f:selectItem id="criada" itemLabel="Criada" itemValue="CRIADA" />
-					<f:selectItem id="confirmada" itemLabel="Confirmada"
-						itemValue="CONFIRMADA" />
-				</h:selectOneRadio>
 
+			<h:inputHidden id="consultaAgendada_status"
+					value="#{consultaAgendadaBean.consultaAgendada.status}">
+				</h:inputHidden>
+				
+				
 		</h:panelGrid>
 
 		<h:commandButton action="#{consultaAgendadaBean.save}" value="Salvar" />

@@ -107,6 +107,7 @@ public class PacienteBean {
 		pacienteBR.save(this.paciente);
 
 		return "pacienteSaved";
+
 	}
 	
 	public String filter() {

@@ -139,6 +139,10 @@ public class ConsultaAgendadaBean {
 
 	public String save() {
 
+		if(this.consultaAgendada.getId() == 0){
+			this.consultaAgendada.setStatus("CRIADA");
+		}
+		
 		this.consultaAgendada.setMedico(medicoBR.getById(Long
 				.parseLong(medicoId)));
 		this.consultaAgendada.setPaciente(pacienteBR.getById(Long

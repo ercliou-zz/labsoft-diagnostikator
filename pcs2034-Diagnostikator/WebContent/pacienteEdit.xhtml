@@ -75,9 +75,11 @@
 		</h:panelGrid>
 
 		<h:commandButton action="#{pacienteBean.save}" value="Salvar" />
-		<h:commandButton action="#{pacienteBean.list}" value="Voltar"/>
+<!-- 		<h:commandButton action="#{pacienteBean.list}" value="Voltar"/> -->
+		
 
 	</h:form>
+	<form><input type="button" value="Voltar" onclick="history.go(-1)"></input></form>
 </h:body>
 
 </html>

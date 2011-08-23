@@ -32,7 +32,7 @@ public class AgendaDoDia {
 				Medico medico;
 				Paciente paciente;
 
-				CSVReader reader = new CSVReader(new FileReader("agenda.csv"));
+				CSVReader reader = new CSVReader(new FileReader("C:\\Users\\Helder\\Documents\\agenda.csv"));
 				String[] nextLine;
 				while ((nextLine = reader.readNext()) != null) {
 					if (nextLine.length == 4) {

@@ -56,6 +56,10 @@ public class ConsultaConfirmadaBean {
 	}
 
 	public String consult() {
+		if(consultaConfirmada.getInformacao() != null && !consultaConfirmada.getInformacao().equals("")) {
+			return null;
+		}
+		
 		this.prontuarioId = consultaConfirmada.getProntuario().getId();
 		this.dataConsulta = consultaConfirmada.getData().toString();
 		return "consultaConfirmadaEdit";
