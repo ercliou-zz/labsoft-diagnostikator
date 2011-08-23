@@ -17,6 +17,7 @@ import br.com.diagnostikator.business.ProntuarioBR;
 import br.com.diagnostikator.business.SintomaBR;
 import br.com.diagnostikator.model.ConsultaConfirmada;
 import br.com.diagnostikator.model.Diagnostico;
+import br.com.diagnostikator.model.Doenca;
 import br.com.diagnostikator.model.Medico;
 import br.com.diagnostikator.model.Prontuario;
 import br.com.diagnostikator.model.Sintoma;
@@ -38,6 +39,7 @@ public class ConsultaConfirmadaBean {
 
 	private List<String> doencasSelecionadasId;
 	private List<String> doencasSelecionadasNome;
+	private List<Doenca> listaDoencas;
 
 	public ConsultaConfirmada getConsultaConfirmada() {
 
@@ -217,6 +219,15 @@ public class ConsultaConfirmadaBean {
 
 	public void setDoencasSelecionadasNome(List<String> doencasSelecionadasNome) {
 		this.doencasSelecionadasNome = doencasSelecionadasNome;
+	}
+	
+	public List<Doenca> getListaDoencas() {
+		listaDoencas = consultaConfirmada.getDiagnostico().getDoencas();
+		return listaDoencas;
+	}
+
+	public void setListaDoencas(List<Doenca> listaDoencas) {
+		this.listaDoencas = listaDoencas;
 	}
 
 	public String imprimir() {
