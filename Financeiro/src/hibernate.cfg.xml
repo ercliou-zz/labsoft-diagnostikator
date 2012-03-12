@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+<!--         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/crudteste</property> -->
+<!--         <property name="hibernate.connection.username">root</property> -->
+<!--         <property name="hibernate.connection.password">root</property> -->
+		<property name="hibernate.connection.url">jdbc:mysql://143.107.102.24:3306/pcs2034-g2</property>
+        <property name="hibernate.connection.username">pcs2034-g2</property>
+        <property name="hibernate.connection.password">pcs2034-g2</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="current_session_context_class"> thread</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        
+        <!-- Debug -->
+        <property name="show_sql">true</property>
+        <property name="format_sql"></property>
+        <property name="generate_statistics">true</property>
+        <property name="use_sql_comments">true</property>
+        
+        
+        <!-- Mapeamentos -->
+        <mapping class="br.com.diagnostikator.model.Usuario"/>
+        <mapping class="br.com.diagnostikator.model.Funcionario"/>
+        <mapping class="br.com.diagnostikator.model.Medico"/>
+        
+        <mapping class="br.com.diagnostikator.model.Paciente"/>
+        <mapping class="br.com.diagnostikator.model.ConsultaAgendada"/>
+        <mapping class="br.com.diagnostikator.model.ConsultaConfirmada"/>
+        <mapping class="br.com.diagnostikator.model.Diagnostico"/>
+        <mapping class="br.com.diagnostikator.model.Doenca"/>
+        <mapping class="br.com.diagnostikator.model.Sintoma"/>
+        <mapping class="br.com.diagnostikator.model.Prontuario"/>
+        
+        
+    </session-factory>
+</hibernate-configuration>
